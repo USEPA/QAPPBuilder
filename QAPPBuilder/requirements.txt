@@ -1,0 +1,35 @@
+# Check Python versions = "version Python 3.9.0 (64-bit)."
+# This requirements document was generated in the following way:
+# 1. Create a new python virtual environment.
+# 2. Install packages in this environment from the previous requirements file in Github
+# 3. Delete the existing requirements file.
+# 4. Generate this requirements file.
+# This method ensures that all installed packages are in the requirements file, which
+# includes packages that are sub-requirements of other packages.
+
+#---------------------------------------------------------------------------------------#
+# All of these packages appear to be necessary for both Windows and Linux environments. #
+#---------------------------------------------------------------------------------------#
+
+# Required for site to run properly:
+django-grappelli==2.14.3          # A jazzy skin for the Django Admin-Interface.
+Django==3.1.5                     # Python Modules.
+djangorestframework==3.12.2       # Powerful and flexible toolkit for building Web APIs.
+django-filter==2.4.0              # Reusable Django application allows users to filter querysets dynamically.
+django-phonenumber-field==5.0.0   # An international phone number field for django models.
+django-session-security==2.6.6    # Provides a mechanism to logout inactive authenticated users.
+django-wkhtmltopdf==3.3.0         # Allows a Django site to output dynamic PDFs.
+openpyxl==3.0.5                   # Python library to read/write Excel 2010 xlsx/xlsm/xltx/xltm files.
+psycopg2==2.8.6                   # Python-PostgreSQL Database Adapter.
+python-docx==0.8.10               # Python library for creating and updating Microsoft Word (.docx) files.
+xhtml2pdf==0.2.5                  # Package for saving html templates as PDF files. Used to return multiple files instead of a
+                                  # single PDF Template Response (as in wkhtmltopdf).
+
+#---------------------------------------------------------------------------------------#
+# Used for code management
+coverage==5.3                     # Measures code coverage, typically during test execution.
+django-docs==0.3.1                # Allows to serve Sphinx generated docs directly from Django.
+duecredit==0.8.0                  # Citation of scientific software and methods, and limited visibility of donation requests for open-source software.
+pycodestyle==2.6.0                # Tool to check your Python code against some of the style conventions in PEP 8.
+pydocstyle==5.1.1                 # Static analysis tool for checking compliance with Python docstring conventions in PEP 257.
+pylint-django==2.3.0              # pylint_django.checkers.db_performance looks for migrations which add new model fields and these fields have a default value.
