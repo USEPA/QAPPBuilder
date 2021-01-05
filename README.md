@@ -34,25 +34,25 @@
 
 ## Home
 
-See [Wiki/Home](https://github.com/USEPA/xxx).
+See [Wiki/Home](https://github.com/USEPA/QAPPBuilder/wiki).
 ***
 
 ## Build & Run
 
-See [Wiki/Build & Run](https://github.com/USEPA/xxx).
+See [Wiki/Build & Run](https://github.com/USEPA/QAPPBuilder/wiki/Build-&-Run).
 ***
 
 ## Testing
 
-See [Wiki/Testing](https://github.com/USEPA/xxx).
+See [Wiki/Testing](https://github.com/USEPA/QAPPBuilder/wiki/Testing).
 ***
 
 ## Contributing
 
-See [Wiki/Contributing & Collaboration](https://github.com/USEPA/xxx).
+See [Wiki/Contributing & Collaboration](https://github.com/USEPA/QAPPBuilder/wiki/Contributing).
 ***
 
 ## License
 
-See [Wiki/License](https://github.com/USEPA/xxx).
+See [Wiki/License](https://github.com/USEPA/QAPPBuilder/wiki/License).
 ***
