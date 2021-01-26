@@ -1,0 +1,48 @@
+{% extends "main/base.html" %}
+{% load humanize %}
+
+{% block content %}
+<div class="white-box">
+    <form method="post" action="{% url 'team_create' %}">
+        {% if form.errors %}
+        <div class="alert alert-danger">
+            <h5>Please correct the following errors</h5>
+            {% for field in form %}
+                {% if field.errors %}
+                <div>{{field.label_tag}} {{ field.errors|striptags }}</div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% if success %}
+        <div class="alert alert-success">
+            <span class="glyphicon glyphicon-ok"></span> Your team has been created.
+        </div>
+        {% endif %}
+
+        {% csrf_token %}
+        <h3 class="separator">Create a Project Team</h3>
+        <h4>
+            Select a name for your team.
+        </h4>
+        <div class="form-group">
+            <label for="name" class="control-label">{{form.name.label_tag}}</label>
+            <div>
+                {{form.name}}
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="float-right">
+                    <button type="submit" class="btn btn-md btn-success">Save</button>
+                    <button type="reset" class="btn btn-md btn-warning"
+                            onclick="window.location='{% url 'team_list' %}'">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
