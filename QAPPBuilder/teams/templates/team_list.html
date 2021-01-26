@@ -1,0 +1,66 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <h2 class="col-sm-9">Team Management</h2>
+    </div>
+
+    <div class="row mb-2">
+        <h4>{{user.username}}'s Teams</h4>
+        <div class="col-sm-12">
+        </div>
+    </div>
+
+    <table class="table table-bordered table-hover">
+        <thead class="table-secondary">
+            <tr>
+                <th scope="col">Team Name</th>
+                <th scope="col">Team Created By</th>
+                <th scope="col">Team Last Modified</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if teams %}
+            {% for team in teams %}
+            <tr id="{{team.id}}" onclick="rowClick('{{team.id}}')">
+                <td scope="row">{{team.name}}</td>
+                <td>{{team.created_by}}</td>
+                <td>{{team.last_modified_date}}</td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <tr><td colspan="4">You aren't a member of any Teams!</td></tr>
+            {% endif %}
+        </tbody>
+    </table>
+
+    <div class="row">
+        <div class="col-sm-4">
+            <i class="btn btn-info btn-md" onclick="viewEditTeam(this, 'edit')" disabled>
+                Edit Team <span class="ml-2 glyphicon glyphicon-edit"></span>
+            </i>
+        </div>
+        <div class="col-sm-4">
+            <i class="btn btn-info btn-md" onclick="viewEditTeam(this, 'manage')" disabled>
+                View/Manage Members <span class="ml-2 glyphicon glyphicon-user"></span>
+            </i>
+        </div>
+        <div class="col-sm-4">
+            <button class="btn btn-md btn-info" onclick="window.location.href='/teams/team/'">
+                Create a new Team <span class="ml-2 glyphicon glyphicon-plus"></span>
+            </button>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        function viewEditTeam(btn, method) {
+            if ($(btn).attr('disabled')) return;
+            window.location.href = '/teams/team/' + $(btn).attr('id') + '/' + method;
+        }
+    </script>
+{% endblock %}
