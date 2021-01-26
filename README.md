@@ -1,6 +1,5 @@
 # QAPPBuilder
 
-
 [CESER Intranet Website](https://intranet.ord.epa.gov/ceser).
 
 ## Quality Assurance (QA) Project Plan Development
