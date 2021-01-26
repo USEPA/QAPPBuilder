@@ -13,13 +13,12 @@
 
 # Required for site to run properly:
 django-grappelli==2.14.3          # A jazzy skin for the Django Admin-Interface.
-Django==3.1.5                     # Python Modules.
+Django==3.1.4                     # Python Modules.
 djangorestframework==3.12.2       # Powerful and flexible toolkit for building Web APIs.
 django-filter==2.4.0              # Reusable Django application allows users to filter querysets dynamically.
 django-phonenumber-field==5.0.0   # An international phone number field for django models.
 django-session-security==2.6.6    # Provides a mechanism to logout inactive authenticated users.
 django-wkhtmltopdf==3.3.0         # Allows a Django site to output dynamic PDFs.
-openpyxl==3.0.5                   # Python library to read/write Excel 2010 xlsx/xlsm/xltx/xltm files.
 psycopg2==2.8.6                   # Python-PostgreSQL Database Adapter.
 python-docx==0.8.10               # Python library for creating and updating Microsoft Word (.docx) files.
 xhtml2pdf==0.2.5                  # Package for saving html templates as PDF files. Used to return multiple files instead of a

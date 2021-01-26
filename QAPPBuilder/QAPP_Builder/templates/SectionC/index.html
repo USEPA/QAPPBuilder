@@ -1,0 +1,52 @@
+{% extends "main/base.html" %}
+{% block content %}
+{% load static %}
+
+    <div class="container">
+        {% include 'SectionC/header_footer_partial.html' %}
+        {% if save_success %}
+        <h3 id="save_success" class="text-success col-md-12 text-center">{{save_success}}</h3>
+        {% endif %}
+        {% if error_message%}
+        <h3 id="error_message" class="text-danger col-md-12 text-center">{{error_message}}</h3>
+        {% endif %}
+
+        <div class="border rounded p-3 row">
+            {% include 'EPA_QAPP_Header_Partial.html' %}
+            <div class="col-md-12">
+                <form enctype="multipart/form-data" action="/SectionC?qapp_id={{qapp_id}}" method="post" role="form" id="sectionc_form">
+                    {% csrf_token %}
+                    <div class="form-group row hidden">{{form.qapp}}</div>
+
+                    <div class="form-group row">
+                        <label for="" class="col-sm-3 control-label">{{form.c1.label}}</label>
+                        <div class="col-sm-8">{{form.c1}}</div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="" class="col-sm-3 control-label">{{form.c2.label}}</label>
+                        <div class="col-sm-8">{{form.c2}}</div>
+                    </div>
+
+                    <div class="row justify-content-center">
+                        <button type="submit" class="m-2 col-md-2 btn btn-md btn-success save">Save Changes</button>
+                        <button type="reset" class="m-2 col-md-2 col-md-offset-1 btn btn-md btn-warning">Reset</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        {% include 'SectionC/header_footer_partial.html' %}
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="popover"]').popover({
+            container: 'body'
+        });
+    });
+</script>
+{% endblock %}

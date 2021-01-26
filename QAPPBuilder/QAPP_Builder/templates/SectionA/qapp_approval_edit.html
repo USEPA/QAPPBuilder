@@ -1,0 +1,63 @@
+{% extends "main/base.html" %}
+{% block content %}
+{% load static %}
+
+<div class="container">
+    <div class="row">
+    </div>
+    <div class="row mt-4 text-center">
+        <div class="col-md-12">
+            <h3>A.1 Approval Page</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            {% if form.errors %}
+            <div class="alert alert-danger">
+                {% for field in form %}
+                {% for error in field.errors %}
+                <h4>{{ error|escape }}</h4>
+                {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                <h4>{{ error|escape }}</h4>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <form enctype="multipart/form-data" action="/approval/edit/{{qapp_id}}/" method="post" role="form">
+                {% csrf_token %}
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 control-label">{{form.qapp.label}}</label>
+                    <div class="col-sm-8">{{form.qapp}}</div>
+                </div>
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 control-label">{{form.project_plan_title.label}}</label>
+                    <div class="col-sm-8">{{form.project_plan_title}}</div>
+                </div>
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 control-label">{{form.activity_number.label}}</label>
+                    <div class="col-sm-8">{{form.activity_number}}</div>
+                </div>
+                <div class="text-center">
+                    <div class="row justify-content-center">
+                        <button type="submit" class="m-2 col-md-2 btn btn-md btn-success save">Save</button>
+                        <button type="reset" class="m-2 col-md-2 col-md-offset-1 btn btn-md btn-warning">Reset</button>
+                        <button type="reset" onclick="window.location.href='/detail/{{qapp_id}}/'"
+                                class="m-2 col-md-2 col-md-offset-1 btn btn-md btn-danger">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+</script>
+{% endblock %}

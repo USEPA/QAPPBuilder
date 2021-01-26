@@ -1,0 +1,66 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+
+<div class="well">
+    <h2>
+        {% if user.is_authenticated %}
+        Quality Assurance (QA) Project Plan Development
+        {% else %}
+        <a href="/accounts/login/">QAPP Builder Tool</a>
+
+        {% endif %}
+    </h2>
+    <h3>References & Tools</h3>
+    <p>
+    •	CESER-wide QA Standard Operating Procedures
+    •	Search ORD Approved QA Project Plans
+    •	Existing Data and Information Search Tool (ORD OLEM Team)
+</p>
+</div>
+
+{% if not user.is_authenticated %}
+<button onclick="window.location='accounts/register/'">New Users Click Here...</button>
+{% endif %}
+
+<div>
+    <p>Templates
+    •	CESER QA Project Plan Coversheet w/ signature page
+    •	Category A QA Project Plan Template (for QA Category A, research must be prepared to meet the requirements specified in EPA Requirements for QA Project Plans, QA/R-5)
+    •	Category B QA Project Plan Template (for QA Category B, research must be prepared to meet a subset of the QA/R-5 requirements).
+    </p>
+    <p>
+        <button onclick="window.location='https://ordscinote.epa.gov/'"
+                class="btn btn-primary btn-default">Learn more about SciNote ELFN &raquo;</button>
+        <button onclick="window.location='https://intranet.ord.epa.gov/ceser/quality-assurance-qa-project-plan-development'"
+                class="btn btn-primary btn-default">QAPP Development &raquo;</button>
+    </p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>More information and source code</h2>
+        <p>
+            The source code for this project can be accessed on the GitHub repository by clicking the button below.
+        </p>
+        <button class="btn btn-default mb-2"
+                onclick="window.location='https://github.com/USEPA/DataSearch'">US EPA GitHub repository &raquo;</button>
+        <button class="btn btn-default"
+                onclick="window.location='https://www.epa.gov/webguide/github-guidance/'">USEPA GitHub Guidance &raquo;</button>
+    </div>
+    <div class="col-md-4">
+        <h2>Project Organization</h2>
+        <p>Project StRAP SSHC.7, Life Cycle Inventories & Methodologies SHC.O21, Characterization of
+        Food Waste Reduction & Strategies & Identification of Food Waste Prevention Solutions.</p>
+        <button class="btn btn-default"
+                onclick="window.location='https://qatrack.epa.gov/projects/show/8880/'">Access Required &raquo;</button>
+    </div>
+    <div class="col-md-4">
+        <h2>Office of Research & Development</h2>
+        <p>Center for Environmental Solutions & Emergency Response, Land Remediation & Technology Division,
+        Environmental Decision Analytics Branch.</p>
+        <button class="btn btn-default" onclick="window.location='http://intranet.ord.epa.gov/ceser/'">Learn more &raquo;</button>
+    </div>
+</div>
+
+{% endblock %}
