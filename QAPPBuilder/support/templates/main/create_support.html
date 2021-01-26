@@ -1,0 +1,45 @@
+{% extends "base/site_base_support.html" %}
+{% block support_content %}
+
+<h3>{{title}}</h3>
+<div class="text-muted vmargin20">
+    {{instructions}}
+</div>
+
+<form class="form-horizontal " enctype="multipart/form-data" method="post" action="." role="form" novalidate>
+
+    {% csrf_token %}
+
+    {% if form.errors %}
+    <div class="alert alert-danger">
+        <h5>Please correct the following errors</h5>
+        {% for field in form %}
+        {% if field.errors %}
+        <div>{{field.label_tag}} {{ field.errors|striptags }}</div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% for field in form %}
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            <div>{{field.label_tag}}</div>
+            <div class="help-block">{{field.help_text}}</div>
+        </label>
+        <div class="col-sm-10">
+            {{field}}
+            {% if field.errors %}<div class="alert alert-danger">{{field.errors.as_text}}</div>{% endif %}
+        </div>
+
+    </div>
+    {% endfor %}
+    <div class="form-group">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-10">
+            <input type="submit" value="Save" class="btn btn-success">
+        </div>
+    </div>
+</form>
+
+{% endblock %}

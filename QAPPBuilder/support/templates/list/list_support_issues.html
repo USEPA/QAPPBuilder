@@ -1,0 +1,87 @@
+{% extends "base/site_base_support.html" %}
+{% load humanize %}
+{% block support_content %}
+
+<div>
+{% if supports %}
+
+	{% if support_type_name == 'suggestion' %}
+	<p><h3>Submitted Suggestions: {{query_show}}</h3></p>
+	{% else %}
+	<p><h3>Submitted Help Requests: {{query_show}}</h3></p>
+	{% endif %}
+	
+	<table class="example table-autosort:1 table-autosort-asc table-stripeclass:alternate table-autofilter" id="support_table">
+		<thead id="support_head">
+		<tr>
+			<th class="table-sortable:alphanumeric">Submitter</th>
+			<th class="table-sortable:numeric">Ref Num</th>
+            <th class="table-sortable:alphanumeric">Subject</th>
+            <th class="table-sortable:alphanumeric">Description</th>
+            <th class="table-sortable:date">Date Created</th>
+            <th class="table-sortable:date">Date Addressed</th>
+            <th class="table-sortable:alphanumeric">Review Notes</th>
+            <th class="table-sortable:alphanumeric">Status</th>
+			<th class="table-header">Edit</th>
+			<th class="table-header">Show</th>
+			<th class="table-header">Delete</th>
+		</tr>
+		<tr>
+			<th class="table-filterable"></th>
+			<th class="table-filterable"></th>
+			<th class="table-filterable"></th>
+			<th class="table-filterable"></th>
+            <th class="table-filterable"></th>
+
+			<th class="table-filterable"></th>
+			<th class="table-filterable"></th>
+			<th class="table-filterable"></th>
+
+			<th class="table-header"></th>
+			<th class="table-header"></th>
+			<th class="table-header"></th>
+	  	</tr>
+
+		</thead>
+		<tbody id="support_body">
+			
+			{% for obj in supports %}
+				<tr>
+					<td>{{obj.weblink}}</td>
+{#					<td>{{obj.support_type.the_name}}</td>#}
+					<td>{{obj.id}}</td>
+
+                    <td>{{obj.subject}}</td>
+
+					<td width="200">{{obj.the_description}}</td>
+					<td>{{obj.created|date:"Y-m-d"}}</td>
+					<td>{{obj.date_resolved|date:"Y-m-d"}}</td>
+                    <td>{{obj.review_notes}}</td>
+
+                    <td>{{obj.status}}</td>
+					
+					<td>
+                        {% if obj.user == user or user.is_staff %}
+                        <a href="{% url 'support:edit_support' support_type_name obj.id %}">Edit</a>
+                        {% else %}
+                        <span class="text-muted">Edit</span>
+                        {% endif %}
+                    </td>
+					<td><a href="{% url 'support:show_support' support_type_name obj.id %}">Show</a></td>
+					<td>
+                        {% if obj.user == user or user.is_staff %}
+                        <a href="{% url 'support:delete_support' support_type_name obj.id %}">Delete</a>
+                        {% else %}
+                        <span class="text-muted">Delete</span>
+                        {% endif %}
+                    </td>
+				</tr>
+			{% endfor %}
+			</tbody>
+	</table>
+	{% else %}
+	<table><tr><td>No Support Issues Found For This Query.</td></tr></table>
+{% endif %}
+</div>
+
+{% endblock %}
