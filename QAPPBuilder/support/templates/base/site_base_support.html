@@ -1,0 +1,30 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-3">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Help</div>
+            <div class="list-group">
+                <a class="list-group-item" href="{% url 'support:create_support' 'help' %}">Request Help</a>
+                <a class="list-group-item" href="{% url 'support:list_supports' 'help' %}">Show Help Requests</a>
+            </div>
+
+        </div>
+        <div class="panel panel-primary">
+            <div class = "panel-heading">Suggestions</div>
+            <div class="list-group">
+                <a class="list-group-item" href="{% url 'support:create_support' 'suggestion' %}">Make Suggestion</a>
+                <a class="list-group-item" href="{% url 'support:list_supports' 'suggestion' %}">Show Submitted Suggestions</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-9">
+        {% block support_content %}
+        {% endblock %}
+    </div>
+</div>
+{% endblock %}
+
+

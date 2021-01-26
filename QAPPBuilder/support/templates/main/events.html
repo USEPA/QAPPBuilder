@@ -1,0 +1,53 @@
+﻿{% extends 'main/base.html' %}
+{% block content %}
+<div class="white-box">
+    <div>
+        <h2>Upcoming Events</h2>
+        <h4>Check back often for upcoming events, presentations, training sessions, and more on the Data Search tool.</h4>
+        <hr />
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 mt-3">
+                    <div class="card">
+                        <div class="card-horizontal">
+                            <div class="img-square-wrapper card-horizontal-img col-2">
+                                <!-- NOTE: Day of the week. -->
+                                <div class="col-12">WED</div>
+                                <!-- NOTE: Month and date. -->
+                                <div class="col-12">JAN 29</div>
+                                <!-- NOTE: Year. -->
+                                <div class="col-12">2020</div>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <!-- NOTE: This section is the bolded title in an event card. -->
+                                    Overview on using the EDAB QAPP Builder Tool
+                                </h4>
+                                <p class="card-text">
+                                    <!-- NOTE: This section is paragraph text in an event card's body. -->
+                                    This demo will cover logging in, creating new app, viewing existing users and teams,
+                                    creating new teams and data entries, and exporting data.
+                                    <button class="btn btn-md btn-success float-right m-2"
+                                            onclick="window.location.href='/support/files/ExistingQAPP_BuilderTool.pptx'">
+                                        Download the presentation slides
+                                    </button>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <!-- NOTE: This section is used to document when this event card was last updated. -->
+                            <small class="text-muted">Last updated 1/29/2020</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 mt-3">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
