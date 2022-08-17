@@ -3,7 +3,6 @@
 # coding=utf-8
 # young.daniel@epa.gov
 # py-lint: disable=C0301
-
 """
 This file houses test cases for the constants module.
 
@@ -37,28 +36,32 @@ class TestUtils(TestCase):
     def setUp(self):
         """Prepare various objects for this class of tests."""
         self.test_str = 'Test'
-        self.client.login(username='dyoung11', password='***REMOVED***')
+        self.user = User.objects.create_user(username='testuser',
+                                             password='12345')
+        self.client.login(username='testuser', password='12345')
         self.user = User.objects.get(id=1)
         self.file = SimpleUploadedFile('test.txt', b'This is a test file.')
-        self.excel_file = SimpleUploadedFile(
-            'test.xlsx', b'This is a test file.')
+        self.excel_file = SimpleUploadedFile('test.xlsx',
+                                             b'This is a test file.')
         self.attachment_excel = Attachment.objects.create(
             name=self.test_str, file=self.excel_file, uploaded_by=self.user)
-        self.attachment_1 = Attachment.objects.create(
-            name=self.test_str, file=self.file, uploaded_by=self.user)
+        self.attachment_1 = Attachment.objects.create(name=self.test_str,
+                                                      file=self.file,
+                                                      uploaded_by=self.user)
         # Attachment 2 will not be found since we don't call objects.create()
-        self.attachment_2 = Attachment(
-            name=self.test_str, file=self.file, uploaded_by=self.user)
+        self.attachment_2 = Attachment(name=self.test_str,
+                                       file=self.file,
+                                       uploaded_by=self.user)
 
     def test_split_email_list_pass_one(self):
         """Runs the char split on an email that will be equal."""
-        self.assertEqual(split_email_list(
-            "t;e,s\tt@t|est.com"), ['t', 'e', 's', 't@t', 'est.com'])
+        self.assertEqual(split_email_list("t;e,s\tt@t|est.com"),
+                         ['t', 'e', 's', 't@t', 'est.com'])
 
     def test_split_email_list_fail_one(self):
         """Runs the char split on an email that will not be equal."""
-        self.assertNotEqual(split_email_list(
-            "t;e,s\tt@t|est.com"), ['t', 'e', 's', 't@test.com'])
+        self.assertNotEqual(split_email_list("t;e,s\tt@t|est.com"),
+                            ['t', 'e', 's', 't@test.com'])
 
     def test_is_epa_email_pass_one(self):
         """
@@ -129,18 +132,19 @@ class TestUtils(TestCase):
         Runs the test to check if an email address is not EPA
         that it sends the correct message.
         """
-        self.assertIn(
-            """Email list may only contain @epa.gov addresses.""",
-            non_epa_email_message("test@test.com"), msg=None)
+        self.assertIn("""Email list may only contain @epa.gov addresses.""",
+                      non_epa_email_message("test@test.com"),
+                      msg=None)
 
     def test_create_qt_email_message(self):
         """Returns EmailMultiAlternatives object."""
         to_emails = ["testTo@test.com"]
-        self.assertIsInstance(
-            create_qt_email_message(
-                "email Subject", "text content", "testFrom@test.com",
-                to_emails, None, None),
-            EmailMultiAlternatives, msg=None)
+        self.assertIsInstance(create_qt_email_message("email Subject",
+                                                      "text content",
+                                                      "testFrom@test.com",
+                                                      to_emails, None, None),
+                              EmailMultiAlternatives,
+                              msg=None)
 
     def test_xstr_one(self):
         """
@@ -178,11 +182,12 @@ class TestUtils(TestCase):
         fields = "form"
         results = get_rap_fields(fields)
         # print(results)
-        self.assertEqual(results, [
-            ['ace', 'ace_rap_numbers'], ['css', 'css_rap_numbers'],
-            ['sswr', 'sswr_rap_numbers'], ['hhra', 'hhra_rap_numbers'],
-            ['hsrp', 'hsrp_rap_numbers'], ['hsre', 'hsrp_rap_extensions'],
-            ['shc', 'shc_rap_numbers']])
+        self.assertEqual(
+            results,
+            [['ace', 'ace_rap_numbers'], ['css', 'css_rap_numbers'],
+             ['sswr', 'sswr_rap_numbers'], ['hhra', 'hhra_rap_numbers'],
+             ['hsrp', 'hsrp_rap_numbers'], ['hsre', 'hsrp_rap_extensions'],
+             ['shc', 'shc_rap_numbers']])
 
     def test_get_rap_fields_two(self):
         """Test the get rap fields without form."""
@@ -191,8 +196,9 @@ class TestUtils(TestCase):
         # print(results)
         self.assertEqual(results, [
             'ace_rap_numbers', 'css_rap_numbers', 'sswr_rap_numbers',
-            'hhra_rap_numbers', 'hsrp_rap_numbers',
-            'hsrp_rap_extensions', 'shc_rap_numbers'])
+            'hhra_rap_numbers', 'hsrp_rap_numbers', 'hsrp_rap_extensions',
+            'shc_rap_numbers'
+        ])
 
     def test_is_float_one(self):
         """Test the is float method with a float."""
@@ -210,8 +216,8 @@ class TestUtils(TestCase):
 
     def test_get_attachment_storage_path(self):
         """Test that the QAPP_Builder Attachment path is returned properly."""
-        response = get_attachment_storage_path(
-            instance=self.attachment_1, filename=self.test_str)
+        response = get_attachment_storage_path(instance=self.attachment_1,
+                                               filename=self.test_str)
         self.assertTrue('dyoung11/attachments/' in response)
 
     def test_download_files(self):

@@ -3,7 +3,6 @@
 # coding=utf-8
 # young.daniel@epa.gov
 # py-lint: disable=W0511,R0904
-
 """
 This file demonstrates writing tests using the unittest module.
 
@@ -45,31 +44,43 @@ class TestViewAuthenticated(TestCase):
                                               password='12345')
         self.user2 = User.objects.create_user(username='testuser2',
                                               password='12345')
-        self.client.login(username='dyoung11', password='***REMOVED***')
+        self.client.login(username='testuser1', password='12345')
         self.user = User.objects.get(id=1)
         self.team = Team.objects.create(created_by=self.user1, name='testteam')
         self.team2 = Team.objects.create(created_by=self.user,
                                          name='testteam2')
-        TeamMembership.objects.create(
-            member=self.user1, team=self.team, is_owner=True, can_edit=True)
-        TeamMembership.objects.create(
-            member=self.user, team=self.team, is_owner=True, can_edit=True)
-        TeamMembership.objects.create(
-            member=self.user, team=self.team2, is_owner=True, can_edit=True)
+        TeamMembership.objects.create(member=self.user1,
+                                      team=self.team,
+                                      is_owner=True,
+                                      can_edit=True)
+        TeamMembership.objects.create(member=self.user,
+                                      team=self.team,
+                                      is_owner=True,
+                                      can_edit=True)
+        TeamMembership.objects.create(member=self.user,
+                                      team=self.team2,
+                                      is_owner=True,
+                                      can_edit=True)
         # Build some models to be used in this test class:
         self.division = Division.objects.first()
         self.form = QappForm()
 
         self.qapp_dict = {
-            'division': self.division, 'division_branch': 'Test',
-            'title': 'Test', 'qa_category': 'QA Category A',
-            'intra_extra': 'Intramural', 'revision_number': '1',
-            'date': datetime.now(), 'prepared_by': self.user,
-            'strap': 'Test', 'tracking_id': 'Test'
+            'division': self.division,
+            'division_branch': 'Test',
+            'title': 'Test',
+            'qa_category': 'QA Category A',
+            'intra_extra': 'Intramural',
+            'revision_number': '1',
+            'date': datetime.now(),
+            'prepared_by': self.user,
+            'strap': 'Test',
+            'tracking_id': 'Test'
         }
         self.qapp = Qapp.objects.create(**self.qapp_dict)
-        self.dat_team_map = QappSharingTeamMap.objects.create(
-            qapp=self.qapp, team=self.team, can_edit=True)
+        self.dat_team_map = QappSharingTeamMap.objects.create(qapp=self.qapp,
+                                                              team=self.team,
+                                                              can_edit=True)
 
     def test_get_qapp_all(self):
         """
@@ -163,8 +174,8 @@ class TestViewAuthenticated(TestCase):
     def test_qapp_create_get(self):
         """Test the QappCreate view GET method."""
         response = self.client.get('/create/')
-        self.assertContains(
-            response, 'Office of Research and Development', 1, 200)
+        self.assertContains(response, 'Office of Research and Development', 1,
+                            200)
         self.assertContains(
             response,
             'Center for Environmental Solutions & Emergency Response', 1, 200)
@@ -189,8 +200,8 @@ class TestViewAuthenticated(TestCase):
         This should render the create page again.
         """
         response = self.client.post('/create/', data={})
-        self.assertContains(
-            response, 'Office of Research and Development', 1, 200)
+        self.assertContains(response, 'Office of Research and Development', 1,
+                            200)
         self.assertContains(
             response,
             'Center for Environmental Solutions & Emergency Response', 1, 200)
