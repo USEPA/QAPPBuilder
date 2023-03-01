@@ -12,11 +12,11 @@
 #---------------------------------------------------------------------------------------#
 
 # Required for site to run:
-Django>=4.1.6                     # Python Modules.
+Django>=4.1.7                     # Python Modules.
 django-phonenumber-field>=7.0.2   # An international phone number field for django models.
 djangorestframework>=3.14.0       # Powerful and flexible toolkit for building Web APIs.
 django-wkhtmltopdf>=3.4.0         # Allows a Django site to output dynamic PDFs.
-openpyxl>=3.1.0                   # Python library to read/write Excel 2010 xlsx/xlsm/xltx/xltm files.
+openpyxl>=3.1.1                   # Python library to read/write Excel 2010 xlsx/xlsm/xltx/xltm files.
 psycopg2>=2.9.5                   # Python-PostgreSQL Database Adapter.
 python-docx>=0.8.11               # Python library for creating and updating Microsoft Word (.docx) files.
 # NOTE: xhtml2pdf is the culprit bringing in dangerous "future" package.
@@ -30,7 +30,7 @@ django-session-security>=2.6.7    # Provides a mechanism to logout inactive auth
 
 # #---------------------------------------------------------------------------------------#
 # # Used for code management
-coverage>=7.1.0                   # Measures code coverage, typically during test execution.
+coverage>=7.2.1                   # Measures code coverage, typically during test execution.
 django-docs>=0.3.3                # Allows to serve Sphinx generated docs directly from Django.
 duecredit>=0.9.2                  # Citation of scientific software and methods, and limited visibility of donation
                                   # requests for open-source software.
