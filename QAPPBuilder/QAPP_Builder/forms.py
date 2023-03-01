@@ -11,7 +11,7 @@ from django.forms import CharField, ChoiceField, ModelForm, TextInput, \
     BooleanField, FileField, ClearableFileInput, \
     ModelChoiceField, Select, DateTimeField, CheckboxInput
 from django.forms.widgets import DateTimeInput
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from constants.models import QA_CATEGORY_CHOICES, XMURAL_CHOICES
 from constants.qar5 import SECTION_A_INFO, SECTION_C_INFO
 from QAPP_Builder.models import Division, Qapp, QappApproval, QappLead, \
