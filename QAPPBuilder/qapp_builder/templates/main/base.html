@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html class="not-oldie js" lang="en" dir="ltr">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="true">
+
+    {% load static %}
+    <link rel="shortcut icon" href="{% static 'EPA_files/logo50.png' %}" type="image/vnd.microsoft.icon">
+    <meta name="MobileOptimized" content="width">
+    <meta http-equiv="cleartype" content="on">
+    <meta http-equiv="ImageToolbar" content="false">
+    <meta name="viewport" content="width=device-width">
+    <meta name="version" content="20161218">
+    <!--googleon: all-->
+    <meta name="DC.description" content="">
+    <meta name="DC.title" content="">
+    <title>Data Search</title>
+    <!--googleoff: snippet-->
+    <meta name="keywords" content="">
+    <link rel="shortlink" href="https://www.epa.gov/sites/all/libraries/template2/standalone.html">
+    <link rel="canonical" href="https://www.epa.gov/sites/all/libraries/template2/standalone.html">
+    <meta name="DC.creator" content="">
+    <meta name="DC.language" content="en">
+    <meta name="DC.Subject.epachannel" content="">
+    <meta name="DC.type" content="">
+    <meta name="DC.date.created" content="">
+    <meta name="DC.date.modified" content="">
+    <!--googleoff: all-->
+    <!-- Script Block -->
+    <script src="{% static 'lib/popper.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'lib/jquery.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'lib/jquery-ui.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'lib/bootstrap.min.js' %}" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" type="text/javascript"></script>
+    <script src="{% static 'lib/moment.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'scripts/datasearch.js' %}" type="text/javascript"></script>
+    <script src="{% static 'scripts/datasearch_projects.js' %}" type="text/javascript"></script>
+    <script src="{% static 'scripts/datasearch_qar5.js' %}" type="text/javascript"></script>
+    <script src="{% static 'lib/bootstrap-datetimepicker.min.js' %}" type="text/javascript"></script>
+
+    <!-- CSS Block -->
+    <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap-datetimepicker.min.css' %}"/>
+
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'lib/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/bootstrap-flatly.min.css' %}">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'lib/jquery-ui.min.css' %}">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'lib/jquery-ui.structure.min.css' %}">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'lib/jquery-ui.theme.min.css' %}">
+
+    <!-- main CSS -->
+    <link rel="stylesheet" type="text/css" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet" type="text/css" media="all" href="{% static 'EPA_files/s.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/site.css' %}" />
+
+    <!--[if lt IE 9]><link type="text/css" rel="stylesheet" href="https://www.epa.gov/sites/all/themes/epa/css/ie.css" media="all" /><![endif]-->
+    <link rel="alternate" type="application/atom+xml" title="EPA.gov All Press Releases" href="https://www.epa.gov/newsreleases/search/rss">
+    <link rel="alternate" type="application/atom+xml" title="EPA.gov Headquarters Press Releases" href="https://www.epa.gov/newsreleases/search/rss/field_press_office/headquarters">
+    <link rel="alternate" type="application/atom+xml" title="Greenversations, EPA&#39;s Blog" href="https://blog.epa.gov/blog/feed/">
+    <!--[if lt IE 9]><script src="https://www.epa.gov/sites/all/themes/epa/js/html5.js"></script><![endif]-->
+</head>
+<body class="node-type-(web-area|page|document|webform) (microsite|resource-directory) hasGoogleVoiceExt">
+    <!-- Google Tag Manager -->
+    <!--<noscript>&lt;iframe src="//www.googletagmanager.com/ns.html?id=GTM-L8ZB" height="0" width="0" style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;</noscript>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-L8ZB');</script>-->
+    <!-- End Google Tag Manager -->
+    <div class="skip-links">
+        <a href="https://www.epa.gov/sites/all/libraries/template2/standalone.html#main-content"
+           class="skip-link element-invisible element-focusable">Jump to main content</a>
+    </div>
+
+    <header class="masthead clearfix" role="banner">
+        <img class="site-logo" src="{% static 'EPA_files/logo.png' %}" alt="">
+        <hgroup class="site-name-and-slogan">
+            <h1 class="site-name"><a href="https://www.epa.gov/" title="Go to the home page" rel="home"><span>US EPA</span></a></h1>
+            <div class="site-slogan">United States Environmental Protection Agency</div>
+        </hgroup>
+    </header>
+
+    <!-- Nav bar from EPA Template -->
+    <nav class="nav main-nav clearfix" role="navigation">
+        <div class="nav__inner">
+            <h2 class="element-invisible">Main menu</h2>
+
+            <ul class="menu" role="menu" id="navbar_left">
+                {% url 'home' as home_url %}
+                <li class="menu-item" role="presentation">
+                    <a href="{{home_url}}" class="menu-link" role="menuitem">QAPP Builder</a>
+                </li>
+
+                <!-- navbar when user is logged in -->
+                {% if user.is_authenticated %}
+                <li class="dropdown menu-item" role="presentation">
+                    <a data-toggle="dropdown" href="javascript:void(0)" class="menu-link dropdown-toggle" role="menuitem">
+                        Teams
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="menu-item">
+                            <a class="menu-link" href="/teams/team/">Create a team</a>
+                        </li>
+                        <li class="menu-item">
+                            <a class="menu-link" href="/teams/list/">Manage existing teams</a>
+                        </li>
+                    </ul>
+                </li>
+
+                {% if request.user.is_staff %}
+                <li class="dropdown menu-item" role="presentation">
+                    <a data-toggle="dropdown" href="javascript:void(0)" class="menu-link dropdown-toggle" role="menuitem">
+                        Manage
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="menu-item">
+                            <a class="menu-link" href="/adminauth/user/">Manage accounts</a>
+                        </li>
+                        <li class="menu-item">
+                            <a class="menu-link" href="{% url 'admin:index' %}">Manage organizations</a>
+                        </li>
+                    </ul>
+                </li>
+                {% endif %}
+
+                <!-- Else user is not logged in -->
+                {% else %}
+                {% url 'contact' as contact_url %}
+                <li class="menu-item" role="presentation">
+                    <a href="{{contact_url}}" class="menu-link" role="menuitem">Contact</a>
+                </li>
+
+                {% url 'register' as register_url %}
+                <li {% if self.path == register_url %} class="expanded active-trail menu-item" {% else %} class="menu-item" {% endif %} role="presentation">
+                    <a href="{{register_url}}" {% if self.path == register_url %} class="active-trail menu-link active" {% else %} class="menu-link" {% endif %} role="menuitem">Register</a>
+                </li>
+
+                {% url 'login' as login_url %}
+                <li {% if self.path == login_url %} class="expanded active-trail menu-item" {% else %} class="menu-item" {% endif %} role="presentation">
+                    <a href="{{login_url}}" {% if self.path == login_url %} class="active-trail menu-link active" {% else %} class="menu-link" {% endif %} role="menuitem">Log-In</a>
+                </li>
+                {% endif %}
+            </ul>
+
+            {% if user.is_authenticated %}
+            <ul class="menu float-right" role="menu" id="navbar_right">
+
+                <li class="menu-item" role="presentation">
+                    <a href="{% url 'support:documentation' %}" class="menu-link" role="menuitem">User Documentation</a>
+                </li>
+
+                <li class="dropdown menu-item" role="presentation">
+                    <a class="menu-link dropdown-toggle" data-toggle="dropdown"
+                       href="javascript:void(0)" role="menuitem">
+                        Help/Suggestions
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'contact' %}">Contact</a></li>
+                        <li><a href="{% url 'support:go_to_support' %}">Suggestions</a></li>
+                        <li><a href="{% url 'support:events' %}">Upcoming Events</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown menu-item" role="presentation">
+                    <a data-toggle="dropdown" href="javascript:void(0)" class="menu-link dropdown-toggle" role="menuitem">
+                        {% if user.first_name %}
+                        {{user.first_name}}
+                        {% else %}
+                        {{user.username}}
+                        {% endif %}
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="menu-item">
+                            <a class="menu-link" href="{% url 'profile' %}">My profile</a>
+                        </li>
+                        {% if request.user.is_staff %}
+                        <li class="menu-item">
+                            <a class="menu-link" href="{% url 'admin:index' %}">Admin Portal</a>
+                        </li>
+                        <li class="menu-item">
+                            <a class="menu-link" href="{% url 'web_dev_tools' %}">Web Dev Tools</a>
+                        </li>
+                        {% endif %}
+                        <li role="separator" class="divider"></li>
+                        <li class="menu-item">
+                            <a class="menu-link" href="{% url 'logout' %}">Logout</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div id="mobile-nav" class="mobile-nav">
+        <div class="mobile-bar clearfix">
+            <a class="menu-button" href="#" onclick="toggleMenu()">Menu</a>
+        </div>
+        <div id="mobile-links" class="mobile-links element-hidden" style="height: 400px; margin-top: 0px;">
+        </div>
+    </div>
+
+    <section id="main-content" class="main-content clearfix" role="main" tabindex="-1">
+        <div class="main-column clearfix">
+            <!-- main content block - override in partials/sub-templates -->
+            <div>
+                {% block content %}
+                <!-- If the user is logged in, we should redirect to the dashboard as the 'landing page' -->
+                {% if user.is_authenticated %}
+                <script>
+                    //window.location = 'dashboard';
+                </script>
+                {% endif %}
+                <div class="splash">
+                    <div class="welcome">
+                        <div class="row vmargin10">
+                            <div class="row vmargin10">
+                                <h2 class="home-header col-sm-8">
+                                    {{ title }} - Data Search
+                                </h2>
+
+                                {% if not user.is_authenticated %}
+                                <div class="col-sm-4">
+                                    <div>
+                                        <a href="/accounts/login/" style="width: 80%;">
+                                            <input id="login" name="login" type="submit" value="Log-in" />
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <a href="/accounts/register/" style="width: 80%;">
+                                            <input id="register" name="register" type="submit" value="Register" />
+                                        </a>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="row vmargin10">
+                                <div class="col-md-4">
+                                    <h3>Getting started</h3>
+                                    <p>
+                                        TODO
+                                    </p>
+                                    <p><a class="btn btn-default" href="https://intranet.ord.epa.gov/ceser">CESER | Center for Environmental Solutions & Emergency Response &raquo;</a></p>
+                                </div>
+                                <div class="col-md-4">
+                                    <h3>United States Environmental Protection Agency</h3>
+                                    <p>LRTD | Land Remediation & Technology Division.</p>
+                                    <p><a class="btn btn-default" href="https://intranet.ord.epa.gov/ceser/land-remediation-technology-division">Learn more &raquo;</a></p>
+                                </div>
+                                <div class="col-md-4">
+                                    <h3>US EPA, Office of Reseach and Development (ORD)</h3>
+                                    <p>EDAB | Environmental Decision Analytics Branch.</p>
+                                    <p><a class="btn btn-default" href="https://intranet.ord.epa.gov/ceser/environmental-decision-analytics-branch">Learn more &raquo;</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endblock %}
+            </div>
+
+            <!--googleon: all-->
+            {#<h1 class="page-title">{PAGE TITLE}</h1>#}
+            <div class="panel-pane pane-node-content">
+                <div class="pane-content">
+                    <div class="node node-page clearfix view-mode-full">
+                        {#{PAGE CONTENT}#}
+                    </div>
+                </div>
+            </div>
+            <div id="block-epa-og-footer" class="block block-epa-og">
+                {#<p>{FOOTER CONTENT}</p>#}
+            </div>
+            <!--googleoff: all-->
+        </div>
+    </section>
+
+    <script src="{% static 'EPA_files/jquery.js.download' %}"></script>
+    <script src="{% static 'EPA_files/js.js.download' %}"></script>
+    <!--[if lt IE 9]><script src="https://www.epa.gov/sites/all/themes/epa/js/ie.js"></script><![endif]-->
+    <!-- REMOVE if not using -->
+    {% block scripts %}{% endblock %}
+
+    <footer class="main-footer clearfix" role="contentinfo">
+        <div class="main-footer__inner">
+            <div class="region-footer">
+                <div class="block block-pane block-pane-epa-global-footer">
+                    <h4>Software Disclaimer</h4>
+                    'QAPP Builder Tool' is developed and maintained by U.S.
+                    Environmental Protection Agency, Office of Research & Development
+                    (ORD), Center for Environmental Solutions and Emergency Response
+                    (CESER), Land Remediation & Technology Division (LRTD), Environmental
+                    Decision Analytics Branch (EDAB)Cincinnati, OH 45268, under Mozilla
+                    Public License Version 2.0. See
+                    <a href="https://code.gov/#/policy-guide/docs/compliance/procurement" target="_blank">
+                        OMB Memorandum M-16-21 Section 4
+                    </a> &
+                    <a href="https://code.gov/#/policy-guide/docs/open-source/licensing" target="_blank">
+                        Releasing Open Source Code
+                    </a>.
+                    <div class="my-3">
+                        QAPP Builder Tool v. {{APP_VERSION}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

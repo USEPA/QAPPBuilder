@@ -1,0 +1,52 @@
+{% extends "main/base.html" %}
+{% block content %}
+{% load static %}
+
+    <div class="container">
+        {% include 'SectionB/header_footer_partial.html' %}
+        {% if save_success %}
+        <h3 id="save_success" class="text-success col-md-12 text-center">{{save_success}}</h3>
+        {% endif %}
+        <div class="border rounded p-3 row">
+            {% include 'EPA_QAPP_Header_Partial.html' %}
+            <div class="col-md-12">
+                <form enctype="multipart/form-data" action="/SectionB?qapp_id={{qapp_id}}" method="post" role="form" id="sectionb_form">
+                    {% csrf_token %}
+                    <div class="">
+                        <div class="form-group row hidden">{{form.qapp}}</div>
+                        <div class="form-group row hidden">{{form.sectionb_type}}</div>
+                        {% for field in form %}
+                        {% if field.help_text %}
+                        <div class="form-group row">
+                            <label class="col-sm-3 control-label">
+                                {{field.label}}
+                                <a tabindex="0" data-trigger="focus" data-container="body" class="text-info fa fa-info-circle"
+                                   role="button" data-toggle="popover" title="{{field.label}}" data-placement="top"
+                                   data-content="{{field.help_text}}" onclick="delayRemoveFade()"></a>
+                            </label>
+                            <div class="col-sm-8">{{field}}</div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                        <div class="row justify-content-center">
+                            <button type="submit" class="m-2 col-md-2 btn btn-md btn-success save">Save Changes</button>
+                            <button type="reset" class="m-2 col-md-2 col-md-offset-1 btn btn-md btn-warning">Reset</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        {% include 'SectionB/header_footer_partial.html' %}
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="popover"]').popover({
+            container: 'body'
+        });
+    });
+</script>
+{% endblock %}

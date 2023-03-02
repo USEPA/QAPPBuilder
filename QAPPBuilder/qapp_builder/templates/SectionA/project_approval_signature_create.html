@@ -1,0 +1,66 @@
+{% extends "main/base.html" %}
+{% block content %}
+{% load static %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <img src="{% static 'EPA_files/logo.png' %}" alt="">
+            <p class="float-right blue-box-with-shadow">QUALITY ASSURANCE PROJECT PLAN</p>
+        </div>
+    </div>
+    <div class="row mt-4 text-center">
+        <div class="col-sm-8 col-sm-offset-2">
+            <h2>Office of Research and Development</h2>
+            <h3>Center for Environmental Solutions & Emergency Response</h3>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <h3>Adding a new Project Approval Signature for QAPP with ID {{qapp_id}}</h3>
+        <div class="col-md-12">
+            <form enctype="multipart/form-data" method="post" role="form">
+                {% csrf_token %}
+                <div class="form-group row">
+                    <label>{{form.qapp_approval.label}}</label>
+                    {{form.qapp_approval}}
+                </div>
+                <div class="form-group row">
+                    <div class="custom-control custom-checkbox">
+                        {{form.contractor}}
+                        <span class="custom-control-indicator"></span>
+                        <label for="id_contractor" class="custom-control-label mx-2">{{form.contractor.label}}</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label>{{form.name.label}}</label>
+                    {{form.name}}
+                </div>
+                <div class="form-group row">
+                    <label>{{form.signature.label}}</label>
+                    {{form.signature}}
+                </div>
+                <div class="form-group row">
+                    <label>{{form.date.label}}</label>
+                    {{form.date}}
+                </div>
+
+                <div class="row justify-content-center">
+                    <button type="submit" class="m-2 col-md-2 btn btn-md btn-success save">Save</button>
+                    <button type="reset" class="m-2 col-md-2 col-md-offset-1 btn btn-md btn-warning">Reset</button>
+                    <button type="reset" onclick="window.location.href='/detail/{{qapp_id}}/'"
+                            class="m-2 col-md-2 col-md-offset-1 btn btn-md btn-danger">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+</script>
+{% endblock %}

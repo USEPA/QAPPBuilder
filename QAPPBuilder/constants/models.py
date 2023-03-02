@@ -5,7 +5,7 @@
 # py-lint: disable=C0301
 
 """
-Models for the QAPP_Builder application for constants.
+Models for the qapp_builder application for constants.
 
 Available functions:
 -
