@@ -1,9 +1,8 @@
-# forms.py (support)
+# py (support)
 # !/usr/bin/env python3
 # coding=utf-8
 # young.daniel@epa.gov
 # pylint: skip-file
-
 """
 Form used to manage support issues.
 
@@ -24,29 +23,33 @@ class SupportForm(ModelForm):
 
     required_css_class = 'required'
 
-    id = CharField(
-        label=_("Reference Num"),
-        widget=TextInput(
-            attrs={'class': 'form-control', 'readonly': 'readonly'}),
-        required=False)
-    subject = CharField(
-        label=_("Subject"), widget=TextInput(attrs={'class': 'form-control'}),
-        required=True)
+    id = CharField(label=_("Reference Num"),
+                   widget=TextInput(attrs={
+                       'class': 'usa-input',
+                       'readonly': 'readonly'
+                   }),
+                   required=False)
+    subject = CharField(label=_("Subject"),
+                        widget=TextInput(attrs={'class': 'usa-input'}),
+                        required=True)
 
-    the_description = CharField(
-        label=_("Description"),
-        widget=Textarea(attrs={'class': 'form-control'}),
-        required=True)
-    weblink = CharField(
-        label=_("Email Address"),
-        widget=TextInput(attrs={'class': 'form-control'}),
-        required=True)
+    the_description = CharField(label=_("Description"),
+                                widget=Textarea(attrs={'class': 'usa-input'}),
+                                required=True)
+    weblink = CharField(label=_("Email Address"),
+                        widget=TextInput(attrs={'class': 'usa-input'}),
+                        required=True)
 
     class Meta:
         """Support link."""
 
         model = Support
-        fields = ("id", "subject", "the_description", "weblink",)
+        fields = (
+            "id",
+            "subject",
+            "the_description",
+            "weblink",
+        )
 
 
 class SupportAdminForm(ModelForm):
@@ -58,38 +61,42 @@ class SupportAdminForm(ModelForm):
 
     required_css_class = 'required'
 
-    id = CharField(
-        label=_("Reference Num"),
-        widget=TextInput(
-            attrs={'class': 'form-control', 'readonly': 'readonly'}),
-        required=False)
-    subject = CharField(
-        label=_("Subject"), widget=TextInput(attrs={'class': 'form-control'}),
-        required=True)
+    id = CharField(label=_("Reference Num"),
+                   widget=TextInput(attrs={
+                       'class': 'usa-input',
+                       'readonly': 'readonly'
+                   }),
+                   required=False)
+    subject = CharField(label=_("Subject"),
+                        widget=TextInput(attrs={'class': 'usa-input'}),
+                        required=True)
     date_resolved = DateField(
         label=_("Date Resolved"),
-        widget=TextInput(attrs={'class': 'form-control date-control'}),
+        widget=TextInput(attrs={'class': 'usa-input date-control'}),
         required=False)
-    the_description = CharField(
-        label=_("Description"),
-        widget=Textarea(attrs={'class': 'form-control'}),
-        required=True)
-    weblink = CharField(
-        label=_("Email Address"),
-        widget=TextInput(attrs={'class': 'form-control'}),
-        required=True)
-    review_notes = CharField(
-        label=_("Review Notes"),
-        widget=Textarea(attrs={'class': 'form-control'}),
-        help_text="Notes from review of suggestion", required=False)
+    the_description = CharField(label=_("Description"),
+                                widget=Textarea(attrs={'class': 'usa-input'}),
+                                required=True)
+    weblink = CharField(label=_("Email Address"),
+                        widget=TextInput(attrs={'class': 'usa-input'}),
+                        required=True)
+    review_notes = CharField(label=_("Review Notes"),
+                             widget=Textarea(attrs={'class': 'usa-input'}),
+                             help_text="Notes from review of suggestion",
+                             required=False)
 
     class Meta:
         """All fields to complete support form."""
 
         model = Support
         fields = (
-            "id", "subject", "the_description", "weblink",
-            "date_resolved", "review_notes",)
+            "id",
+            "subject",
+            "the_description",
+            "weblink",
+            "date_resolved",
+            "review_notes",
+        )
 
 
 class SupportTypeForm(ModelForm):
@@ -100,16 +107,15 @@ class SupportTypeForm(ModelForm):
         super(SupportTypeForm, self).__init__(*args, **kwargs)
 
     required_css_class = 'required'
-    the_name = CharField(
-        label=_("Support Type"),
-        widget=TextInput(attrs={'class': 'form-control'}),
-        required=False)
+    the_name = CharField(label=_("Support Type"),
+                         widget=TextInput(attrs={'class': 'usa-input'}),
+                         required=False)
 
     class Meta:
         """Name form."""
 
         model = SupportType
-        fields = ("the_name",)
+        fields = ("the_name", )
 
 
 class PriorityForm(ModelForm):
@@ -119,13 +125,12 @@ class PriorityForm(ModelForm):
         """Form priority."""
         super(PriorityForm, self).__init__(*args, **kwargs)
 
-    the_name = CharField(
-        label=_("Priority"),
-        widget=TextInput(attrs={'class': 'form-control'}),
-        required=False)
+    the_name = CharField(label=_("Priority"),
+                         widget=TextInput(attrs={'class': 'usa-input'}),
+                         required=False)
 
     class Meta:
         """Form priority.."""
 
         model = Priority
-        fields = ("the_name",)
+        fields = ("the_name", )

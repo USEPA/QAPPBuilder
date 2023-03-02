@@ -37,7 +37,7 @@ class Team(models.Model):
 
     def __str__(self):
         """Override str method to display name instead of stringified obj."""
-        return str(self.name)
+        return self.name
 
 
 class TeamMembership(models.Model):

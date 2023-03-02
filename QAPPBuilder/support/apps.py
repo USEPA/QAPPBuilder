@@ -23,6 +23,6 @@ from django.apps import AppConfig
 
 
 class SupportConfig(AppConfig):
-    """app support."""
+    """App support."""
 
     name = 'support'

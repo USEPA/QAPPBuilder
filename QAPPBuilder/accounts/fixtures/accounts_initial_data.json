@@ -260,7 +260,7 @@
 
 
   {"model": "accounts.State", "fields": {"state": "Alabama", "abbreviation": "AL", "country": ["United States"]}},
-  {"model": "accounts.State", "fields": {"state": "Arkansas", "abbreviation": "AK", "country": ["United States"]}},
+  {"model": "accounts.State", "fields": {"state": "Alaska", "abbreviation": "AK", "country": ["United States"]}},
   {"model": "accounts.State", "fields": {"state": "Arizona", "abbreviation": "AZ", "country": ["United States"]}},
   {"model": "accounts.State", "fields": {"state": "Arkansas", "abbreviation": "AR", "country": ["United States"]}},
   {"model": "accounts.State", "fields": {"state": "California", "abbreviation": "CA", "country": ["United States"]}},
@@ -317,19 +317,19 @@
   {"model": "accounts.State", "fields": {"state": "Virgin Islands", "abbreviation": "VI", "country": ["United States Minor Outlying Islands"]}},
   {
     "pk": null,
-    "model": "auth.user", 
+    "model": "auth.user",
     "fields": {
-        "username": "dyoung11", 
-        "first_name": "Daniel", 
-        "last_name": "Young", 
-        "is_active": true, 
-        "is_superuser": true, 
-        "is_staff": true, 
-        "last_login": "2019-07-16 08:00:00", 
-        "groups": [], 
-        "user_permissions": [], 
-        "password": "pbkdf2_sha256$120000$JeONuGgKYHV8$xY1Za4w4mmNI5BksZll+tr1rXOub3XEZxbJaAoYFZD8=", 
-        "email": "young.daniel@epa.gov", 
+        "username": "dyoung11",
+        "first_name": "Daniel",
+        "last_name": "Young",
+        "is_active": true,
+        "is_superuser": true,
+        "is_staff": true,
+        "last_login": "2019-07-16 08:00:00",
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$120000$JeONuGgKYHV8$xY1Za4w4mmNI5BksZll+tr1rXOub3XEZxbJaAoYFZD8=",
+        "email": "young.daniel@epa.gov",
         "date_joined": "2019-07-16 08:00:00"
     }
   }
