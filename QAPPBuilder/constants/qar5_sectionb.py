@@ -88,7 +88,7 @@ EXISTING_DATA = {
         'desc': 'Describe the procedures for determining the quality of ' +
                 'the Existing Data and Information. Identify criteria for ' +
                 'evaluating data ' +
-                'or information quality (e.g., using EPA’s five General ' +
+                'or information quality (e.g., using EPA\'s five General ' +
                 'Assessment Factors or using measurement data criteria such ' +
                 'as accuracy, precision, representativeness, completeness, ' +
                 'and comparability).\r\nNote: Existing published data from ' +
@@ -124,137 +124,304 @@ EXISTING_DATA = {
     }
 }
 
+# ########################################################################
+# ########################################################################
+# ########################################################################
+
 SOFTWARE_DEVELOPMENT = {
     'b1_1': {
-        'heading': 'B.1	FUNCTIONAL REQUIREMENTS',
-        'label': 'B.1.1 Functional Requirements',
-        'desc': 'Provide a list of the most important functions ' +
-                'that the software system must address.'
+        'heading': 'B.1	REQUIREMENTS',
+        'label': 'B.1.1 Identify Users',
+        'desc': 'Identify the users of the software and describe any ' +
+                'special user roles or tasks that will be required. ' +
+                'Describe the minimum skill-level(s) or qualification(s) ' +
+                'that the software user must possess prior to ' +
+                'operating/using the software.'
     },
     'b1_2': {
-        'label': 'B.1.2 Requirements Design',
-        'desc': 'Identify requirements for functionality, external ' +
-                'interfaces (includes graphical user interfaces and ' +
-                'interfaces which are needed for other programs to call ' +
-                'subroutines from the software, as applicable), ' +
-                'performance, and design constraints. Each requirement ' +
-                'should be uniquely identified and defined such that its ' +
-                'achievement is capable of being objectively ' +
-                'verified and validated.'
+        'label': 'B.1.2 Define Critical Functionality',
+        'desc': 'Provide a list and/or graphical representation(s) of the ' +
+                'critical functions that the software system implements. ' +
+                'Developer should map the key/critical software design ' +
+                'requirements to the important performance/operational ' +
+                'areas of the software.'
     },
     'b1_3': {
-        'label': 'B.1.3 Hardware Minimum Requirements',
-        'desc': 'Specify computer hardware and operating system ' +
-                'requirements as required in the ORD APP inventory.'
+        'label': 'B.1.3 System Requirements',
+        'desc': 'Explain and describe the system requirements which ' +
+                'implement the software functionality, including external ' +
+                'interfaces (e.g., Graphical User Interfaces [GUIs], and ' +
+                'operational interfaces, which are used by other software ' +
+                'programs, to call subroutines from the main software ' +
+                'program, as applicable, etc.), performance requirements, ' +
+                'and design constraints. System requirements should ' +
+                'consider computer (and external) hardware, Graphical User ' +
+                'Interfaces [GUIs], operating system software, interfaces ' +
+                'with other software/models/databases, minimum and maximum ' +
+                'software functionality, operational performance, network ' +
+                'communications, computer security, system access, and ' +
+                'software and database backup and recovery.  Each ' +
+                'requirement should be uniquely identified, and defined, so ' +
+                'that its existence and implementation can be objectively ' +
+                'verified and validated (e.g., tested). The term ' +
+                '"requirements" encompasses the areas of computer and ' +
+                'external hardware Graphical User Interface(s), operating ' +
+                'system software, interfaces with other ' +
+                'software/models/databases, minimum and maximum software ' +
+                'functionality, operational performance, network ' +
+                'communications computer security, system access, and ' +
+                'software and database back and recovery.'
     },
+    'b1_4': {
+        'label': 'Performance and Design Constraints',
+        'desc': 'Describe any anticipated performance, and design ' +
+                'constraints. Explain the factors (controllable or ' +
+                'uncontrollable) that influence the design and operational ' +
+                'behavior of the software/model. Describe the mitigation ' +
+                'strategies chosen to address these performance and design ' +
+                'constraints as applicable.'
+    },
+    'b1_5': {
+        'label': 'System Hardware and OS Requirements',
+        'desc': 'Specify computer hardware (e.g., computer memory storage ' +
+        'requirement, computer hard disk/permanent storage requirements, ' +
+        'internal system processor clock speed, number of computer nodes or ' +
+        'clusters, etc.) and operating system requirements (e.g., Windows ' +
+        '10, MacOS, Linux, Unix, single-threaded or multi-threaded ' +
+        'configuration, etc.).'
+    },
+    'b1_6': {
+        'label': 'Requirements Selection',
+        'desc': '''Describe the process for the collection of software/model
+                   requirements. This includes who will be involved in
+                   providing the requirements, (e.g., System Owner, System
+                   stakeholders, specific users) and who collects, collates,
+                   and documents the software/model requirements. Identify the
+                   method for selecting the design requirements for subsequent
+                   review, (e.g., Requirements Traceability Matrix [RTM], Jira
+                   Requirements Management, etc.). Identify when requirements
+                   will be approved by the customer or system owner in the
+                   Software Development Life Cycle (SDLC).'''
+    },
+    'b1_7': {
+        'label': 'Naming Convention',
+        'desc': '''Describe the naming convention to be used for each
+                   software/model design requirement, and how version control
+                   (of requirements) will be maintained. Recommend
+                   incorporation of this information within a Requirements
+                   Traceability Matrix (RTM)).'''
+    },
+    # ########################################################################
     'b2_1': {
         'heading': 'B.2	SYSTEM DESIGN',
         'label': 'B.2.1 System Design',
-        'desc': 'Provide an overview of the system design, e.g., block ' +
-                'diagrams showing relationships between major program ' +
-                'modules, hardware devices, and data input/output.'
+        'desc': '''Provide an overview of the system design, including block
+                   diagrams displaying relationships between major program
+                   modules, hardware devices (e.g., computers, storage systems,
+                   external computer-controlled systems, etc.), databases,
+                   external applications, tools, and models, and data
+                   input/output processes, data rates, and data storage
+                   requirements.'''
     },
     'b2_2': {
         'label': 'B.2.2 Components and Subcomponents',
-        'desc': 'Describe the components and subcomponents of the ' +
-                'software design, including databases and internal ' +
-                'interfaces. The description should link the software ' +
-                'structure to the functional requirements.'
+        'desc': '''Describe the components and subcomponents of the software
+                   design, including databases, tools, interfaces to external
+                   hardware and software, and internal interfaces
+                   (including GUIs). The description should link the software
+                   structure to the functional requirements.'''
     },
     'b2_3': {
         'label': 'B.2.3 Rationale of Hardware/Software',
-        'desc': 'Provide the rationale for selecting the proposed ' +
-                'hardware and software tools as addressed in the ' +
-                'application governance process.'
+        'desc': '''Provides the rationale for selecting the proposed hardware,
+                   software tools, and databases as explained and described in
+                   the systems requirement document, systems design document,
+                   scope of work (SOW), performance work statement (PWS),
+                   workplan, etc., as applicable.\r\n
+                   An example rationale for selecting an RTM:\r\n
+                   A Requirements Traceability Matrix (RTM) is used to trace
+                   all Functional Requirements (FRs) back to system
+                   objectives, to ensure all System Design (SD) elements are
+                   included. \r\n
+                   Changes at this stage should produce an amendment or update
+                   to the QAPP. Evaluation of the FRs, and the relationships
+                   between requirements, and the checks for correctness,
+                   consistency, completeness, accuracy, readability, and
+                   testability, should occur after this phase is completed.
+                   Developer should assess how well the FRs satisfy the
+                   System Design (SD) objectives.'''
     },
+    # ########################################################################
     'b3_1': {
-        'heading': 'B.3	IMPLEMENTATION',
-        'label': 'B.3.1 Design Specifications',
-        'desc': 'Describe how a working software system is developed ' +
-                'from the design specifications. Agile software ' +
-                'development is recommended.'
+        'heading': 'B.3	SYSTEM DOCUMENTATION',
+        'label': 'B.3.1 Documentation Requirements',
+        'desc': '''Specify the requirements for documentation of, the methods,
+                   processes, and facilities used to maintain, store, secure,
+                   and preserve the document-controlled versions, and related
+                   artifacts of, the product software during all phases of the
+                   software development life cycle (e.g., requirements
+                   documents, design documents, configuration management plans,
+                   test plans,  operations manuals, software source code (for
+                   models, tools, database, applications [e.g., Application
+                   Programming Interfaces (APIs)], etc.), and user's guides.'''
     },
     'b3_2': {
-        'label': 'B.3.2 Requirements for Functionality',
-        'desc': 'Describe how the requirements for functionality, ' +
-                'external interfaces, performance, and design ' +
-                'constraints will be verified and validated.'
+        'label': 'B.3.2 Software and Hardware Documentation',
+        'desc': '''Describes the procedures for controlling, documenting, and
+                   archiving all changes to software and hardware. Describes
+                   the use of software configuration management, software
+                   version control, code repository management, and product
+                   release management (e.g., BitBucket, GitHub, etc.).'''
     },
     'b3_3': {
-        'label': 'B.3.3 Software Implementation',
-        'desc': 'Describe how release and delivery of the product is ' +
-        'managed, including versions for alpha and beta testing, ' +
-        'user acceptance testing (UAT), and training materials for users.'
+        'label': 'B.3.3 Software Configuration Management (SCM)',
+        'desc': '''Identifies the software used to archive, control, document,
+                   save, and recover changes made to the system software
+                   source code. GitHub, Bitbucket, and ORD Application
+                   Inventory used to track Open Source Software (OSS).'''
     },
-    'b3_4': {
-        'label': 'B.3.4 Software Configuration Management (SCM)',
-        'desc': 'Describe the procedures for controlling, documenting, ' +
-                'and archiving all significant changes to software and ' +
-                'hardware. Recommend the use of bitbucket or GitHub ' +
-                'depending on scenario.'
-    },
-    'b3_5': {
-        'label': 'B.3.5 Software Maintenance',
-        'desc': 'Identify the archiving software used for controlling, ' +
-                'documenting, saving, and recovering changes made ' +
-                'to the source code.'
-    },
+    # ########################################################################
+    # START HERE WHEN YOU GET BACK TO IT
     'b4_1': {
-        'heading': 'B.4	VALIDATION, VERIFICATION, AND TESTING',
-        'label': 'B.4.1 V&V and IV&V',
-        'desc': 'Describe the testing strategy that will be used along ' +
-                'with the procedures for each planned test. These tests ' +
-                'can include routines that assess validation and ' +
-                'verification of the software functions. Testing may ' +
-                'include individual module tests, integration tests, system ' +
-                'testing, acceptance testing, and alpha and beta testing.'
+        'heading': 'B.4	CODING AND IMPLEMENTATION',
+        'label': 'B.4.1 Development Process',
+        'desc': '''Describe how the operational software system is developed
+                   from the design specifications. Explains and describes the
+                   rational for using ether the sequential/waterfall software
+                   development model or the Agile/spiral software development
+                   model. \r\n
+                   *For Agile, developers must clearly document project
+                   concepts and prioritize initial development environment and
+                   associated requirements. Developers must identify team
+                   members and contributors to the project.'''
     },
     'b4_2': {
-        'label': 'B.4.2 GUI',
-        'desc': 'Describe the review process for the software’s ' +
-                'graphical user interface and output reports.  Ensure ' +
-                'that summary or synthesis statements accurately represent ' +
-                'the underlying data and limitations.  Check for correct ' +
-                'interpretation of results, clarity of discussion, proper ' +
-                'citations and references, and spelling and grammar.'
+        'label': 'B.4.2 Testing Process',
+        'desc': '''Describes how the requirements for functionality, external
+                   interfaces, performance, and design constraints will be
+                   tested, verified, and validated (e.g., describes the testing
+                   regime for the software [unit test, component test, software
+                   integration test, system test, quality assurance/quality
+                   control test, user acceptance test (UAT), etc.]).'''
     },
     'b4_3': {
-        'label': 'B.4.3 I/O Testing',
-        'desc': 'Describe the procedure for checking the correctness of ' +
-                'outputs and validity of model inputs, e.g., checks that ' +
-                'input parameters are realistic and/or do not violate ' +
-                'the applicability domain of the model.'
+        'label': 'B.4.3 Software Versioning, Release, and Delivery',
+        'desc': '''Describes the software versioning, release, and delivery
+                   process and how it is managed, including software versions
+                   for alpha and beta testing, user acceptance testing (UAT),
+                   and training materials, including user manuals.'''
     },
     'b4_4': {
-        'label': 'B.4.4 User/Agency Expectations',
-        'desc': 'Describe how it will be determined if the developed ' +
-                'software product conforms to customer and Agency ' +
-                'requirements, and whether the software product fulfills ' +
-                'the intended use and user expectations. This includes ' +
-                'analysis, evaluation, review, inspection, assessment' +
-                ', and testing of the software product and the ' +
-                'processes that produced the product.'
+        'label': 'B.4.4 Software Operational Scenarios',
+        'desc': '''Describe how the model will be applied in different
+                   operational situations, and details the required model
+                   inputs (provide detailed information on the data input
+                   format[s] and the external interfaces that feed into the
+                   model) and outputs (provide detailed information on the
+                   model output format[s] and the external interfaces that
+                   the model feeds into). Explains the required operational
+                   conditions that must be present to apply the model, and
+                   notes that the steps required to achieve the required setup
+                   to apply the model will be fully documented in a user
+                   manual, test procedure, and/or operations manual for the
+                   model/software. Applicable to models, databases, tools,
+                   and application programming interfaces (APIs).'''
     },
+    # ########################################################################
     'b5_1': {
-        'heading': 'B.5	DOCUMENTATION, MAINTENANCE, AND USER SUPPORT',
-        'label': 'B.5.1 Documentation',
-        'desc': 'Specify the requirements for documentation, methods and ' +
-                'facilities used to maintain, store, secure, and ' +
-                'document-controlled versions and related artifacts of ' +
-                'the identified software during all phases of the software ' +
-                'life cycle (e.g., requirements and design documents, ' +
-                'configuration maintenance plan, operations manual, ' +
-                'source code, user’s guide, and application ' +
-                'programming interface).'
+        'heading': 'B.5	VERIFICATION AND VALIDATION',
+        'label': 'B.5.1 Testing Strategy',
+        'desc': '''Describe the testing strategy that will be used, along with
+                   the procedures for each planned test. These tests can
+                   include routines that assess the operation of the software,
+                   including processing of inputs, format of outputs, testing
+                   of module/function internal logic/algorithms, etc.,
+                   validation, and verification of the software functions.
+                   Testing may include, but is not limited to, individual
+                   module tests, integration tests, system testing, user
+                   acceptance testing, and alpha, and beta testing, etc.\r\n
+                   Verification: The process of determining whether the
+                   products of a given stage of the software development life
+                   cycle fulfills the requirements established during the
+                   previous stage.\r\n
+                   Validation: The process of evaluating software at the end of
+                   the software development process (acceptance testing
+                   activity in the testing stage) to ensure compliance with
+                   software requirements.'''
     },
     'b5_2': {
-        'label': 'B.5.2 Support',
-        'desc': 'Describe the procedures for maintenance and user ' +
-        'support when software or data generated by the project will ' +
-        'be distributed or deployed outside of the ORD laboratory ' +
-        'that initiated the development of the software product.'
+        'label': 'B.5.2 Review Process',
+        'desc': '''Describe the review process for the software's Graphical
+                   User Interface (GUI) and output reports. Ensures that
+                   document summary or synthesis statements accurately
+                   represent the underlying data used/processed, and its
+                   limitations.  System documents check for, and provide
+                   correct interpretation of results, promote clarity of
+                   discussion, contain appropriate citations and references,
+                   and has correct spelling and grammar.'''
+    },
+    'b5_3': {
+        'label': 'B.5.3 Results Validation',
+        'desc': '''Describes the procedures for checking the correctness of
+                   software outputs and the validity checks for the format(s)
+                   of model inputs, e.g., checks that input parameters are
+                   within the acceptable range of values, and/or are consistent
+                   and applicable, given the subject area (scientific domain)
+                   of the model.'''
+    },
+    'b5_4': {
+        'label': 'B.5.4 Agency Conformity',
+        'desc': '''Describes how the developed software product conforms to
+                   customer and Agency requirements, and whether the software
+                   product fulfills its intended use, and user expectations.
+                   This includes analysis, evaluation, review, inspection,
+                   assessment, and testing of the software product, and the
+                   processes used to produce the software product, and its
+                   associated documentation.'''
+    },
+    'b5_5': {
+        'label': 'B.5.5 Acceptable Failure Rate',
+        'desc': '''For each type of testing conducted, identifies the
+                   acceptable overall maximum failure rate (e.g., 5%), to
+                   proceed with software/model production. Describe how the
+                   failure rate will be calculated. Identify the testers for
+                   each test, and what qualifies them as a tester. Identify
+                   the individual(s) responsible for signing off on testing
+                   results (i.e., table displayed below provides a template.).
+                   Describe what will occur if the failure rate is
+                   unacceptable.'''
+    },
+    # ########################################################################
+    'b6_1': {
+        'heading': 'MAINTENANCE AND USER SUPPORT',
+        'label': 'B.6.1 Post-Release Maintenance',
+        'desc': '''Describe the procedures for maintenance and user support
+                   when the software or data generated by the project is
+                   distributed or deployed outside of the ORD center that
+                   initiated the development of the software product. Project
+                   Document(s), including the software source code header for
+                   each code module, must clearly state that EPA owns the
+                   operational software, its source code, object code,
+                   databases, and documents, etc., with unlimited rights to
+                   its use,  transfer, and final disposition.'''
+    },
+    'b6_2': {
+        'label': 'B.6.2 User Access and Training',
+        'desc': '''Describe how user will be granted access to the system
+                   and any training required.'''
+    },
+    'b6_3': {
+        'label': 'B.6.3 Training Material and User Guides',
+        'desc': '''Describe type of training materials/user manuals/system
+                   guides that will be developed. Identify who will develop
+                   them, and how they will be delivered or made
+                   accessible to the users.'''
     }
 }
+
+# ########################################################################
+# ########################################################################
+# ########################################################################
 
 MODEL_DEVELOPMENT = {
     'b1_1': {
@@ -280,7 +447,7 @@ MODEL_DEVELOPMENT = {
                 'development, etc) with separate QAPPs, if applicable.'
     },
     'b2_1': {
-        'heading': 'B.2	MODEL DEREVATION',
+        'heading': 'B.2	MODEL DERIVATION',
         'label': 'B.2.1 Mathematical Representation',
         'desc': 'Describe the mathematical representation of the ' +
                 'processes of interest. For mechanistic models, state ' +
@@ -575,7 +742,7 @@ MODEL_APPLICATION = {
                 'post-processed model output).'
     },
     'b6_2': {
-        'label': 'B.6.2 Ammendments to QAPP',
+        'label': 'B.6.2 Amendments to QAPP',
         'desc': 'Identify QAPP elements that may need to be ' +
                 'updated as the project moves forward and describe the ' +
                 'procedures for QAPP amendment and distribution.'
@@ -585,7 +752,7 @@ MODEL_APPLICATION = {
 MEASUREMENTS_AND_MONITORING = {
     'b1_1': {
         'heading': 'B.1	EXPERIMENTAL DESIGN',
-        'label': 'B.1.1	Analyte(s) of Interest & Matrix/Matrices’',
+        'label': 'B.1.1	Analyte(s) of Interest & Matrix/Matrices',
         'desc': 'Identify the specific analyte(s) of interest and the ' +
                 'matrix/matrices. Classify each measurement parameter ' +
                 'as either critical or needed for information only.'

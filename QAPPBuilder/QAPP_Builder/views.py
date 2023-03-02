@@ -642,6 +642,8 @@ class SectionAView(LoginRequiredMixin, TemplateView):
         if ctx['form'].is_valid():
             ctx['obj'] = ctx['form'].save(commit=True)
             ctx['save_success'] = 'Successfully Saved Changes!'
+        else:
+            return self.get(request, ctx)
 
         return render(request, self.template_name, ctx)
 
@@ -658,6 +660,14 @@ class SectionBView(LoginRequiredMixin, TemplateView):
         qapp_id = request.GET.get('qapp_id', None)
         qapp = Qapp.objects.get(id=qapp_id)
         sectiona = SectionA.objects.filter(qapp_id=qapp_id).first()
+
+        # TODO: Need to figure out the proper way to handle this...
+        # if not sectiona:
+        #     reason = 'Select a Section B Type and click "Save Changes" ' + \
+        #         'before moving onto the next page!'
+        #     return HttpResponseRedirect(
+        #         '/SectionA?qapp_id=%s' % qapp_id, 302, reason)
+
         selected_sectionb_types = sectiona.sectionb_type.all()
 
         edit_message = ''
