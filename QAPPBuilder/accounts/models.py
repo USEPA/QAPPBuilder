@@ -1,4 +1,4 @@
-﻿# models.py (accounts)
+# models.py (accounts)
 # !/usr/bin/env python3
 # coding=utf-8
 # young.daniel@epa.gov
@@ -50,7 +50,7 @@ class Country(models.Model):
 
     def __str__(self):
         """Request country."""
-        return self.country
+        return str(self.country)
 
 
 class State(models.Model):
@@ -63,7 +63,7 @@ class State(models.Model):
 
     def __str__(self):
         """Stringify a State."""
-        return self.state
+        return str(self.state)
 
 
 class Sector(models.Model):
@@ -78,7 +78,7 @@ class Sector(models.Model):
 
     def __str__(self):
         """Stringify a Sector."""
-        return self.sector
+        return str(self.sector)
 
 
 class Role(models.Model):
@@ -93,7 +93,7 @@ class Role(models.Model):
 
     def __str__(self):
         """Stringify a Role."""
-        return self.role
+        return str(self.role)
 
 
 class UserProfile(models.Model):

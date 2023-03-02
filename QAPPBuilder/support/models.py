@@ -10,18 +10,32 @@ Models related to app support.
 Available functions:
 """
 
-from django.conf import settings
+# from decimal import *
+# from constants.models import *
 from django.contrib.auth.models import User
 from django.db import models
+from qapp_builder import settings
 
 
 def get_support_storage_path(instance, filename):
-    """Return the physical path to where support files will be stored."""
+    """
+    Return the physical path to where support files will be stored.
+
+    :param instance: an object that contains the user information
+    :param filename: a string representing the filename
+    :return: a string representing a file path
+    """
     return '%s/support/%s' % (instance.user.username, filename)
 
 
 def get_instruction_storage_path(instance, filename):
-    """Return the physical path to where instruction files will be stored."""
+    """
+    Return the physical path to where instruction files will be stored.
+
+    :param instance: an object that contains the user information
+    :param filename: a string representing the filename
+    :return: a string representing a file path
+    """
     return '%s/instructions/%s' % (instance.user.username, filename)
 
 
@@ -56,7 +70,7 @@ class SupportType(models.Model):
 
     def __str__(self):
         """Overwrite the default stringify by returning the object's name."""
-        return self.the_name or ''
+        return str(self.the_name)
 
 
 class Priority(models.Model):
@@ -85,7 +99,7 @@ class Priority(models.Model):
 
     def __str__(self):
         """Overwrite the default stringify by returning the object's name."""
-        return self.the_name or ''
+        return str(self.the_name)
 
 
 class Support(models.Model):
@@ -145,7 +159,7 @@ class Support(models.Model):
 
     def __str__(self):
         """Overwrite the default stringify by returning the object's name."""
-        return self.the_name or ''
+        return str(self.the_name)
 
 
 class SupportAttachment(models.Model):
@@ -162,9 +176,9 @@ class SupportAttachment(models.Model):
 
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, null=True, blank=True)
-    support = models.ForeignKey(Support, on_delete=models.CASCADE,
-                                null=True, blank=True,
-                                related_name="support_attachments")
+    support = models.ForeignKey(
+        Support, on_delete=models.CASCADE, null=True, blank=True,
+        related_name="support_attachments")
 
     the_name = models.CharField(blank=True, null=True, max_length=255)
     the_size = models.CharField(blank=True, null=True, max_length=255)

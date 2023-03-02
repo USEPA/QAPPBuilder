@@ -100,18 +100,22 @@ class UsernameReminderRequestView(FormView):
                             'user': user,
                             'protocol': 'http'
                         }
-                        subj_tmp = 'registration/username_reminder_subject.txt'
+                        subject_template_name = \
+                            'registration/username_reminder_subject.txt'
                         # Copied from django/contrib/admin/templates/
                         # registration/password_reset_subject.txt to templates
                         # directory.
-                        email_tmp = 'registration/username_reminder_email.html'
+                        email_template_name = \
+                            'registration/username_reminder_email.html'
                         # Copied from django/contrib/admin/templates/
                         # registration/password_reset_email.html to templates
                         # directory.
-                        subject = loader.render_to_string(subj_tmp, content)
+                        subject = loader.render_to_string(
+                            subject_template_name, content)
                         # Email subject *must not* contain newlines.
                         subject = ''.join(subject.splitlines())
-                        email = loader.render_to_string(email_tmp, content)
+                        email = loader.render_to_string(
+                            email_template_name, content)
                         if not settings.EMAIL_DISABLED:
                             send_mail(subject, email,
                                       settings.DEFAULT_FROM_EMAIL,
@@ -132,9 +136,7 @@ class UsernameReminderRequestView(FormView):
             return result
 
         except BaseException as ex:
-            print('Caught Exception in UsernameReminderRequestView post.')
-            print(f'EXCEPTION: {ex}')
-
+            print(ex)
         return self.form_invalid(form)
 
 
@@ -186,15 +188,15 @@ class PasswordResetRequestView(FormView):
                 return result
 
             # Determine if the email address or username matches an account.
-            if self.validate_email_address(temp_data):
+            if self.validate_email_address(temp_data) is True:
                 # User entered an email address.
                 associated_users = User.objects.filter(
                     Q(email=temp_data) | Q(username=temp_data))
-                if not associated_users.exists():
+                if associated_users.exists() is False:
                     result = self.form_invalid(form)
-                    messages.error(
-                        request,
-                        'No user is associated with this email address')
+                    messages.error(request,
+                                   'No user is associated with this email '
+                                   'address')
                     return result
             else:
                 associated_users = User.objects.filter(username=temp_data)
@@ -603,7 +605,7 @@ def login(request, *args, template_name='registration/login.html',
     """Display the login form and handle the login action."""
     redirect_to = request.GET.get(redirect_field_name, )
 
-    layout_name = "QAPP Builder Log-In and/or Register Screen"
+    layout_name = "qapp_builder Log-In and/or Register Screen"
     error = None
 
     if request.method == "POST":

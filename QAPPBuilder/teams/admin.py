@@ -24,9 +24,14 @@ class TeamAdmin(admin.ModelAdmin):
                        'last_modified_by', 'members',)
 
     def save_model(self, request, obj, form, change):
-        """Save the model after attaching the created_by user."""
+        """
+        Save Team object.
+
+        Attach created_by and last_modified_by user when creating a new
+        or updating an existing Team object.
+        """
         try:
-            obj.created_by = obj.created_by
+            obj.created_by
         except BaseException:
             obj.created_by = request.user
         obj.last_modified_by = request.user

@@ -36,23 +36,21 @@ class TeamMembershipSerializer(serializers.ModelSerializer):
 class TeamMembershipModifySerializer(serializers.ModelSerializer):
     """Serializer for create, update, delete."""
 
-    team = serializers.PrimaryKeyRelatedField(many=False,
-                                              queryset=Team.objects.all())
-    member = serializers.PrimaryKeyRelatedField(many=False,
-                                                queryset=User.objects.all())
+    team = serializers.PrimaryKeyRelatedField(
+        many=False, queryset=Team.objects.all())
+    member = serializers.PrimaryKeyRelatedField(
+        many=False, queryset=User.objects.all())
     id = serializers.IntegerField(required=False, read_only=True)
     added_date = serializers.DateTimeField(
-        required=False,
-        default=serializers.CreateOnlyDefault(timezone.now))
-    is_owner = serializers.BooleanField(required=False,
-                                        default=serializers.CreateOnlyDefault(
-                                            False))
-    can_edit = serializers.BooleanField(required=False,
-                                        default=serializers.CreateOnlyDefault(
-                                            True))
+        required=False, default=serializers.CreateOnlyDefault(timezone.now))
+    is_owner = serializers.BooleanField(
+        required=False, default=serializers.CreateOnlyDefault(False))
+    can_edit = serializers.BooleanField(
+        required=False, default=serializers.CreateOnlyDefault(True))
 
-    def validate(self, data):
+    def validate(self, *args, **kwargs):
         """Make sure we do not already have an owner."""
+        data = kwargs.get('data', [])
         if "is_owner" in data and data["is_owner"]:
             current_owner = TeamMembership.objects.filter(
                 team=data["team"], is_owner=True).first()
@@ -75,9 +73,7 @@ class TeamSerializer(serializers.ModelSerializer):
                                 default=serializers.CreateOnlyDefault(
                                     serializers.CurrentUserDefault()))
     created_date = serializers.DateTimeField(
-        required=False,
-        default=serializers.CreateOnlyDefault(
-            timezone.now))
+        required=False, default=serializers.CreateOnlyDefault(timezone.now))
     last_modified_by = UserSerializer(many=False,
                                       default=serializers.CurrentUserDefault())
     last_modified_date = serializers.DateTimeField(required=False,

@@ -29,5 +29,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunPython(load_fixture, migrations.RunPython.noop),
+        migrations.RunPython(load_fixture),
     ]

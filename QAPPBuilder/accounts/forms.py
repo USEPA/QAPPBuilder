@@ -1,8 +1,9 @@
-﻿# forms.py (accounts)
+# forms.py (accounts)
 # !/usr/bin/env python3
 # coding=utf-8
 # young.daniel@epa.gov
 # py-lint: disable=E1101,R0903
+
 """
 Form used to manage user accounts.
 
@@ -13,10 +14,9 @@ Available functions:
 """
 
 from django import forms
-from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.hashers import check_password, make_password
-from accounts.models import Role, Sector, State, Country
+from accounts.models import Role, Sector, State, Country, User
 
 
 class UsernameReminderRequestForm(forms.Form):
@@ -26,11 +26,10 @@ class UsernameReminderRequestForm(forms.Form):
     Form to enter email when the user has  forgotten their username.
     """
 
-    email = forms.CharField(
-        label="Enter your email address",
-        max_length=254,
-        required=True,
-        widget=forms.TextInput(attrs={'class': 'usa-input'}))
+    email = forms.CharField(label="Enter your email address", max_length=254,
+                            required=True,
+                            widget=forms.TextInput(
+                                attrs={'class': 'form-control'}))
 
 
 class PasswordResetRequestForm(forms.Form):
@@ -42,9 +41,8 @@ class PasswordResetRequestForm(forms.Form):
 
     email_or_username = forms.CharField(
         label="Enter your email address or username",
-        max_length=254,
-        required=True,
-        widget=forms.TextInput(attrs={'class': 'usa-input'}))
+        max_length=254, required=True,
+        widget=forms.TextInput(attrs={'class': 'form-control'}))
 
 
 class SetPasswordForm(forms.Form):
@@ -55,14 +53,12 @@ class SetPasswordForm(forms.Form):
     entering the old password.
     """
 
-    new_password1 = forms.CharField(
-        label="New password",
-        required=True,
-        widget=forms.PasswordInput(attrs={'class': 'usa-input'}))
-    new_password2 = forms.CharField(
-        label="Confirm password",
-        required=True,
-        widget=forms.PasswordInput(attrs={'class': 'usa-input'}))
+    new_password1 = forms.CharField(label="New password", required=True,
+                                    widget=forms.PasswordInput(
+                                        attrs={'class': 'form-control'}))
+    new_password2 = forms.CharField(label="Confirm password", required=True,
+                                    widget=forms.PasswordInput(
+                                        attrs={'class': 'form-control'}))
 
     def clean_new_password2(self):
         """:return:."""
@@ -81,82 +77,75 @@ class ProfileUpdateForm(forms.ModelForm):
     """ProfileUpdateForm. Form to update."""
 
     username = forms.CharField(label=_("Username"),
-                               widget=forms.TextInput(attrs={
-                                   'class': 'usa-input',
-                                   'readonly': 'readonly'
-                               }))
+                               widget=forms.TextInput(
+                                   attrs={
+                                       'class': 'form-control',
+                                       'readonly': 'readonly'}))
     last_login = forms.DateTimeField(label=_("Last Login"),
                                      widget=forms.DateInput(
                                          format='%Y-%m-%d %I:%M:%S %Z',
                                          attrs={
-                                             'class': 'usa-input',
-                                             'readonly': 'readonly'
-                                         }))
+                                             'class': 'form-control',
+                                             'readonly': 'readonly'}))
 
-    current_password = forms.CharField(
-        label=_("Current Password"),
-        widget=forms.PasswordInput(attrs={'class': 'usa-input'}),
-        required=False)
-    password1 = forms.CharField(
-        label=_("New Password"),
-        widget=forms.PasswordInput(attrs={'class': 'usa-input'}),
-        required=False)
-    password2 = forms.CharField(
-        label=_("New Password confirmation"),
-        widget=forms.PasswordInput(attrs={'class': 'usa-input'}),
-        help_text=_("Enter the same password as above, for"
-                    "verification."),
-        required=False)
+    current_password = forms.CharField(label=_("Current Password"),
+                                       widget=forms.PasswordInput(
+                                           attrs={'class': 'form-control'}),
+                                       required=False)
+    password1 = forms.CharField(label=_("New Password"),
+                                widget=forms.PasswordInput(
+                                    attrs={'class': 'form-control'}),
+                                required=False)
+    password2 = forms.CharField(label=_("New Password confirmation"),
+                                widget=forms.PasswordInput(
+                                    attrs={'class': 'form-control'}),
+                                help_text=_(
+                                    "Enter the same password as above, for"
+                                    "verification."),
+                                required=False)
 
-    first_name = forms.CharField(
-        label=_("First name"),
-        widget=forms.TextInput(attrs={'class': 'usa-input'}))
-    last_name = forms.CharField(
-        label=_("Last name"),
-        widget=forms.TextInput(attrs={'class': 'usa-input'}))
-    email = forms.CharField(
-        label=_("Email address"),
-        widget=forms.TextInput(attrs={'class': 'usa-input'}))
+    first_name = forms.CharField(label=_("First name"), widget=forms.TextInput(
+        attrs={'class': 'form-control'}))
+    last_name = forms.CharField(label=_("Last name"), widget=forms.TextInput(
+        attrs={'class': 'form-control'}))
+    email = forms.CharField(label=_("Email address"), widget=forms.TextInput(
+        attrs={'class': 'form-control'}))
 
-    affiliation = forms.CharField(
-        label=_("Affiliation"),
-        widget=forms.TextInput(attrs={'class': 'usa-input'}))
-    sector = forms.ModelChoiceField(
-        label=_("Sector"),
-        queryset=Sector.objects.all(),
-        widget=forms.Select(attrs={'class': 'usa-input'}),
-        required=True)
+    affiliation = forms.CharField(label=_("Affiliation"),
+                                  widget=forms.TextInput(
+                                      attrs={'class': 'form-control'}))
+    sector = forms.ModelChoiceField(label=_("Sector"),
+                                    queryset=Sector.objects.all(),
+                                    widget=forms.Select(
+                                        attrs={'class': 'form-control'}),
+                                    required=True)
 
-    job_title = forms.CharField(
-        label=_("Job Title"),
-        widget=forms.TextInput(attrs={'class': 'usa-input'}))
-    role = forms.ModelChoiceField(
-        label=_("Role"),
-        queryset=Role.objects.all(),
-        widget=forms.Select(attrs={'class': 'usa-input'}),
-        required=True)
+    job_title = forms.CharField(label=_("Job Title"), widget=forms.TextInput(
+        attrs={'class': 'form-control'}))
+    role = forms.ModelChoiceField(label=_("Role"), queryset=Role.objects.all(),
+                                  widget=forms.Select(
+                                      attrs={'class': 'form-control'}),
+                                  required=True)
 
-    address_line1 = forms.CharField(
-        label=_("Address"),
-        widget=forms.TextInput(attrs={'class': 'usa-input'}))
-    address_line2 = forms.CharField(
-        label=_("Address line 2"),
-        widget=forms.TextInput(attrs={'class': 'usa-input'}),
-        required=False)
-    city = forms.CharField(
-        label=_("City"), widget=forms.TextInput(attrs={'class': 'usa-input'}))
-    state = forms.ModelChoiceField(
-        label=_("State"),
-        queryset=State.objects.all(),
-        required=False,
-        widget=forms.Select(attrs={'class': 'usa-input'}))
-    zipcode = forms.CharField(
-        label=_("Zipcode"),
-        widget=forms.TextInput(attrs={'class': 'usa-input'}))
-    country = forms.ModelChoiceField(
-        label=_("Country"),
-        queryset=Country.objects.all(),
-        widget=forms.Select(attrs={'class': 'usa-input'}))
+    address_line1 = forms.CharField(label=_("Address"), widget=forms.TextInput(
+        attrs={'class': 'form-control'}))
+    address_line2 = forms.CharField(label=_("Address line 2"),
+                                    widget=forms.TextInput(
+                                        attrs={'class': 'form-control'}),
+                                    required=False)
+    city = forms.CharField(label=_("City"), widget=forms.TextInput(
+        attrs={'class': 'form-control'}))
+    state = forms.ModelChoiceField(label=_("State"),
+                                   queryset=State.objects.all(),
+                                   required=False,
+                                   widget=forms.Select(
+                                       attrs={'class': 'form-control'}))
+    zipcode = forms.CharField(label=_("Zipcode"), widget=forms.TextInput(
+        attrs={'class': 'form-control'}))
+    country = forms.ModelChoiceField(label=_("Country"),
+                                     queryset=Country.objects.all(),
+                                     widget=forms.Select(
+                                         attrs={'class': 'form-control'}))
 
     def clean(self):
         """Verify that state is set when country is USA."""
@@ -167,12 +156,12 @@ class ProfileUpdateForm(forms.ModelForm):
                 "For locations in the United States, a state is required.")
 
     def __str__(self):
-        """Print the user's name."""
-        return str(self.username)
+        """Request first name."""
+        return str(self.first_name)
 
     def __init__(self, *args, **kw):
         """Construct the Profile Update Form."""
-        super().__init__(*args, **kw)
+        super(ProfileUpdateForm, self).__init__(*args, **kw)
         profile = self.instance.userprofile
         self.fields['affiliation'].initial = profile.affiliation
         self.fields['sector'].initial = profile.sector
@@ -206,9 +195,8 @@ class ProfileUpdateForm(forms.ModelForm):
         password1 = self.cleaned_data.get("password1", )
         password2 = self.cleaned_data["password2"]
         if password1 != password2:
-            raise forms.ValidationError(
-                _("The passwords you entered did not match.  Please try again."
-                  ))
+            raise forms.ValidationError(_(
+                "The passwords you entered did not match.  Please try again."))
         return password2
 
     def save(self, commit=True):
@@ -241,81 +229,71 @@ class ProfileUpdateForm(forms.ModelForm):
 class ProfileCreationForm(forms.ModelForm):
     """ProfileCreationForm. Form to create a new user profile."""
 
-    username = forms.CharField(
-        label=_("Username"),
-        widget=forms.TextInput(attrs={'class': 'usa-input required'}),
-        max_length=255,
-        required=True)
-    password1 = forms.CharField(
-        label=_("Password"),
-        widget=forms.PasswordInput(attrs={'class': 'usa-input'}))
-    password2 = forms.CharField(
-        label=_("Password confirmation"),
-        widget=forms.PasswordInput(attrs={'class': 'usa-input'}),
-        help_text=_("Enter the same password as above, for"
-                    "verification."))
+    username = forms.CharField(label=_("Username"),
+                               widget=forms.TextInput(
+                                   attrs={'class': 'form-control required'}),
+                               max_length=255, required=True)
+    password1 = forms.CharField(label=_("Password"),
+                                widget=forms.PasswordInput(
+                                    attrs={'class': 'form-control'}))
+    password2 = forms.CharField(label=_("Password confirmation"),
+                                widget=forms.PasswordInput(
+                                    attrs={'class': 'form-control'}),
+                                help_text=_(
+                                    "Enter the same password as above, for"
+                                    "verification."))
 
-    first_name = forms.CharField(
-        label=_("First name"),
-        widget=forms.TextInput(attrs={'class': 'usa-input'}))
-    last_name = forms.CharField(
-        label=_("Last name"),
-        widget=forms.TextInput(attrs={'class': 'usa-input'}))
-    email = forms.CharField(
-        label=_("Email address"),
-        widget=forms.TextInput(attrs={'class': 'usa-input'}))
+    first_name = forms.CharField(label=_("First name"), widget=forms.TextInput(
+        attrs={'class': 'form-control'}))
+    last_name = forms.CharField(label=_("Last name"), widget=forms.TextInput(
+        attrs={'class': 'form-control'}))
+    email = forms.CharField(label=_("Email address"), widget=forms.TextInput(
+        attrs={'class': 'form-control'}))
 
-    affiliation = forms.CharField(
-        label=_("Affiliation"),
-        widget=forms.TextInput(attrs={'class': 'usa-input'}))
-    sector = forms.ModelChoiceField(
-        label=_("Sector"),
-        queryset=Sector.objects.all(),
-        widget=forms.Select(attrs={'class': 'usa-input'}),
-        required=True)
+    affiliation = forms.CharField(label=_("Affiliation"),
+                                  widget=forms.TextInput(
+                                      attrs={'class': 'form-control'}))
+    sector = forms.ModelChoiceField(label=_("Sector"),
+                                    queryset=Sector.objects.all(),
+                                    widget=forms.Select(
+                                        attrs={'class': 'form-control'}),
+                                    required=True)
 
-    job_title = forms.CharField(
-        label=_("Job Title"),
-        widget=forms.TextInput(attrs={'class': 'usa-input'}))
-    role = forms.ModelChoiceField(
-        label=_("Role"),
-        queryset=Role.objects.all(),
-        widget=forms.Select(attrs={'class': 'usa-input'}),
-        required=True)
+    job_title = forms.CharField(label=_("Job Title"), widget=forms.TextInput(
+        attrs={'class': 'form-control'}))
+    role = forms.ModelChoiceField(label=_("Role"), queryset=Role.objects.all(),
+                                  widget=forms.Select(
+                                      attrs={'class': 'form-control'}),
+                                  required=True)
 
-    address_line1 = forms.CharField(
-        label=_("Address"),
-        widget=forms.TextInput(attrs={'class': 'usa-input'}))
-    address_line2 = forms.CharField(
-        label=_("Address line 2"),
-        widget=forms.TextInput(attrs={'class': 'usa-input'}),
-        required=False)
-    city = forms.CharField(
-        label=_("City"), widget=forms.TextInput(attrs={'class': 'usa-input'}))
-    state = forms.ModelChoiceField(
-        label=_("State"),
-        queryset=State.objects.all(),
-        widget=forms.Select(attrs={'class': 'usa-input'}))
-    zipcode = forms.CharField(
-        label=_("Zipcode"),
-        widget=forms.TextInput(attrs={'class': 'usa-input'}))
-    country = forms.ModelChoiceField(
-        label=_("Country"),
-        queryset=Country.objects.all(),
-        widget=forms.Select(attrs={'class': 'usa-input'}))
+    address_line1 = forms.CharField(label=_("Address"), widget=forms.TextInput(
+        attrs={'class': 'form-control'}))
+    address_line2 = forms.CharField(label=_("Address line 2"),
+                                    widget=forms.TextInput(
+                                        attrs={'class': 'form-control'}),
+                                    required=False)
+    city = forms.CharField(label=_("City"), widget=forms.TextInput(
+        attrs={'class': 'form-control'}))
+    state = forms.ModelChoiceField(label=_("State"),
+                                   queryset=State.objects.all(),
+                                   widget=forms.Select(
+                                       attrs={'class': 'form-control'}))
+    zipcode = forms.CharField(label=_("Zipcode"), widget=forms.TextInput(
+        attrs={'class': 'form-control'}))
+    country = forms.ModelChoiceField(label=_("Country"),
+                                     queryset=Country.objects.all(),
+                                     widget=forms.Select(
+                                         attrs={'class': 'form-control'}))
 
     def __str__(self):
-        """Return the username."""
-        try:
-            return str(self.username)
-        except AttributeError:
-            return str(self.cleaned_data["username"])
+        """Request first name."""
+        return str(self.first_name)
 
     class Meta:
         """Username field."""
 
         model = User
-        fields = ('username', )
+        fields = ('username',)
 
     def clean_username(self):
         """Clean the provided username."""
@@ -324,18 +302,17 @@ class ProfileCreationForm(forms.ModelForm):
             User.objects.get(username=username)
         except User.DoesNotExist:
             return username
-        raise forms.ValidationError(
-            _("The username you selected is already in use.  "
-              "Please try a different username."))
+        raise forms.ValidationError(_(
+            "The username you selected is already in use.  Please try a"
+            "different username."))
 
     def clean_password2(self):
         """Clean and verify two passwords match."""
         password1 = self.cleaned_data.get("password1", )
         password2 = self.cleaned_data["password2"]
         if password1 != password2:
-            raise forms.ValidationError(
-                _("The passwords you entered did not match.  Please try again."
-                  ))
+            raise forms.ValidationError(_(
+                "The passwords you entered did not match.  Please try again."))
         return password2
 
     def clean(self):
@@ -343,9 +320,9 @@ class ProfileCreationForm(forms.ModelForm):
         state = self.cleaned_data.get('state', )
         zipcode = self.cleaned_data.get('zipcode', )
         country = self.cleaned_data.get('country', )
-        if country.country == 'United States' and (state is None or state == ''
-                                                   or zipcode is None
-                                                   or zipcode == ''):
+        if country.country == 'United States' and (
+                state is None or state == '' or
+                zipcode is None or zipcode == ''):
             msg = "This field is required for addresses in the United States"
             self.add_error('state', msg)
             self.add_error('zipcode', msg)
