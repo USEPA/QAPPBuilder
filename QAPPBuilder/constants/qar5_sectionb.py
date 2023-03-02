@@ -4,7 +4,7 @@
 # young.daniel@epa.gov
 # py-lint: disable=C0301
 
-"""Constants for the QAR5 QAPP_Builder module."""
+"""Constants for the QAR5 qapp_builder module."""
 
 SECTION_B_TYPES = (
     ('Analytical Methods', 'Analytical Methods'),
@@ -40,12 +40,12 @@ EXISTING_DATA = {
     'b1_4': {
         'label': 'B.1.4 Databases, Maps, Literature',
         'desc': 'Identify databases, maps and literature, and list ' +
-        'as applicable to the research effort:\r\n(1) Information and ' +
+        'as applicable to the research effort:(1) Information and ' +
         'data used to site or time sampling events (meteorology, ' +
-        'geology, etc.);\r\n(2) Anecdotal or other information ' +
-        'triggering the study;\r\n(3) Toxicity, exposure, and ' +
-        'environmental fate data;\r\n(4) Models and their ' +
-        'output;\r\n(5) Census data;\r\n(6) GIS data.'
+        'geology, etc.);(2) Anecdotal or other information ' +
+        'triggering the study;(3) Toxicity, exposure, and ' +
+        'environmental fate data;(4) Models and their ' +
+        'output;(5) Census data;(6) GIS data.'
     },
     'b1_5': {
         'label': 'B.1.5 Non-Quality Constraints',
@@ -53,7 +53,7 @@ EXISTING_DATA = {
                 'Existing Data and Information that affect its use in ' +
                 'the research ' +
                 'effort (e.g., legal, programmatic, privacy/ ' +
-                'confidentiality (i.e., is it proprietary or CBI)).\r\nIf ' +
+                'confidentiality (i.e., is it proprietary or CBI)).If ' +
                 'supporting an office, region or program check on ' +
                 'applicability of the project/decision, examples may ' +
                 'include: CAA Credible Evidence Revisions (FR 62:36, ' +
@@ -91,7 +91,7 @@ EXISTING_DATA = {
                 'or information quality (e.g., using EPA\'s five General ' +
                 'Assessment Factors or using measurement data criteria such ' +
                 'as accuracy, precision, representativeness, completeness, ' +
-                'and comparability).\r\nNote: Existing published data from ' +
+                'and comparability).Note: Existing published data from ' +
                 'sources such as governmental databases which have ' +
                 'well-documented QA/QC procedures may not require ' +
                 'additional evaluation for quality.'
@@ -101,12 +101,12 @@ EXISTING_DATA = {
         'desc': 'If the quality of the Existing Data and Information ' +
                 'will not be evaluated by EPA, state this in the QAPP and ' +
                 'require one of the following disclaimer statements to be ' +
-                'added to any research product requiring clearance:\r\nEPA ' +
+                'added to any research product requiring clearance:EPA ' +
                 'is distributing this information solely as a public ' +
                 'service. [Insert name of information source] is ' +
                 'responsible for the quality of this information. EPA\'s ' +
                 'distribution of this information does not represent or ' +
-                'imply endorsement by EPA.\r\nor;\r\nThe research presented ' +
+                'imply endorsement by EPA.or;The research presented ' +
                 'was not performed or funded by EPA and was not subject to ' +
                 'EPA\'s quality system requirements. The views expressed in ' +
                 'this [article/presentation/poster] are those of the ' +
@@ -237,12 +237,12 @@ SOFTWARE_DEVELOPMENT = {
                    software tools, and databases as explained and described in
                    the systems requirement document, systems design document,
                    scope of work (SOW), performance work statement (PWS),
-                   workplan, etc., as applicable.\r\n
-                   An example rationale for selecting an RTM:\r\n
+                   workplan, etc., as applicable.
+                   An example rationale for selecting an RTM:
                    A Requirements Traceability Matrix (RTM) is used to trace
                    all Functional Requirements (FRs) back to system
                    objectives, to ensure all System Design (SD) elements are
-                   included. \r\n
+                   included.
                    Changes at this stage should produce an amendment or update
                    to the QAPP. Evaluation of the FRs, and the relationships
                    between requirements, and the checks for correctness,
@@ -289,7 +289,7 @@ SOFTWARE_DEVELOPMENT = {
                    from the design specifications. Explains and describes the
                    rational for using ether the sequential/waterfall software
                    development model or the Agile/spiral software development
-                   model. \r\n
+                   model.
                    *For Agile, developers must clearly document project
                    concepts and prioritize initial development environment and
                    associated requirements. Developers must identify team
@@ -339,11 +339,11 @@ SOFTWARE_DEVELOPMENT = {
                    validation, and verification of the software functions.
                    Testing may include, but is not limited to, individual
                    module tests, integration tests, system testing, user
-                   acceptance testing, and alpha, and beta testing, etc.\r\n
+                   acceptance testing, and alpha, and beta testing, etc.
                    Verification: The process of determining whether the
                    products of a given stage of the software development life
                    cycle fulfills the requirements established during the
-                   previous stage.\r\n
+                   previous stage.
                    Validation: The process of evaluating software at the end of
                    the software development process (acceptance testing
                    activity in the testing stage) to ensure compliance with

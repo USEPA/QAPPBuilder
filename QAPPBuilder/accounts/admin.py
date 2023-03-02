@@ -24,7 +24,7 @@ admin.site.register(Role)
 
 
 class UserProfileAdmin(admin.ModelAdmin):
-    """Assigns 'USER ID' number, once user registers with QAPP_Builder."""
+    """Assigns 'USER ID' number, once user registers with qapp_builder."""
 
     list_display = ("user_id",)
     search_fields = ("user__username",)

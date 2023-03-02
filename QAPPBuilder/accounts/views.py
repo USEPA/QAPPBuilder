@@ -605,7 +605,7 @@ def login(request, *args, template_name='registration/login.html',
     """Display the login form and handle the login action."""
     redirect_to = request.GET.get(redirect_field_name, )
 
-    layout_name = "QAPP_Builder Log-In and/or Register Screen"
+    layout_name = "qapp_builder Log-In and/or Register Screen"
     error = None
 
     if request.method == "POST":

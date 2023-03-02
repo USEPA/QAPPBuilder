@@ -1,0 +1,43 @@
+{% extends "main/base.html" %}
+{% block content %}
+{% load static %}
+
+    <div class="container">
+        {% include 'SectionE/header_footer_partial.html' %}
+        {% if save_success %}
+        <h3 id="save_success" class="text-success col-md-12 text-center">{{save_success}}</h3>
+        {% endif %}
+        <div class="border rounded p-3 row">
+            {% include 'EPA_QAPP_Header_Partial.html' %}
+
+            <div class="col-md-12">
+                <form enctype="multipart/form-data" action="/SectionE?qapp_id={{qapp_id}}" method="post" role="form" id="sectione_form">
+                    {% csrf_token %}
+                    <div class="">
+                        <div class="form-group row hidden">{{form.qapp}}</div>
+
+                        <!------- Section References ------->
+                        <div class="form-group row">
+                            <label class="col-sm-3 control-label">
+                                {{form.references.label}}
+                            </label>
+                            <div class="col-sm-8">{{form.references}}</div>
+                        </div>
+
+                        <div class="row justify-content-center">
+                            <button type="submit" class="m-2 col-md-2 btn btn-md btn-success save">Save Changes</button>
+                            <button type="reset" class="m-2 col-md-2 col-md-offset-1 btn btn-md btn-warning">Reset</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        {% include 'SectionE/header_footer_partial.html' %}
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+</script>
+{% endblock %}
