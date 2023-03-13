@@ -14,7 +14,7 @@ Available functions:
 # from constants.models import *
 from django.contrib.auth.models import User
 from django.db import models
-from QAPP_Builder import settings
+from qapp_builder import settings
 
 
 def get_support_storage_path(instance, filename):

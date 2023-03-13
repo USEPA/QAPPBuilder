@@ -1,4 +1,4 @@
-# models.py (QAPP_Builder)
+# models.py (qapp_builder)
 # !/usr/bin/env python3
 # coding=utf-8
 # young.daniel@epa.gov
@@ -190,6 +190,8 @@ class SectionB(models.Model):
     b1_3 = models.TextField(blank=True, null=True)
     b1_4 = models.TextField(blank=True, null=True)
     b1_5 = models.TextField(blank=True, null=True)
+    b1_6 = models.TextField(blank=True, null=True)
+    b1_7 = models.TextField(blank=True, null=True)
 
     b2_1 = models.TextField(blank=True, null=True)
     b2_2 = models.TextField(blank=True, null=True)
@@ -219,9 +221,13 @@ class SectionB(models.Model):
 
     b5_1 = models.TextField(blank=True, null=True)
     b5_2 = models.TextField(blank=True, null=True)
+    b5_3 = models.TextField(blank=True, null=True)
+    b5_4 = models.TextField(blank=True, null=True)
+    b5_5 = models.TextField(blank=True, null=True)
 
     b6_1 = models.TextField(blank=True, null=True)
     b6_2 = models.TextField(blank=True, null=True)
+    b6_3 = models.TextField(blank=True, null=True)
 
     class Meta:
         """Meta data definitions for SectionB class."""

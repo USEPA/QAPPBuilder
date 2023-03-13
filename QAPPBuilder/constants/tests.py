@@ -19,7 +19,7 @@ from constants.utils import split_email_list, is_epa_email, \
     get_rap_fields, is_float, get_attachment_storage_path, \
     download_files, download_file
 from accounts.models import User
-from QAPP_Builder.models import Attachment
+from qapp_builder.models import Attachment
 
 
 class TestUtils(TestCase):
@@ -215,7 +215,7 @@ class TestUtils(TestCase):
         self.assertEqual(results, False)
 
     def test_get_attachment_storage_path(self):
-        """Test that the QAPP_Builder Attachment path is returned properly."""
+        """Test that the qapp_builder Attachment path is returned properly."""
         response = get_attachment_storage_path(instance=self.attachment_1,
                                                filename=self.test_str)
         self.assertTrue('dyoung11/attachments/' in response)

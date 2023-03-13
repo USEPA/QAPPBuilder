@@ -1,4 +1,4 @@
-# qar5_docx.py (QAPP_Builder)
+# qar5_docx.py (qapp_builder)
 # !/usr/bin/env python3
 # coding=utf-8
 # young.daniel@epa.gov
@@ -22,8 +22,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.templatetags.static import static
 from django.utils.text import slugify
 from constants.qar5_sectionb import SECTION_B_INFO
-from QAPP_Builder.settings import DEBUG, STATIC_ROOT
-from QAPP_Builder.views import get_qar5_for_user, get_qar5_for_team, \
+from qapp_builder.settings import DEBUG, STATIC_ROOT
+from qapp_builder.views import get_qar5_for_user, get_qar5_for_team, \
     get_qapp_info
 
 

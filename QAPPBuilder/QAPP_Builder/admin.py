@@ -1,4 +1,4 @@
-# admin.py (QAPP_Builder)
+# admin.py (qapp_builder)
 # !/usr/bin/env python3
 # coding=utf-8
 # young.daniel@epa.gov
@@ -14,8 +14,8 @@ Available functions:
 """
 
 from django.contrib import admin
-from QAPP_Builder.forms import QappForm
-from QAPP_Builder.models import Qapp, SectionA, SectionB, SectionD, \
+from qapp_builder.forms import QappForm
+from qapp_builder.models import Qapp, SectionA, SectionB, SectionD, \
     References, Revision, Division
 
 
@@ -23,7 +23,7 @@ class QappAdmin(admin.ModelAdmin):
     """
     Define options used to display and edit Qapp objects.
 
-    (QAPP_Builder) on the Django Admin page.
+    (qapp_builder) on the Django Admin page.
     """
 
     list_display = ("division_branch", "title", "qa_category",

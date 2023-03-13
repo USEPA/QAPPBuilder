@@ -1,4 +1,4 @@
-# forms.py (QAPP_Builder)
+# forms.py (qapp_builder)
 # !/usr/bin/env python3
 # coding=utf-8
 # young.daniel@epa.gov
@@ -14,7 +14,7 @@ from django.forms.widgets import DateTimeInput
 from django.utils.translation import gettext_lazy as _
 from constants.models import QA_CATEGORY_CHOICES, XMURAL_CHOICES
 from constants.qar5 import SECTION_A_INFO, SECTION_C_INFO
-from QAPP_Builder.models import Division, Qapp, QappApproval, QappLead, \
+from qapp_builder.models import Division, Qapp, QappApproval, QappLead, \
     QappApprovalSignature, SectionA, SectionB, SectionD, Revision, \
     SectionBType, References, SectionC
 from teams.models import Team, TeamMembership

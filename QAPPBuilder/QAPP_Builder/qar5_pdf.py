@@ -1,4 +1,4 @@
-# qar5_pdf.py (QAPP_Builder)
+# qar5_pdf.py (qapp_builder)
 # !/usr/bin/env python3
 # coding=utf-8
 # young.daniel@epa.gov
@@ -13,7 +13,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.utils.text import slugify
 from constants.qar5_sectionb import SECTION_B_INFO
-from QAPP_Builder.views import get_qapp_info, get_qar5_for_team, \
+from qapp_builder.views import get_qapp_info, get_qar5_for_team, \
     get_qar5_for_user
 
 

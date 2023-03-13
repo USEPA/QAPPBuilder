@@ -37,7 +37,7 @@ class Migration(migrations.Migration):
                 ('date', models.DateTimeField(default=django.utils.timezone.now)),
                 ('strap', models.TextField()),
                 ('tracking_id', models.TextField()),
-                ('division', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='divisions', to='QAPP_Builder.Division')),
+                ('division', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='divisions', to='qapp_builder.Division')),
                 ('prepared_by', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL)),
             ],
         ),
@@ -47,7 +47,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('project_plan_title', models.TextField()),
                 ('activity_number', models.TextField()),
-                ('qapp', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to='QAPP_Builder.Qapp')),
+                ('qapp', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to='qapp_builder.Qapp')),
             ],
         ),
         migrations.CreateModel(
@@ -60,14 +60,14 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='References',
             fields=[
-                ('qapp', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to='QAPP_Builder.Qapp')),
+                ('qapp', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to='qapp_builder.Qapp')),
                 ('references', models.TextField(blank=True, null=True)),
             ],
         ),
         migrations.CreateModel(
             name='SectionA',
             fields=[
-                ('qapp', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to='QAPP_Builder.Qapp')),
+                ('qapp', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to='qapp_builder.Qapp')),
                 ('a2', models.TextField()),
                 ('a3', models.TextField()),
                 ('a4', models.TextField()),
@@ -83,13 +83,13 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='SectionC',
             fields=[
-                ('qapp', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to='QAPP_Builder.Qapp')),
+                ('qapp', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to='qapp_builder.Qapp')),
             ],
         ),
         migrations.CreateModel(
             name='SectionD',
             fields=[
-                ('qapp', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to='QAPP_Builder.Qapp')),
+                ('qapp', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to='qapp_builder.Qapp')),
                 ('d1', models.TextField()),
                 ('d2', models.TextField()),
                 ('d3', models.TextField()),
@@ -103,7 +103,7 @@ class Migration(migrations.Migration):
                 ('description', models.TextField()),
                 ('effective_date', models.DateTimeField(default=django.utils.timezone.now)),
                 ('initial_version', models.TextField()),
-                ('qapp', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='QAPP_Builder.Qapp')),
+                ('qapp', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='qapp_builder.Qapp')),
             ],
         ),
         migrations.CreateModel(
@@ -112,7 +112,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('added_date', models.DateTimeField(auto_now_add=True)),
                 ('can_edit', models.BooleanField(default=True)),
-                ('qapp', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='qapp_teams', to='QAPP_Builder.Qapp')),
+                ('qapp', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='qapp_teams', to='qapp_builder.Qapp')),
                 ('team', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='team_qapp', to='teams.Team')),
             ],
         ),
@@ -121,7 +121,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.TextField()),
-                ('qapp', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='QAPP_Builder.Qapp')),
+                ('qapp', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='qapp_builder.Qapp')),
             ],
         ),
         migrations.CreateModel(
@@ -132,20 +132,20 @@ class Migration(migrations.Migration):
                 ('name', models.TextField(blank=True, null=True)),
                 ('signature', models.TextField(blank=True, null=True)),
                 ('date', models.TextField(blank=True, null=True)),
-                ('qapp_approval', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='QAPP_Builder.QappApproval')),
+                ('qapp_approval', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='qapp_builder.QappApproval')),
             ],
         ),
         migrations.AddField(
             model_name='qapp',
             name='teams',
-            field=models.ManyToManyField(through='QAPP_Builder.QappSharingTeamMap', to='teams.Team'),
+            field=models.ManyToManyField(through='qapp_builder.QappSharingTeamMap', to='teams.Team'),
         ),
         migrations.CreateModel(
             name='SectionBTypeMap',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('sectionb_type', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='QAPP_Builder.SectionBType')),
-                ('sectiona', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='QAPP_Builder.SectionA')),
+                ('sectionb_type', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='qapp_builder.SectionBType')),
+                ('sectiona', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='qapp_builder.SectionA')),
             ],
         ),
         migrations.CreateModel(
@@ -184,8 +184,8 @@ class Migration(migrations.Migration):
                 ('b5_2', models.TextField(blank=True, null=True)),
                 ('b6_1', models.TextField(blank=True, null=True)),
                 ('b6_2', models.TextField(blank=True, null=True)),
-                ('qapp', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='QAPP_Builder.Qapp')),
-                ('sectionb_type', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='QAPP_Builder.SectionBType')),
+                ('qapp', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='qapp_builder.Qapp')),
+                ('sectionb_type', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='qapp_builder.SectionBType')),
             ],
             options={
                 'unique_together': {('qapp', 'sectionb_type')},
@@ -194,6 +194,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='sectiona',
             name='sectionb_type',
-            field=models.ManyToManyField(through='QAPP_Builder.SectionBTypeMap', to='QAPP_Builder.SectionBType'),
+            field=models.ManyToManyField(through='qapp_builder.SectionBTypeMap', to='qapp_builder.SectionBType'),
         ),
     ]

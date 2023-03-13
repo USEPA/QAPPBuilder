@@ -26,7 +26,7 @@ from django.urls import reverse
 from django.views.decorators.cache import never_cache
 from django.views.generic import FormView, TemplateView
 
-from QAPP_Builder.settings import DOWNLOADS_DIR
+from qapp_builder.settings import DOWNLOADS_DIR
 from .forms import SupportForm, SupportAdminForm, SupportTypeForm, PriorityForm
 from .models import SupportType, Support, SupportAttachment, Priority
 
@@ -228,7 +228,7 @@ class SuggestionEditView(FormView):
             support_attachments = SupportAttachment.objects.filter(
                 support=support)
 
-            # email the QAPP_Builder admins and cc the user
+            # email the qapp_builder admins and cc the user
             # get type of ticket
             if support.support_type is not None:
                 support_type_desc = support.support_type.the_name

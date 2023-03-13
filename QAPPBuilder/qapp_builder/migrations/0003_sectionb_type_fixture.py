@@ -25,7 +25,7 @@ def load_fixture(_apps, _schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('QAPP_Builder', '0002_division_fixture'),
+        ('qapp_builder', '0002_division_fixture'),
     ]
 
     operations = [

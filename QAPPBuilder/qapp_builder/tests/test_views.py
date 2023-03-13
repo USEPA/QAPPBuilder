@@ -1,4 +1,4 @@
-# test_views.py (QAPP_Builder)
+# test_views.py (qapp_builder)
 # !/usr/bin/env python3
 # coding=utf-8
 # young.daniel@epa.gov
@@ -16,9 +16,9 @@ from django.db.models.query import QuerySet, EmptyQuerySet
 from django.test import Client, TestCase
 from django.test.client import RequestFactory
 from accounts.models import User
-from QAPP_Builder.models import Division, Qapp, QappSharingTeamMap
-from QAPP_Builder.forms import QappForm
-from QAPP_Builder.views import check_can_edit, get_qapp_all, QappEdit
+from qapp_builder.models import Division, Qapp, QappSharingTeamMap
+from qapp_builder.forms import QappForm
+from qapp_builder.views import check_can_edit, get_qapp_all, QappEdit
 from teams.models import Team, TeamMembership
 
 

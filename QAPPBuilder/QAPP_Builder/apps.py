@@ -1,4 +1,4 @@
-# apps.py (QAPP_Builder)
+# apps.py (qapp_builder)
 # !/usr/bin/env python3
 # coding=utf-8
 # young.daniel@epa.gov
@@ -28,8 +28,8 @@ from django.apps import AppConfig
 
 
 class QappBuilderConfig(AppConfig):
-    """QAPP_Builder configuration."""
+    """qapp_builder configuration."""
 
-    name = 'QAPP_Builder'
-    verbose_name = 'QAPP_Builder'
-    default_app_config = 'QAPP_Builder.apps.QappBuilderConfig'
+    name = 'qapp_builder'
+    verbose_name = 'qapp_builder'
+    default_app_config = 'qapp_builder.apps.QappBuilderConfig'

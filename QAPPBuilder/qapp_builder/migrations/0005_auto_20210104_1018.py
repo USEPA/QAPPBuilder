@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('QAPP_Builder', '0004_sectiona_a2_keywords'),
+        ('qapp_builder', '0004_sectiona_a2_keywords'),
     ]
 
     operations = [

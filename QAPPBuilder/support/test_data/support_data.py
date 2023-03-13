@@ -1,5 +1,5 @@
 # pylint: skip-file
-# test_data/project_data.py (QAPP_Builder)
+# test_data/project_data.py (qapp_builder)
 # !/usr/bin/env python3
 # coding=utf-8
 

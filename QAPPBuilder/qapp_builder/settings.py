@@ -1,11 +1,11 @@
-# settings.py (QAPP_Builder)
+# settings.py (qapp_builder)
 # !/usr/bin/env python3
 # coding=utf-8
 # young.daniel@epa.gov
 # pylint: disable=W0614, W0401
 
 """
-Django settings for QAPP_Builder project.
+Django settings for qapp_builder project.
 
 Based on 'django-admin startproject' using Django 2.1.2.
 
@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'accounts',
     'constants',
-    'QAPP_Builder',
+    'qapp_builder',
     'support',
     'teams'
 ]
@@ -63,7 +63,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'QAPP_Builder.urls'
+ROOT_URLCONF = 'qapp_builder.urls'
 
 # Template configuration
 # https://docs.djangoproject.com/en/2.1/topics/templates/
@@ -83,7 +83,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'QAPP_Builder.wsgi.application'
+WSGI_APPLICATION = 'qapp_builder.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 DATABASES = {
@@ -123,18 +123,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'QAPP_Builder', 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'qapp_builder', 'static')
 
 DOWNLOADS_DIR = os.path.join(BASE_DIR, '..', 'docs')
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'QAPP_Builder/media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'qapp_builder/media')
 MEDIA_URL = '/media/'
 
 # We keep upload root separate from STATIC and MEDIA to keep it more secure.
 # UPLOAD_ROOT will not be accessible from URL, only by the server views.
 UPLOAD_ROOT = os.path.join(MEDIA_ROOT, 'uploads')
 
-APP_NAME = 'QAPP_Builder'
+APP_NAME = 'qapp_builder'
 APP_VERSION = '0.0.1'
 APP_DISCLAIMER = 'The information and data presented in this product ' + \
                  'were obtained from sources that are believed to be ' + \

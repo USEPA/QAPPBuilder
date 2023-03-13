@@ -1,24 +1,24 @@
-# urls.py (QAPP_Builder)
+# urls.py (qapp_builder)
 # !/usr/bin/env python3
 # coding=utf-8
 # young.daniel@epa.gov
 
 
-"""Definition of urls for QAPP_Builder."""
+"""Definition of urls for qapp_builder."""
 
 from django.urls import re_path
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include
-from QAPP_Builder.views import QappCreate, QappDetail, ProjectApprovalCreate, \
+from qapp_builder.views import QappCreate, QappDetail, ProjectApprovalCreate, \
     ProjectLeadCreate, ProjectApprovalSignatureCreate, SectionAView, \
     SectionBView, SectionCView, SectionDView, SectionEView, SectionFView, \
     RevisionCreate, QappList, QappEdit, QappIndex, ProjectApprovalEdit, \
     ProjectApprovalSignatureDelete, ProjectApprovalSignatureEdit, \
     ProjectLeadDelete, ProjectLeadEdit, contact, clean_qapps, web_dev_tools
-from QAPP_Builder.settings import MEDIA_ROOT, MEDIA_URL
-from QAPP_Builder.qar5_docx import export_doc, export_doc_single
-from QAPP_Builder.qar5_pdf import export_pdf, export_pdf_single
+from qapp_builder.settings import MEDIA_ROOT, MEDIA_URL
+from qapp_builder.qar5_docx import export_doc, export_doc_single
+from qapp_builder.qar5_pdf import export_pdf, export_pdf_single
 
 
 urlpatterns = [

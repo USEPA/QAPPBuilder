@@ -1,0 +1,127 @@
+{% extends "main/base.html" %}
+{% block content %}
+{% load static %}
+
+<div class="container">
+    {% include 'EPA_QAPP_Header_Partial.html' %}
+    <div class="row">
+        <div class="col-md-12">
+            {% if form.errors %}
+            <div class="alert alert-danger">
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <h4>{{ error|escape }}</h4>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                        <h4>{{ error|escape }}</h4>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <form enctype="multipart/form-data" action="/create/" method="post" role="form" id="qapp_form">
+                {% csrf_token %}
+
+                <div class="">
+                    <div class="form-group row">
+                        <div class="col-sm-2">
+                            <label for="" class="col-sm-12 control-label">{{form.teams.label}}</label>
+                            <a href="{% url 'team_create' %}" class="col-sm-12 btn btn-sm btn-success">
+                                <span class="glyphicon glyphicon-plus"></span>
+                                Create Team
+                            </a>
+                        </div>
+                        <div class="col-sm-8">{{form.teams}}</div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-2">
+                            <label for="" class="col-sm-12 control-label">{{form.can_edit.label}}</label>
+                        </div>
+                        <div class="col-sm-8">{{form.can_edit}}</div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 control-label">{{form.division.label}}</label>
+                        <div class="col-sm-8">{{form.division}}</div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 control-label">{{form.division_branch.label}}</label>
+                        <div class="col-sm-8">{{form.division_branch}}</div>
+                    </div>
+
+                    <!-- There's some blank space here in the original PDF Form -->
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 control-label">{{form.title.label}}</label>
+                        <div class="col-sm-8">{{form.title}}</div>
+                    </div>
+
+                    <!-- There's some blank space here in the original PDF Form -->
+                    <!-- TODO: Implement multiple 'project lead' form -->
+                    <div class="form-group row mt-2">
+                        <label for="" class="col-sm-2 control-label">Project Leads:</label>
+                        <div class="col-sm-8">
+                            <!--<button type="submit" class="btn btn-md btn-success col-sm-12">
+                                Add New Project Lead
+                                <span class="fa fa-plus mx-2"></span>
+                            </button>-->
+                            <div class="col-sm-12 well">
+                                <p class="text-muted">Add Project Leads on the next page...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 control-label">{{form.qa_category.label}}</label>
+                        <div class="col-sm-8">{{form.qa_category}}</div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 control-label">{{form.intra_extra.label}}</label>
+                        <div class="col-sm-8">{{form.intra_extra}}</div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 control-label">{{form.revision_number.label}}</label>
+                        <div class="col-sm-8">{{form.revision_number}}</div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 control-label">{{form.date.label}}</label>
+                        <div class="col-sm-8">{{form.date}}</div>
+                    </div>
+
+                    <!-- There's some blank space here in the original PDF Form -->
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 control-label">{{form.strap.label}}</label>
+                        <div class="col-sm-8">{{form.strap}}</div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 control-label">{{form.tracking_id.label}}</label>
+                        <div class="col-sm-8">{{form.tracking_id}}</div>
+                    </div>
+
+                    <div class="row justify-content-center">
+                        <button type="submit" class="m-2 col-md-2 btn btn-md btn-success save">Next Page</button>
+                        <button type="reset" class="m-2 col-md-2 col-md-offset-1 btn btn-md btn-warning">Reset</button>
+                        <button type="reset" onclick="window.location.href='/'"
+                                class="m-2 col-md-2 col-md-offset-1 btn btn-md btn-danger">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    $(document).ready(function () {
+        $("#id_date").datetimepicker(
+            {
+                sideBySide: true,
+                format: 'MM/DD/YYYY HH:mm:ss',
+            });
+    });
+</script>
+{% endblock %}

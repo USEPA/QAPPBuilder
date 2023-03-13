@@ -1,4 +1,4 @@
-# views.py (QAPP_Builder)
+# views.py (qapp_builder)
 # !/usr/bin/env python3
 # coding=utf-8
 # young.daniel@epa.gov
@@ -20,10 +20,10 @@ from accounts.models import User
 from constants.qar5 import SECTION_A_INFO, SECTION_D_INFO, SECTION_E_INFO, \
     SECTION_F_INFO, SECTION_C_INFO
 from constants.qar5_sectionb import SECTION_B_INFO
-from QAPP_Builder.forms import QappForm, QappApprovalForm, QappLeadForm, \
+from qapp_builder.forms import QappForm, QappApprovalForm, QappLeadForm, \
     QappApprovalSignatureForm, SectionAForm, SectionBForm, \
     SectionDForm, RevisionForm, ReferencesForm, SectionCForm
-from QAPP_Builder.models import Qapp, QappApproval, QappLead, \
+from qapp_builder.models import Qapp, QappApproval, QappLead, \
     QappApprovalSignature, SectionA, SectionB, SectionC, SectionD, \
     QappSharingTeamMap, Revision, References
 from teams.models import Team, TeamMembership
@@ -642,6 +642,8 @@ class SectionAView(LoginRequiredMixin, TemplateView):
         if ctx['form'].is_valid():
             ctx['obj'] = ctx['form'].save(commit=True)
             ctx['save_success'] = 'Successfully Saved Changes!'
+        else:
+            return self.get(request, ctx)
 
         return render(request, self.template_name, ctx)
 
@@ -658,6 +660,14 @@ class SectionBView(LoginRequiredMixin, TemplateView):
         qapp_id = request.GET.get('qapp_id', None)
         qapp = Qapp.objects.get(id=qapp_id)
         sectiona = SectionA.objects.filter(qapp_id=qapp_id).first()
+
+        # TODO: Need to figure out the proper way to handle this...
+        # if not sectiona:
+        #     reason = 'Select a Section B Type and click "Save Changes" ' + \
+        #         'before moving onto the next page!'
+        #     return HttpResponseRedirect(
+        #         '/SectionA?qapp_id=%s' % qapp_id, 302, reason)
+
         selected_sectionb_types = sectiona.sectionb_type.all()
 
         edit_message = ''

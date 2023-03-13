@@ -1,4 +1,4 @@
-# context_processors.py (QAPP_Builder)
+# context_processors.py (qapp_builder)
 # !/usr/bin/env python3
 # coding=utf-8
 # young.daniel@epa.gov
