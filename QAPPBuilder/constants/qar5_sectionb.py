@@ -852,92 +852,126 @@ ANALYTICAL_METHODS = {
     'b1_1': {
         'heading': 'B.1	EXPERIMENTAL DESIGN',
         'label': 'B.1.1 Analyte(s) of Interest',
-        'desc': 'Identify the specific analyte(s) of interest ' +
-        'and the matrix/matrices or limitations to the ' +
-        'range of detection under study.'
+        'desc': '''Identify the specific analyte(s) of interest and the
+                   matrix/matrices or limitations to the range of detection
+                   under investigation.'''
     },
     'b1_2': {
-        'label': 'B.1.2 Analytical Approach',
-        'desc': 'Identify the analytical approach that will be used ' +
-        'and how it will be optimized for this study. Also ' +
-        'describe any tests of interference and analyte stability.'
+        'label': 'B.1.2 Experimental Design',
+        'desc': '''Describe the experimental design and how it will be
+                   optimized for this project. A description of the design
+                   should include the rationale for the design, types and
+                   number of samples required.'''
     },
     'b1_3': {
-        'label': 'B.1.3 Performance Metrics',
-        'desc': 'Identify the method performance metrics (QA/QC checks) ' +
-        'that will be used to evaluate the method, including the ' +
-        'procedures used. These metrics could include (but are not ' +
-        'limited to) positive and negative controls, sensitivity, ' +
-        'precision, accuracy, recovery, linearity, specificity, ' +
-        'robustness, and range. '
+        'label': 'B.1.3 Interference and Stability',
+        'desc': '''Describe any tests of interference and analyte stability.
+                   If a holding time study will be conducted, describe the
+                   parameters of this study.'''
+    },
+    'b1_4': {
+        'label': 'B.1.4 Sample Requirements',
+        'desc': '''Provide the requirements for samples including those field
+                   collected or made in the laboratory, that will be used to
+                   test the method, including matrix and presence/concentration
+                   of analytes.'''
     },
     'b2_1': {
         'heading': 'B.2	SAMPLING PROCEDURES',
-        'label': 'B.2.1 Requirements for Samples',
-        'desc': 'Provide the requirements for samples including those ' +
-        'field collected or made in the laboratory, that will be ' +
-        'used to test the method, including matrix and ' +
-        'presence/concentration of analytes). '
+        'label': 'B.2.1 Preparation of Synthetic Samples',
+        'desc': '''If synthetic (i.e., laboratory-prepared) samples are used,
+                   describe the preparation of these samples.'''
     },
     'b2_2': {
-        'label': 'B.2.2 Requirements for Synthetic Samples',
-        'desc': 'If synthetic (i.e., laboratory-prepared) samples are ' +
-        'used, describe the preparation of these samples.'
+        'label': 'B.2.2 Environmental Sampling Design',
+        'desc': '''If environmental (i.e., real-world sample) samples are
+                   used describe the sampling design that will be used, and
+                   the steps taken to assure that representative samples are
+                   collected.'''
     },
     'b2_3': {
-        'label': 'B.2.3 Requirements for Non-Synthetic Samples',
-        'desc': 'If non-synthetic (i.e., real-world sample) samples are ' +
-        'used describe the sampling design that will be used and the ' +
-        'steps taken to assure that representative samples are collected.'
+        'label': 'B.2.3 Environmental Sampling Procedures',
+        'desc': '''If environmental samples are used, discuss or reference
+                   each sampling procedure.'''
     },
     'b2_4': {
-        'label': 'B.2.4 Non-Synthetic Sampling SOPs',
-        'desc': 'If non-synthetic (i.e., real-world sample) samples are ' +
-        'used discuss or reference each sampling procedure.'
+        'label': 'B.2.4 Environmental Sampling Package/Shipping',
+        'desc': '''If environmental samples are used, describe procedures for
+                   packing and shipping samples, and provisions for maintaining
+                   chain-of-custody, as applicable.'''
     },
     'b2_5': {
-        'label': 'B.2.5 Synthetic Sampling SOPs',
-        'desc': 'If non-synthetic (i.e., real-world sample) samples are ' +
-        'used If non-synthetic (i.e., real-world sample) samples are used.'
+        'label': 'B.2.5 Sample Preservation',
+        'desc': '''Specify sample preservation requirements (e.g.,
+                   refrigeration, acidification, etc.) and holding times,
+                   unless being determined as part of the method development.'''
     },
     'b2_6': {
-        'label': 'B.2.6 Non-Synthetic Package/Shipping',
-        'desc': 'If non-synthetic (i.e., real-world sample) samples are ' +
-        'used describe procedures for packing and shipping samples, ' +
-        'and provisions for maintaining chain-of-custody, as applicable.'
-    },
-    'b2_7': {
-        'label': 'B.2.7 Sample Preservation',
-        'desc': 'Specify sample preservation requirements (e.g., ' +
-        'refrigeration, acidification, etc.) and holding times.  ' +
-        'If a holding time study will be conducted, ' +
-        'describe the parameters of this study.'
-    },
-    'b2_8': {
-        'label': 'B.2.8 Numbering',
-        'desc': 'Describe the method for uniquely numbering each sample. '
+        'label': 'B.2.6 Sample Naming Conventions',
+        'desc': '''Describe the method for a sample naming
+                   convention to uniquely identify each sample and sub
+                   aliquots of samples.'''
     },
     'b3_1': {
         'heading': 'B.3	MEASUREMENT PROCEDURES',
         'label': 'B.3.1 Calibration QA/QC',
-        'desc': 'Describe in detail or reference each preparation ' +
-        'or analytical procedure, equipment and instrumentation ' +
-        'to be used, if known. Include steps for preparation, ' +
-        'calibration, measurement, quality control, and reporting.'
+        'desc': '''Describe in detail or reference each preparation or
+                   analytical procedure, equipment and instrumentation to be
+                   used, if known. Include steps for preparation, measurement,
+                   quality control, and reporting. Include steps for testing,
+                   inspection, and maintenance of equipment and instrumentation
+                   to be used.'''
     },
     'b3_2': {
         'label': 'B.3.2 Detection Limits',
-        'desc': 'Include specific calibration procedures, including ' +
-        'linearity checks and initial and continuing ' +
-        'calibration checks, and detection limits. '
+        'desc': '''Include specific calibration procedures, including linearity
+                   checks and initial and continuing calibration checks, and
+                   detection limits.'''
     },
     'b4_1': {
         'heading': 'B.4	METHOD PERFORMANCE METRICS',
         'label': 'B.4.1 QA/QC Checks',
-        'desc': 'For each method performance metric (QA/QC check) ' +
-        'specify the frequencies for performing these checks, ' +
-        'associated acceptance criteria, and corrective actions to ' +
-        'be performed if acceptance criteria are not met. '
+        'desc': '''Identify the method performance metrics (QA/QC checks) that
+                   will be used to evaluate the method. These metrics could
+                   include (but are not limited to) positive and negative
+                   controls, sensitivity, precision, accuracy, recovery,
+                   linearity, specificity, robustness, and range. For each
+                   method performance metric (QA/QC check) specify the methods
+                   and frequencies for performing these checks, associated
+                   acceptance criteria, and corrective actions to be performed
+                   if acceptance criteria are not met.'''
+    },
+    'b4_2': {
+        'label': 'B.4.2 Method Validation',
+        'desc': '''Describe in detail the method validation process (e.g.,
+                   intramural laboratory, extramural laboratories, etc.).'''
+    },
+    'b4_3': {
+        'label': 'B.4.3 Critical Supplies and Consumables',
+        'desc': '''Describe as appropriate critical supplies and consumables,
+                   including but not limited to, manufacturer, catalog number,
+                   certifications, and receipt procedures.'''
+    },
+    'b5_1': {
+        'heading': 'B.5 DATA VALIDATION & VERIFICATION',
+        'label': 'B.5.1 Data V&V',
+        'desc': '''Discuss responsibilities for conducting data review,
+                   verification, and validation of data, data tables and
+                   calculations. State criteria for accepting, rejecting, or
+                   qualifying data. Include project-specific calculations or
+                   algorithms. (May be discussed in SOP).'''
+    },
+    'b5_2': {
+        'label': 'B.5.2 Data Assessment',
+        'desc': '''Describe how the data will be assessed with regards to the
+                   project objects (e.g., qualitative analysis, descriptive or
+                   inferential statistics, etc.). If descriptive statistics are
+                   proposed, state what tables, plots, and/or statistics (e.g.,
+                   mean, median, standard error, minimum and maximum values,
+                   etc.) will be used to summarize the data. If an inferential
+                   method is proposed, indicate whether the method will be a
+                   hypothesis test, confidence interval, or confidence limit.
+                   Describe how the method will be performed.'''
     }
 }
 
