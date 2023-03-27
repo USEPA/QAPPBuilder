@@ -390,36 +390,36 @@ EXISTING_DATA = {
     },
     'b3_2': {
         'label': 'B.3.2 Data Storage',
-        'desc': '''Describe how data will be stored, shared, and secured'''
+        'desc': '''Describe how data will be stored, shared, and secured.'''
     },
     'b3_3': {
         'label': 'B.3.3 Special Access/Storage Requirements',
         'desc': '''Describe if existing data contains CBI or PII and address
                    special agreements, special access certifications and
-                   storage requirements that apply'''
+                   storage requirements that apply.'''
     },
     'b3_4': {
         'label': 'B.3.4 Metadata Storage',
         'desc': '''How and where will metadata be recorded? (i.e., data
                    source, originating organization, report title,
-                   type of information) '''
+                   type of information).'''
     },
     'b3_5': {
         'label': 'B.3.5 Translation Procedure(s)',
         'desc': '''Describe procedures used to ensure that errors in
-                   translation are minimized'''
+                   translation are minimized.'''
     },
     'b3_6': {
         'label': 'B.3.6 Data Access Management',
         'desc': '''Describe measures taken to prevent unauthorized or
                    accidental editing of data, such as version control
-                   procedures and internal database audit logs'''
+                   procedures and internal database audit logs.'''
     },
     'b3_7': {
         'label': 'B.3.7 Original Data Integrity',
         'desc': '''Describe procedures used to ensure that existing data
                    maintain their original integrity and quality as they are
-                   migrated into current project'''
+                   migrated into current project.'''
     },
 
     'b4_1': {
@@ -427,18 +427,18 @@ EXISTING_DATA = {
         'label': 'B.4.1 IV&V',
         'desc': '''Describe the extent in which there has been independent
                    verification or validation of the data set or study method
-                   and result'''
+                   and result.'''
     },
     'b4_2': {
         'label': 'B.4.2 IV&V Results',
         'desc': '''Describe where results of the independent reviews of the
-                   data set are documented'''
+                   data set are documented.'''
     },
     'b4_3': {
         'label': 'B.4.3 IV&V Corrective Action',
         'desc': '''Describe how the corrective action process of the
                    independent reviews of the data sets occur and how these
-                   corrective actions are documented'''
+                   corrective actions are documented.'''
     },
     'b4_4': {
         'label': 'B.4.4 Mathematical/Statistical Procedures',
@@ -446,14 +446,14 @@ EXISTING_DATA = {
                    as outlier analyses or goodness-of-fit tests) that will
                    identify whether individual data values within existing
                    data sets should be rejected, transformed, or otherwise
-                   qualified before any statistical analysis'''
+                   qualified before any statistical analysis.'''
     },
     'b4_5': {
         'label': 'B.4.5 Data Validation Procedures',
         'desc': '''Describe any data validation procedures to be applied to
                    the existing data to ensure the use of accurate and
                    representative project data that are fit-for-purpose
-                   in addressing the research question'''
+                   in addressing the research question.'''
     },
     'b4_6': {
         'label': 'B.4.6 Cross-Validation',
@@ -463,7 +463,7 @@ EXISTING_DATA = {
                    prediction error) or determining the right model for
                    interpretation.  For example: cross validation can be used
                    to evaluate the accuracy of models on a limited data
-                   sample'''
+                   sample.'''
     },
 }
 
@@ -473,100 +473,243 @@ EXISTING_DATA = {
 
 MEASUREMENTS_AND_MONITORING = {
     'b1_1': {
-        'heading': 'B.1 EXPERIMENTAL DESIGN',
-        'label': 'B.1.1 Analyte(s) of Interest & Matrix/Matrices',
-        'desc': 'Identify the specific analyte(s) of interest and the ' +
-                'matrix/matrices. Classify each measurement parameter ' +
-                'as either critical or needed for information only.'
+        'heading': 'B.1 PROJECT DESIGN',
+        'label': 'B.1.1 Experimental Design',
+        'desc': '''Describe experimental design to generate the. data needed to
+                   meet the research objectives. A description of the design
+                   should include the rationale for the design, sample types
+                   and number of samples required.'''
     },
     'b1_2': {
-        'label': 'B.1.2 Sampling and/or Experimental Design',
-        'desc': 'Describe sampling and/or experimental design to ' +
-                'generate the data needed to evaluate the research ' +
-                'objectives. A description of the design should ' +
-                'include the rationale for the design and types ' +
-                'and number of samples required, including any ' +
-                'field or experimental QC samples.'
+        'label': 'B.1.2 Analytes of Interest',
+        'desc': '''Identify the specific analyte(s) of interest and the
+                   matrix/matrices. Identify any required method detection
+                   limits, reporting limits or critical thresholds (e.g.
+                   screening levels, maximum contaminant level (MCL)) for
+                   each analyte.'''
     },
     'b1_3': {
-        'label': 'B.1.3 Sampling Locations & Frequency',
-        'desc': 'Identify sampling locations and frequency of sampling.'
+        'label': 'B.1.3 Limitations and Challenges',
+        'desc': '''Describe any limitations or special challenges that are
+                   anticipated and plans to mitigate those
+                   limitations/challenges (e.g. matrix interferences, sample
+                   homogeneity, representativeness, completeness, site
+                   access, etc.).'''
     },
+    # ############################################
     'b2_1': {
-        'heading': 'B.2 SAMPLING PROCEDURES',
-        'label': 'B.2.1 Non-Synthetic (real-world sample) Samples',
-        'desc': 'If non-synthetic (i.e., real-world sample) ' +
-                'samples are used describe the sampling design that ' +
-                'will be used, and the steps taken to assure that ' +
-                'representative samples are collected.'
+        'heading': 'B.2 FIELD COLLECTION',
+        'label': 'B.2.1 Sampling Locations and Frequency',
+        'desc': '''Identify sampling locations, type of sample collection,
+                   and frequency. If locations are not predetermined, describe
+                   the process and criteria for site selection.'''
     },
     'b2_2': {
-        'label': 'B.2.2 Synthetic (lab-prepared) Samples',
-        'desc': 'If synthetic (i.e., laboratory-prepared) ' +
-                'samples are used, describe the preparation of these samples.'
+        'label': 'B.2.2 Field Sampling Design',
+        'desc': '''Describe the field sampling design used to generate the
+                   data needed to meet the research objectives and the steps
+                   taken to assure that representative samples are collected
+                   (e.g. minimum sample amount for analysis, sample
+                   accessories, homogenization, holding times, containers
+                   types, preservation, quenching agents, contingency plans,
+                   etc.)'''
     },
     'b2_3': {
-        'label': 'B.2.3 Decontamination Procedures',
-        'desc': 'Describe the decontamination procedures for any ' +
-                'sampling equipment that will be reused to ' +
-                'prevent cross contamination.'
+        'label': 'B.2.3 Labeling, Packing, and Shipping',
+        'desc': '''Describe procedures for labeling, packing, and shipping
+                   field samples, and provisions for maintaining
+                   chain-of-custody, as applicable. (See Appendix B for
+                   example chain of custody.).'''
     },
     'b2_4': {
-        'label': 'B.2.4 Sample Containers & Quantities',
-        'desc': 'Provide a list of sample containers, sample quantities ' +
-                'to be collected, and the sample amount required for ' +
-                'each analysis, including QC sample analysis.'
+        'label': 'B.2.4 Field Records',
+        'desc': '''Describe the use of project specific field records that
+                   provide objective evidence of actions taken and observations
+                   made. Examples of field records include (but not limited
+                   to): field logbook entries, field collection forms, field
+                   measurement data log, chain of custody forms, photographs,
+                   maps, field inspection forms, etc. (See EPA QA Field
+                   Activities Procedure for more details.)'''
     },
     'b2_5': {
-        'label': 'B.2.5 Labeling',
-        'desc': 'Describe labeling (information to be included) ' +
-                'and uniquely numbering each sample.'
+        'label': 'B.2.5 Field Equipment Use',
+        'desc': '''Describe the procedures for field equipment use (e.g.
+                   decontamination, calibration, storage etc.) and sample
+                   collection. Reference SOPs or methods used where applicable.
+                   This information may be summarized in a table
+                   (See Appendix A, also see EPA QA Field Activities Procedure
+                   for more details.)'''
     },
-    'b2_6': {
-        'label': 'B.2.6 Sample Preservation',
-        'desc': 'Specify sample preservation requirements ' +
-                '(e.g., refrigeration, acidification, etc.) ' +
-                'and sample hold times.'
-    },
-    'b2_7': {
-        'label': 'B.2.7 Calibration Procedures',
-        'desc': 'If non-synthetic (i.e., real-world sample) samples ' +
-                'are used describe procedures for packing and shipping ' +
-                'samples, and provisions for maintaining ' +
-                'chain-of-custody, as applicable.'
-    },
+    # ############################################
     'b3_1': {
         'heading': 'B.3 MEASUREMENT PROCEDURES',
-        'label': 'B.3.1 Field Analyses',
-        'desc': 'For field analyses (including in-line measurements), ' +
-                'describe in detail or reference each field sample ' +
-                'analysis method and instrumentation to be used. ' +
-                'Include steps for instrument calibration, ' +
-                'measurement, quality control, and documentation of results.'
+        'label': 'B.3.1 Field Analysis Methods and Instrumentation',
+        'desc': '''For field measurements/analyses (including in-line
+                   measurements), reference (e.g. SOP, method) each field
+                   sample analysis method and instrumentation to be used.
+                   This information may be summarized in a table (see Appendix
+                   A for examples). If SOPs/methods will not be developed or
+                   are not currently available, describe in detail the
+                   procedural steps including steps for standard/reagent
+                   preparation, sample preparation, sample analysis,
+                   quality control, and documentation of results.'''
     },
     'b3_2': {
-        'label': 'B.3.2 Lab Analyses',
-        'desc': 'For laboratory analyses, describe in detail or ' +
-                'reference each sample preparation method (e.g., ' +
-                'sample extractions) and analytical methods, equipment ' +
-                'and instrumentation to be used. Include steps for ' +
-                'preparation, calibration, measurement, quality ' +
-                'control, and reporting.'
+        'label': 'B.3.2 Laboratory Analysis Methods and Instrumentation',
+        'desc': '''For laboratory measurements/analyses, describe in detail or
+                   reference (e.g. SOP, method) each sample analysis method
+                   and instrumentation to be used. If SOPs/methods will not
+                   be developed or are not currently available, describe in
+                   detail the procedural steps including steps for
+                   standard/reagent preparation, sample preparation, sample
+                   analysis, quality control, and documentation of results.
+                   This information may be summarized in a table (see Appendix
+                   A for examples).'''
     },
     'b3_3': {
-        'label': 'B.3.3 Specific Calibration Procedures',
-        'desc': 'Include specific calibration procedures, including ' +
-                'linearity checks and initial and continuing calibration ' +
-                'checks, and detection limits.'
+        'label': 'B.3.3 Logging',
+        'desc': '''Identify any sample logs, bench sheets, prep logs, analysis
+                   logs, etc., used, the format (e.g., paper or electronic)
+                   and where they are maintained.'''
     },
+    # ############################################
     'b4_1': {
         'heading': 'B.4 METHOD PERFORMANCE METRICS',
-        'label': 'B.4.1 Method QC check',
-        'desc': 'For each analysis method QC check (e.g., blanks, ' +
-                'control samples, duplicates, matrix spikes, surrogates) ' +
-                'specify the frequencies for performing these checks, ' +
-                'associated acceptance criteria, and corrective actions ' +
-                'to be performed if acceptance criteria are not met.'
+        'label': 'B.4.1 QA Procedures',
+        'desc': '''Include or reference specific calibration quality control
+                   procedures, including tuning, instrument performance checks,
+                   linearity checks, initial and continuing calibration checks,
+                   determination of detection limits.'''
+    },
+    'b4_2': {
+        'label': 'B.4.2 QC Corrective Actions',
+        'desc': '''Describe the type, frequency, acceptance criteria and
+                   corrective actions to be taken of each experimental QC
+                   samples (field and/or lab). This information may be
+                   summarized in a table (see Appendix A for examples) It is
+                   recommended, if possible, that controls for bias and
+                   precision should be considered (e.g. blanks, replicates,
+                   spikes) at a minimum (see Appendix C for examples).'''
+    },
+    'b4_3': {
+        'label': 'B.4.3 Supply and Consumable QA',
+        'desc': '''Describe or any special procedures (or reference a SOP)
+                   to verify the quality, cleanliness, integrity, etc.
+                   of supplies and consumables.'''
+    },
+    # ############################################
+    'b5_1': {
+        'heading': 'B.5 DATA REVIEW, VERIFICATION, and VALIDATION',
+        'b5_1_1': {
+            'heading': 'B.5.1 DATA REPORT PACKAGES',
+            'label': '''B.5.1.1 Internal Data Packages''',
+            'desc': '''For Internal Data packages: Itemize the
+                       information and records which must be included and
+                       specify the reporting format for hard copy and
+                       electronic forms. See Appendix D, Table D1 for
+                       example records.'''
+        },
+        'b5_1_2': {
+            'label': 'B.5.1.2 External Data Packages',
+            'desc': '''For External Data Packages: Itemize the information
+                       and records which must be included in the external data
+                       report and specify the reporting format for hard copy
+                       and any electronic forms. See Appendix D, Table D1 for
+                       records that may be included. Researcher should consult
+                       customer (e.g., Regions, States, Tribes, Municipalities,
+                       etc.) on what to include in the external data report.'''
+        },
+        # #######################
+        'b5_2_1': {
+            'heading': 'B.5.2 DATA REVIEW PACKAGES',
+            'label': 'B.5.2.1 Data Review Personnel',
+            'desc': '''Identify who is responsible for reviewing the data.
+                       If multiple people are involved, a table can be created
+                       to show who is responsible for each analysis.'''
+        },
+        'b5_2_2': {
+            'label': 'B.5.2.2 Initial and Secondary Reviewers',
+            'desc': '''It is required that the analyst conduct an initial
+                       review of the data including QC checks. It is
+                       recommended that a secondary reviewer check a subset
+                       of the data. See Appendix E for definitions.'''
+        },
+        'b5_2_3': {
+            'label': 'B.5.2.3 Data Review Definition',
+            'desc': '''Describe what data will be reviewed and the frequency
+                       of the review(s).'''
+        },
+        'b5_2_4': {
+            'label': 'B.5.2.4 Data Review Process',
+            'desc': '''Describe the process for conducting data reviews
+                       including the percentage of data reviewed.'''
+        },
+        'b5_2_5': {
+            'label': 'B.5.2.5 Data Review Documentation',
+            'desc': '''Describe how the reviews will be documented. Provide
+                       examples of any forms or checklists to be used for
+                       the reviewing process.'''
+        },
+        'b5_2_6': {
+            'label': 'B.5.2.6 Issue Resolution Procedure',
+            'desc': '''Identify issue resolution procedure and responsible
+                       individuals.'''
+        },
+        'b5_2_7': {
+            'label': 'B.5.2.7 Data Acceptance Criteria',
+            'desc': '''State criteria for accepting, rejecting, or qualifying
+                       data. Identify how rejected or qualified data will be
+                       annotated. If qualifiers are used, provide definitions
+                       of the qualifiers.'''
+        },
+        'b5_2_8': {
+            'label': 'B.5.2.8 Calculations/Algorithms',
+            'desc': '''Include project-specific calculations or algorithms.
+                       (May be discussed in SOP).'''
+        },
+    },
+    # ############################################
+    'b6_1': {
+        'heading': 'B.6 DATA ANALYTICS',
+        'label': 'B.6.1 Data Analysis Technique(s)',
+        'desc': '''Describe how the data will be summarized or analyzed (e.g.,
+                   qualitative analysis, descriptive or inferential statistics)
+                   to meet the project objective(s) and why the technique(s)
+                   were selected.'''
+    },
+    'b6_2': {
+        'label': 'B.6.2 Inputs and Processing Procedure(s)',
+        'desc': '''Identify what inputs are needed and what statistical
+                   programs will be used. Describe any procedures that will be
+                   used to compile or minimize the data prior to data analyses
+                   (e.g. exclusion of outliers, handling of qualified data,
+                   handling of data reported as qualitative values [i.e. <MRL],
+                   range of inclusion).'''
+    },
+    'b6_3': {
+        'label': 'B.6.3 Descriptive Statistics',
+        'desc': '''If descriptive statistics are proposed, state what
+                   statistics (e.g., mean, median, standard error, minimum and
+                   maximum values) will be used to summarize or visualize the
+                   data. Identify the criteria used to make decisions
+                   (confidence interval, coefficient of determination, test
+                   of independence, etc.)'''
+    },
+    'b6_4': {
+        'label': 'B.6.4 Inferential Method',
+        'desc': '''If an inferential method is proposed, indicate whether
+                   the method will be a hypothesis test, confidence interval,
+                   or confidence limit. Describe how the method will be
+                   performed and identify any critical thresholds or criteria
+                   that will be used to make decisions or draw conclusions.'''
+    },
+    'b6_5': {
+        'label': 'B.6.5 Post Data Analytics Review(s)',
+        'desc': '''Describe any reviews to be conducted of post data analytics
+                   outputs (i.e. charts, graphs, statistics) including who
+                   is responsible, what will be reviewed, and how these reviews
+                   will be documented. Provide examples of any forms or
+                   checklists to be used for the reviewing process.'''
     },
 }
 
@@ -908,6 +1051,12 @@ MODEL_DEVELOPMENT = {
 # ########################################################################
 # ########################################################################
 
+SOC_SCI = {}
+
+# ########################################################################
+# ########################################################################
+# ########################################################################
+
 SOFTWARE_DEVELOPMENT = {
     'b1_1': {
         'heading': 'B.1 REQUIREMENTS',
@@ -1203,12 +1352,13 @@ SOFTWARE_DEVELOPMENT = {
 # ########################################################################
 
 SECTION_B_INFO = {
-    "Existing Data": EXISTING_DATA,
-    "Software Development": SOFTWARE_DEVELOPMENT,
-    "Model Development": MODEL_DEVELOPMENT,
-    "Model Application": MODEL_APPLICATION,
-    "Measurements": MEASUREMENTS_AND_MONITORING,
     "Analytical Methods": ANALYTICAL_METHODS,
+    "Animal Cell Studies": ANIMAL_CELL,
     # "Cell Culture Models": CELL_CULTURE_METHODS,
-    "Animal Cell Studies": ANIMAL_CELL
+    "Existing Data": EXISTING_DATA,
+    "Measurements": MEASUREMENTS_AND_MONITORING,
+    # "Model Development": MODEL_DEVELOPMENT,
+    "Model Application": MODEL_APPLICATION,
+    "Soc Sci": SOC_SCI,
+    "Software Development": SOFTWARE_DEVELOPMENT,
 }
