@@ -148,7 +148,7 @@ ANALYTICAL_METHODS = {
 # ########################################################################
 # ########################################################################
 
-ANIMAL_SUBJECTS = {
+ANIMAL_CELL = {
     'b1_1': {
         'heading': 'B.1 EXPERIMENTAL DESIGN',
         'label': 'B.1.1 Animal Subjects Tested',
@@ -270,86 +270,8 @@ ANIMAL_SUBJECTS = {
 # ########################################################################
 # ########################################################################
 
-CELL_CULTURE_METHODS = {
-    'b1_1': {
-        'heading': 'B.1 EXPERIMENTAL DESIGN',
-        'label': 'B.1.1 Culture Model',
-        'desc': 'Discuss the culture model to be used in ' +
-        'addressing the study objectives.'
-    },
-    'b1_2': {
-        'label': 'B.1.2 Stressors Tested',
-        'desc': 'Discuss the choice of chemicals, materials, or ' +
-        'other stressors to be tested in addressing the study objectives.'
-    },
-    'b1_3': {
-        'label': 'B.1.3 Independent Variables',
-        'desc': 'Discuss independent variables to be manipulated. '
-    },
-    'b1_4': {
-        'label': 'B.1.4 Dependent Variables',
-        'desc': 'Discuss dependent variables to be measured.'
-    },
-    'b2_1': {
-        'heading': 'B.2 METHODS AND EXPERIMENTAL DETAIL',
-        'label': 'B.2.1 Treatment Group Exposures',
-        'desc': 'Describe the method for determining treatment group ' +
-        'exposures and number of replicates (dose limits; ' +
-        'power calculations).'
-    },
-    'b2_2': {
-        'label': 'B.2.2 Study Controls',
-        'desc': 'Describe study controls (blinding; standard ' +
-        'curves; positive/negative controls; etc.).'
-    },
-    'b2_3': {
-        'label': 'B.2.3 Sample Collection',
-        'desc': 'Provide details of sample collection, ' +
-        'identification, storage, analysis etc.'
-    },
-    'b2_4': {
-        'label': 'B.2.4 Project Personnel/Collaborators',
-        'desc': 'List project personnel/collaborators and their roles.'
-    },
-    'b2_5': {
-        'label': 'B.2.5 SOPs Protocols',
-        'desc': 'List and attach all operating procedures or protocols ' +
-        'and ensure that they include adequate quality control.'
-    },
-    'b2_6': {
-        'label': 'B.2.6 Procedures not Covered',
-        'desc': 'Describe the procedures to be used for any activities ' +
-        'that are not covered by existing operating procedures or ' +
-        'protocols.  Ensure that appropriate quality control is included.'
-    },
-    'b3_1': {
-        'heading': 'B.3 EQUIPMENT AND SUPPLIES',
-        'label': 'B.3.1 Equipment',
-        'desc': 'List major equipment (make, model).'
-    },
-    'b3_2': {
-        'label': 'B.3.2 Supplies',
-        'desc': 'List critical supplies (name, source, amount, ' +
-        'expiration dates if any).'
-    },
-    'b4_1': {
-        'heading': 'B.4 DATA COLLECTION AND ANALYSIS',
-        'label': 'B.4.1 Datasets Collected',
-        'desc': 'List and describe (analog, electronic, etc.) ' +
-        'datasets to be collected.'
-    },
-    'b4_2': {
-        'label': 'B.4.2 Data Verification',
-        'desc': 'Describe data verification procedures used ' +
-        'to ensure reporting of accurate data.'
-    },
-    'b4_3': {
-        'label': 'B.4.3 Statistical Analysis',
-        'desc': 'Describe planned statistical analysis following ' +
-        'guidance of: https://intranet.ord.epa.gov/nheerl/' +
-        'cop-statistics-study-design-experimental'
-    }
-}
+# TODO: Make sure all references to this template are removed:
+# CELL_CULTURE_METHODS
 
 # ########################################################################
 # ########################################################################
@@ -357,109 +279,192 @@ CELL_CULTURE_METHODS = {
 
 EXISTING_DATA = {
     'b1_1': {
-        'heading': 'B.1 DATA ACQUISITION AND COLLECTION',
+        'heading': 'B.1 DATA DESCRIPTION, ACQUISITION AND COLLECTION ',
         'label': 'B.1.1 Existing Data',
-        'desc': 'Identify the Existing Data and Information needed to ' +
-        'meet the research objective(s).'
+        'desc': '''Identify the existing data types needed to meet the research
+                   objective(s). This includes but not limited to census data,
+                   GIS data, models and their outputs, toxicity and exposure
+                   data from published studies, environmental fate data, site
+                   and time sampling events (e.g. meteorology, topography).'''
     },
     'b1_2': {
-        'label': 'B.1.2 Data Use',
-        'desc': 'Describe how the existing data/ information will be ' +
-        'used in the research effort (e.g., augment or replace ' +
-        'existing data/ information, verify or validate ' +
-        'existing data/ information.'
+        'label': 'B.1.2 Data Requirements',
+        'desc': '''Specify requirements related to the type of data. This
+                   includes but not limited to data format, the age of data,
+                   geographical representation, temporal representation, and
+                   technological representation, as applicable. Existing data
+                   can be from computer databases, programs, literature files,
+                   or other historical sources.'''
     },
     'b1_3': {
-        'label': 'B.1.3 Data Requirements',
-        'desc': 'Specify requirements relating to the type of data, ' +
-        'the age of data, geographical representation, temporal ' +
-        'representation, and technological representation, as applicable.'
+        'label': 'B.1.3 Existing Data Sources',
+        'desc': '''Identify the source(s) for the existing data. This
+                   information can be presented as a table that includes the
+                   rationale for selecting the source(s) identified. You will
+                   need to discuss if the data sources have well-documented
+                   QA/QC procedures. If a data set is considered “higher
+                   quality” than another, the rationale for this decision
+                   should be documented.'''
     },
     'b1_4': {
-        'label': 'B.1.4 Databases, Maps, Literature',
-        'desc': 'Identify databases, maps and literature, and list ' +
-        'as applicable to the research effort:(1) Information and ' +
-        'data used to site or time sampling events (meteorology, ' +
-        'geology, etc.);(2) Anecdotal or other information ' +
-        'triggering the study;(3) Toxicity, exposure, and ' +
-        'environmental fate data;(4) Models and their ' +
-        'output;(5) Census data;(6) GIS data.'
-    },
-    'b1_5': {
-        'label': 'B.1.5 Non-Quality Constraints',
-        'desc': 'Identify any non-quality constraints on the ' +
-                'Existing Data and Information that affect its use in ' +
-                'the research ' +
-                'effort (e.g., legal, programmatic, privacy/ ' +
-                'confidentiality (i.e., is it proprietary or CBI)).If ' +
-                'supporting an office, region or program check on ' +
-                'applicability of the project/decision, examples may ' +
-                'include: CAA Credible Evidence Revisions (FR 62:36, ' +
-                'Feb. 24, 1997) or Federal Rule of Evidence 702.).'
+        'label': 'B.1.4 Data Gathering Method(s)',
+        'desc': '''Describe the planning process for data gathering.
+                   Systematic Review of literature can be employed and
+                   described here.'''
     },
     'b2_1': {
-        'heading': 'B.2 DATA COLLECTION AND EVALUATION',
-        'label': 'B.2.1 Existing Data Sources',
-        'desc': 'Identify the source(s) for the Existing Data and ' +
-                'Information.  ' +
-                'Describe the planning process for data gathering and ' +
-                'how the project ensures that data or information collected ' +
-                'are of sufficient quality to satisfy the ' +
-                'needs of the research effort.'
+        'heading': 'B.2 DATA EVALUATION, CURATION, AND USE',
+        'label': 'B.2.1 Data Source Preservation',
+        'desc': '''Describe the process used to maintain the original data
+                   sources. For example, how and where are journal articles,
+                   reports, databases, etc. saved or preserved.'''
     },
     'b2_2': {
-        'label': 'B.2.2 Criteria for Acceptance or Rejection',
-        'desc': 'Describe the process for acceptance/ rejection and ' +
-                'inclusion/ exclusion of Existing Data and Information' +
-                'to support research ' +
-                'objectives (e.g., to exclude potential bias).'
+        'label': 'B.2.2 Data Cleaning',
+        'desc': '''Describe the operating process that takes place to clean
+                   the data of anomalies (i.e. spelling errors, missing values,
+                   improper entries, etc.).'''
     },
     'b2_3': {
-        'label': 'B.2.3 Rational Selection of Existing Data',
-        'desc': 'Discuss the rationale for selecting the source(s) ' +
-                'identified.  If a hierarchy of sources exists for the ' +
-                'gathering of Existing Data and Information, specify ' +
-                'that hierarchy.'
+        'label': 'B.2.3 Data Selectivity',
+        'desc': '''Describe the acceptance criteria for the selection or
+                   omission of data (or data sets) and then describe the
+                   process (including documentation) of the acceptance
+                   criteria. (e.g., using EPA's five General Assessment
+                   Factors or using measurement data criteria such as accuracy,
+                   precision, representativeness, completeness, and
+                   comparability). See References.'''
     },
     'b2_4': {
-        'label': 'B.2.4 SOPs Determine Quality of Data',
-        'desc': 'Describe the procedures for determining the quality of ' +
-                'the Existing Data and Information. Identify criteria for ' +
-                'evaluating data ' +
-                'or information quality (e.g., using EPA\'s five General ' +
-                'Assessment Factors or using measurement data criteria such ' +
-                'as accuracy, precision, representativeness, completeness, ' +
-                'and comparability).Note: Existing published data from ' +
-                'sources such as governmental databases which have ' +
-                'well-documented QA/QC procedures may not require ' +
-                'additional evaluation for quality.'
+        'label': 'B.2.4 Data Quality',
+        'desc': '''Describe the procedures for determining the
+                   quality of the existing data.'''
     },
     'b2_5': {
-        'label': 'B.2.5 Disclaimer Existing Data',
-        'desc': 'If the quality of the Existing Data and Information ' +
-                'will not be evaluated by EPA, state this in the QAPP and ' +
-                'require one of the following disclaimer statements to be ' +
-                'added to any research product requiring clearance:EPA ' +
-                'is distributing this information solely as a public ' +
-                'service. [Insert name of information source] is ' +
-                'responsible for the quality of this information. EPA\'s ' +
-                'distribution of this information does not represent or ' +
-                'imply endorsement by EPA.or;The research presented ' +
-                'was not performed or funded by EPA and was not subject to ' +
-                'EPA\'s quality system requirements. The views expressed in ' +
-                'this [article/presentation/poster] are those of the ' +
-                'author(s) and do not necessarily represent the views or ' +
-                'the policies of the U.S. Environmental Protection Agency.'
+        'label': 'B.2.5 Peer Review Status',
+        'desc': '''To what extent has independent peer review been conducted
+                   of the data set or study method and results, and how were
+                   the conclusions of this review taken into account?'''
     },
+    'b2_6': {
+        'label': 'B.2.6 Data/Information Format Conversion',
+        'desc': '''Describe the process of converting data (or information)
+                   from one format to another. Usually the format of a source
+                   data into the required format of a new destination
+                   system.'''
+    },
+    'b2_7': {
+        'label': 'B.2.7 Data Curation Process Verification',
+        'desc': '''Describe the existing verification process of the data
+                   curation activities including how and where these
+                   verifications are documented. Include how each of the
+                   described processes are documented that they have been
+                   completed.'''
+    },
+    'b2_8': {
+        'label': 'B.2.8 Research Use',
+        'desc': '''Describe how the existing data/information will be used in
+                   the research effort (e.g., augment or replace existing
+                   data/information, verify or validate
+                   existing data/information).'''
+    },
+    'b2_9': {
+        'label': 'B.2.9 Data Applicability/Usefulness',
+        'desc': '''How useful or applicable is the scientific, statistical, or
+                   economic theory applied in the study or data set to the
+                   Agency's intended use of the analysis?'''
+    },
+    'b2_10': {
+        'label': 'B.2.10 Usage Restraints',
+        'desc': '''What constraints are there on the usage of the information
+                   or data (e.g. legal, logistical, programmatic,
+                   privacy/confidentiality, language barriers, etc.'''
+    },
+
     'b3_1': {
         'heading': 'B.3 DATA MANAGEMENT AND DOCUMENTATION',
-        'label': 'B.3.1 Data Tracking and Storage',
-        'desc': 'Describe the process for documenting and tracking ' +
-                'sources used and the information that will be recorded for ' +
-                'the Existing Data and Information collected (e.g., data ' +
-                'source, originating organization, report title, type of ' +
-                'information, date).'
-    }
+        'label': 'B.3.1 Management Requirements',
+        'desc': '''Document the hardware, software, and personnel requirements
+                   for managing and incorporating existing data into the
+                   project.'''
+    },
+    'b3_2': {
+        'label': 'B.3.2 Data Storage',
+        'desc': '''Describe how data will be stored, shared, and secured'''
+    },
+    'b3_3': {
+        'label': 'B.3.3 Special Access/Storage Requirements',
+        'desc': '''Describe if existing data contains CBI or PII and address
+                   special agreements, special access certifications and
+                   storage requirements that apply'''
+    },
+    'b3_4': {
+        'label': 'B.3.4 Metadata Storage',
+        'desc': '''How and where will metadata be recorded? (i.e., data
+                   source, originating organization, report title,
+                   type of information) '''
+    },
+    'b3_5': {
+        'label': 'B.3.5 Translation Procedure(s)',
+        'desc': '''Describe procedures used to ensure that errors in
+                   translation are minimized'''
+    },
+    'b3_6': {
+        'label': 'B.3.6 Data Access Management',
+        'desc': '''Describe measures taken to prevent unauthorized or
+                   accidental editing of data, such as version control
+                   procedures and internal database audit logs'''
+    },
+    'b3_7': {
+        'label': 'B.3.7 Original Data Integrity',
+        'desc': '''Describe procedures used to ensure that existing data
+                   maintain their original integrity and quality as they are
+                   migrated into current project'''
+    },
+
+    'b4_1': {
+        'heading': 'B.4 DATA VERIFICATION AND VALIDATION',
+        'label': 'B.4.1 IV&V',
+        'desc': '''Describe the extent in which there has been independent
+                   verification or validation of the data set or study method
+                   and result'''
+    },
+    'b4_2': {
+        'label': 'B.4.2 IV&V Results',
+        'desc': '''Describe where results of the independent reviews of the
+                   data set are documented'''
+    },
+    'b4_3': {
+        'label': 'B.4.3 IV&V Corrective Action',
+        'desc': '''Describe how the corrective action process of the
+                   independent reviews of the data sets occur and how these
+                   corrective actions are documented'''
+    },
+    'b4_4': {
+        'label': 'B.4.4 Mathematical/Statistical Procedures',
+        'desc': '''Discuss any mathematical or statistical procedures (such
+                   as outlier analyses or goodness-of-fit tests) that will
+                   identify whether individual data values within existing
+                   data sets should be rejected, transformed, or otherwise
+                   qualified before any statistical analysis'''
+    },
+    'b4_5': {
+        'label': 'B.4.5 Data Validation Procedures',
+        'desc': '''Describe any data validation procedures to be applied to
+                   the existing data to ensure the use of accurate and
+                   representative project data that are fit-for-purpose
+                   in addressing the research question'''
+    },
+    'b4_6': {
+        'label': 'B.4.6 Cross-Validation',
+        'desc': '''Describe if any cross validation is used. Cross-validation
+                   is a resampling procedure that is a useful technique when
+                   the goal is either model prediction accuracy (minimizing
+                   prediction error) or determining the right model for
+                   interpretation.  For example: cross validation can be used
+                   to evaluate the accuracy of models on a limited data
+                   sample'''
+    },
 }
 
 # ########################################################################
@@ -1204,6 +1209,6 @@ SECTION_B_INFO = {
     "Model Application": MODEL_APPLICATION,
     "Measurements": MEASUREMENTS_AND_MONITORING,
     "Analytical Methods": ANALYTICAL_METHODS,
-    "Cell Culture Models": CELL_CULTURE_METHODS,
-    "Animal Subjects": ANIMAL_SUBJECTS
+    # "Cell Culture Models": CELL_CULTURE_METHODS,
+    "Animal Cell Studies": ANIMAL_CELL
 }
