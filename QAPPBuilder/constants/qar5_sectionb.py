@@ -720,166 +720,285 @@ MEASUREMENTS_AND_MONITORING = {
 MODEL_APPLICATION = {
     'b1_1': {
         'heading': 'B.1 MODEL SPECIFICATION',
-        'label': 'B.1.1 Conceptual Model',
-        'desc': 'Describe the conceptual model, including key ' +
-                'processes, system compartments, system boundaries, ' +
-                'temporal and spatial scales, and fluxes into and ' +
-                'out of the problem domain.'
+        'label': 'B.1.1 Computational Model Description',
+        'desc': '''Describes the computational (computer-based) model being
+                   developed, applied, and used, including but not limited to,
+                   the underlying scientific assumptions of the model, the key
+                   processes being simulated/implemented by the model, the
+                   critical pathways and processes being implemented in the
+                   model, and the environmental and system boundaries of the
+                   model.'''
     },
     'b1_2': {
-        'label': 'B.1.2 Modeling Analysis',
-        'desc': 'Describe how the modeling analysis fits into a larger ' +
-                'project and its relationship to other efforts with ' +
-                'separate QAPPs (if applicable).'
+        'label': 'B.1.2 Model Integration',
+        'desc': '''Describes how the model/modeling tool fits into a larger
+                   research project, and its relationship to other research
+                   efforts that may have separate QAPPs (if applicable).
+                   Describes how the model (or models) supports the project
+                   objectives of the other research projects is related to.
+                   Include, by reference, other QAPPs if there is a
+                   relationship to related research efforts (e.g., field or
+                   lab studies, software/model development, or model
+                   application, etc.).'''
     },
+    # #####################################
     'b2_1': {
         'heading': 'B.2 MODEL SELECTION',
         'label': 'B.2.1 Model Functionality Requirements',
-        'desc': 'Identify requirements for model functionality, e.g., ' +
-                'accuracy, spatial and/or temporal discretization, ' +
-                'run time, linkage to other models, etc.'
+        'desc': '''Identifies requirements for:
+                   • (computer) model functionality, e.g., input formats, types,
+                     and applicable values/ranges;
+                   • other models/systems that submit inputs into the model,
+                   • speed of model operation/processes,
+                   • required accuracy of model inputs, output formats, types,
+                     and applicable ranges/values,
+                   • required accuracy of model outputs,
+                   • time required to initiate model operation/run-time,
+                   • time required for each model operational cycle and/or time
+                     required to stop model operation/run-time,
+                   • other models/systems that the model submits its outputs
+                     into, etc.
+                   Depending on which model or scope of model application,
+                   some of the above questions may not apply or you may not
+                   yet know.  See section B6 for additional guidance.
+                '''
     },
     'b2_2': {
-        'label': 'B.2.2 Hardware OS Specs',
-        'desc': 'Specify computer hardware and operating system ' +
-                'requirements, if applicable.'
+        'label': 'B.2.2 Hardware and OS Requirements',
+        'desc': '''Specifies computer hardware and operating system
+                   requirements necessary to run the model, (e.g., hard disk
+                   size, internal operating system required [e.g., Linux,
+                   MacOS, Windows 10, etc.], computer operating system "word"
+                   size [e.g., 32-bit, 64-bit, etc.], memory size, internal
+                   processor clock speed, etc.).'''
     },
     'b2_3': {
-        'label': 'B.2.3 SOPs Model Evaluation',
-        'desc': 'Describe model evaluation procedures, such as ' +
-                'comparisons to other available models, assessment of ' +
-                'previous applications of the model, and any ' +
-                'validation/verification activities.'
+        'label': 'B.2.3 Source Code Compilation',
+        'desc': '''If the model is required to convert its source code into
+                   virtual machine code, assembly code or other low-level code
+                   (i.e., compilers), QAPP describes how this process is
+                   implemented and provide an appropriate diagram for the
+                   model.
+                   If applicable, the QAPP should state where the compiler
+                   options influence how the model will be developed, applied
+                   and evaluation, the source code will specify (or comment)
+                   which compiler settings are used and how this influences
+                   the code.'''
     },
     'b2_4': {
-        'label': 'B.2.4 I/O Model Coupling',
-        'desc': 'Employ more than one model loosely coupled together ' +
-                '(i.e., output from one or more models serving as input to ' +
-                'another model), provide an overview of the system design, ' +
-                'including a diagram showing transfer of data between ' +
-                'models.  (For projects that involve model integration ' +
-                '(e.g., embedding one model within another or tight ' +
-                'coupling of two or more models), see "Requirements ' +
-                'for Model Development Projects" for additional guidance.)'
+        'label': 'B.2.4 Multi-Model Integration',
+        'desc': '''If applicable, employs more than one model loosely coupled
+                   together (i.e., the output from one or more models serving
+                   as input to another model). Provide a written overview of
+                   the system design, including a system diagram, and a
+                   diagram displaying the transfer of data between models
+                   (eg., WRF integration with CMAQ).
+                   For projects that involve model integration (e.g.,
+                   embedding one model within another or tight coupling of two
+                   or more models, and/or sequentially linking models) or use
+                   of different model algorithms, provides a written
+                   description of the relationships/interactions along with
+                   applicable process/system diagrams.'''
     },
     'b2_5': {
-        'label': 'B.2.5 Model Assumptions',
-        'desc': 'Discuss the appropriateness of model assumptions in ' +
-                'the context of the project objectives.'
+        'label': 'B.2.5 Assumptions and Constraints',
+        'desc': '''Describes how model assumptions, constraints, and applicable
+                   model domain affects the model outputs or results
+                   (eg., how are inputs processed).'''
     },
+    # #####################################
     'b3_1': {
-        'heading': 'B.3 MODEL PARAMETERIZATION AND CALIBRATION',
-        'label': 'B.3.1 Model Input Parameters',
-        'desc': 'List or describe the model input parameters ' +
-                'that are needed for the analysis. '
+        'heading': 'B.3 DATA SELECTION AND VALIDATION',
+        'label': 'B.3.1 Data/IO Validation',
+        'desc': '''For models that require validation of input, output, and/or
+                   internal database/data values, QAPP lists, or describes
+                   the model input, internal, and/or output parameters
+                   required for the analysis. Also, describes any parameter
+                   estimation methods (if applicable). QAPP provides
+                   information on metadata standards used for data inputs
+                   into and data outputs from the model. QAPP provides
+                   information on any Software Data Management Plan (SDMP)
+                   developed for the model and its associated data. QAPP
+                   provides plans or process for making data publicly
+                   available (if applicable). '''
     },
     'b3_2': {
-        'label': 'B.3.2 Data Sources',
-        'desc': 'Identify potential data sources of measured/observed ' +
-                'values for model parameters that will be obtained ' +
-                'from secondary sources.'
+        'label': 'B.3.2 Model I/O Parameters',
+        'desc': '''Models that require validation, list, or describe the model
+                   input or output parameters needed for the analysis.
+                   Also, please describe any parameter estimation methods
+                   (if applicable).'''
     },
     'b3_3': {
-        'label': 'B.3.3 Assessment Criteria',
-        'desc': 'State the criteria that will be used to assess whether ' +
-                'or not the reported data are of sufficient quality.'
+        'label': 'B.3.3 Measured/Observed Data',
+        'desc': '''Identifies and specifies potential sources of
+                   measured/observed data values for model parameters that are
+                   obtained from secondary sources (i.e., sources external to
+                   the model) or derived data (eg., output data used as input
+                   data).'''
     },
     'b3_4': {
-        'label': 'B.3.4 Outliers | Missing Data',
-        'desc': 'Describe procedures for identifying outliers and ' +
-                'handling outliers or missing data (imputation ' +
-                'procedures). (See "Requirements for Projects Using ' +
-                'Existing Data" for additional guidance.)'
+        'label': 'B.3.4 Outliers',
+        'desc': '''Describes procedures for identifying input, internal,
+                   and/or output data outliers and the process(es) for
+                   handling outliers or missing data ([missing] data
+                   imputation procedures). Based upon what you defined for
+                   Section B2, state how you will ensure you meet this
+                   specification, stay within a certain range or limitations?
+                   (See “Requirements for Projects Using Existing Data” for
+                   additional guidance [provide document designation/number
+                   and data or remove this reference].)'''
     },
     'b3_5': {
-        'label': 'B.3.5 Tools or Algorithms',
-        'desc': 'Identify the tools or algorithms that will be used to ' +
-                'estimate the parameter values, or model parameters that ' +
-                'will be computationally estimated.  '
+        'label': 'B.3.5 Parameter Estimates',
+        'desc': '''Identifies the process(es) that will be used to estimate
+                   the parameter values or model parameters that will be
+                   computationally calculated.'''
     },
     'b3_6': {
-        'label': 'B.3.6 Rationale',
-        'desc': 'Discuss the rationale for using the selected estimation ' +
-                'approaches and characterize the range of applicability ' +
-                'of these estimation approaches.'
+        'label': 'B.3.6 Estimation Approaches',
+        'desc': '''Discusses the rationale (or justification) for using the
+                   selected estimation approaches and characterize the range
+                   of applicability of these estimation approaches.'''
     },
     'b3_7': {
-        'label': 'B.3.7 Calibration Dataset ',
-        'desc': 'Identify potential sources for a calibration dataset ' +
-                'for model parameters that will be estimated ' +
-                'through model calibration.  '
+        'label': 'B.3.7 Data Sources',
+        'desc': '''If applicable, identifies the potential sources of data
+                   that are used to assess the model output.'''
     },
     'b3_8': {
-        'label': 'B.3.8 Criteria',
-        'desc': 'State the criteria that will be used to assess whether ' +
-                'or not the dataset is of sufficient quality.  '
+        'label': 'B.3.8 Measured/Observed Data Sources',
+        'desc': '''Identifies measured/observed data sources that will be
+                   used to validate the model output. Indicates the criteria
+                   that will be used to access whether the output results or
+                   the data sets meet the written data quality objectives
+                   (DQOs). Describes procedures for identifying and handling
+                   data outliers or missing data. State why you decided to
+                   use this data/dataset.'''
     },
     'b3_9': {
-        'label': 'B.3.9 Calibration SOPs',
-        'desc': 'Describe the calibration procedures (e.g., ' +
-                'weighting functions, optimization algorithms, etc.).'
+        'label': 'B.3.9 Validation Procedures',
+        'desc': '''Describes the validation procedures to determine if the
+                   model output is appropriate (review or post process the
+                   output data). Examples include  weighting functions,
+                   optimization algorithms, etc.
+                   Describes how are the model outputs post-processed to
+                   provide data that can be validated and/or analyzed?
+                   Example of post-process of model outputs could include be
+                   so it can be used for data analysis (i.e., SAS, R, Python,
+                   Excel), to fit a certain format or fit into
+                   another model.'''
     },
     'b3_10': {
-        'label': 'B.3.10 Goodness-of-fit Criteria',
-        'desc': 'State the goodness-of-fit criteria for ' +
-                'acceptance of the parameter value.'
+        'label': 'B.3.10 Model Output Acceptance',
+        'desc': '''States the statistical "goodness-of-fit" criteria for
+                   acceptance of the model output.'''
     },
+    # #####################################
     'b4_1': {
-        'heading': 'B.4 MODEL PERFORMANCE ASSESSMENT',
-        'label': 'B.4.1 V&V | IV&V SOPs',
-        'desc': 'Describe any procedures that will be used to validate ' +
-                'the results of the modeling analysis, e.g. through ' +
-                'comparisons of the model predictions against observed ' +
-                'data collected in field or laboratory studies.'
+        'heading': 'B.4 MODEL PERFORMANCE ASSESSMENT AND VALIDATION',
+        'label': 'B.4.1 Results Review and Assessment',
+        'desc': '''Describes the procedures that will be used to review and
+                   assess the results of the modeling analysis, e.g., through
+                   comparisons of the model predictions against observed data
+                   collected in field or laboratory studies, output for other
+                   models, data from other known datasets, etc.
+                   Example: We will derive heat index from the WRF output
+                   using XXX algorithm (reference), and we will compare it to
+                   heat index derived from observational data taken from
+                   /source/ and computed with the same algorithm.'''
     },
     'b4_2': {
-        'label': 'B.4.2  V&V | IV&V Source Code',
-        'desc': 'Describe any verification procedures that will be used ' +
-                'to assess whether these programs are performing as ' +
-                'expected, if additional code or scripts are to be ' +
-                'developed (e.g., to create model input files, process ' +
-                'model output, or couple models together).'
+        'label': 'B.4.2  Assessment with Expected Results',
+        'desc': '''Describes any procedures that will be used to assess whether
+                   these model assessment programs are
+                   performing as expected.'''
     },
     'b4_3': {
-        'label': 'B.4.3 Model Parameter Sensitivity Analysis',
-        'desc': 'Describe any procedures that will be used for ' +
-                'model parameter sensitivity analysis.'
+        'label': 'B.4.3 Additional Code/Files',
+        'desc': '''Provides a listing(s) of any additional build code, make
+                   files, test code, validation code, or scripts that are
+                   developed to create the model, its associated model input
+                   files, process the model output, or couple multiple models
+                   together.'''
     },
     'b4_4': {
-        'label': 'B.4.4 Parameter Uncertainty',
-        'desc': 'Describe any procedures that will be used to evaluate ' +
-                'the impact of parameter uncertainty on model results.'
+        'label': 'B.4.4 Version Control',
+        'desc': '''Describes how version control will be implemented for
+                   build code, make files, test code, validation code, or
+                   scripts, including the file locations and the version
+                   control process being used (e.g., Bitbucket, GitHub/Jira,
+                   or other management software), and the SOPs that implement
+                   the use of these software version control processes.'''
     },
     'b4_5': {
-        'label': 'B.4.5 Tuning Parameters | Spatial/Temporal Discretization',
-        'desc': 'Describe any procedures that will be used to assess the ' +
-                'impact of tuning parameters or spatial/temporal ' +
-                'discretization on model results.'
+        'label': 'B.4.5 Parameter Sensitivity Analysis',
+        'desc': '''Describes and documents the procedures used to accomplish
+                   model (output) parameter sensitivity analysis, and/or how
+                   the issues of errant values and/or excursions beyond
+                   expected range values are addressed in the model output
+                   (analysis) runs.'''
     },
+    'b4_6': {
+        'label': 'B.4.6 Parameter Uncertainty',
+        'desc': '''Describes the procedures used to evaluate the impact of
+                   model parameter uncertainty on model (output) results
+                   and/or what level of uncertainty is acceptable for the
+                   model analysis.'''
+    },
+    'b4_7': {
+        'label': 'B.4.7 Tuning Parameters | Spatial/Temporal Discretization',
+        'desc': '''Describe the procedures used to assess the impact of
+                   adjusting the values of model variables or spatial/temporal
+                   discretization on model results.  Example: simulation fails
+                   or error alerts.'''
+    },
+    'b4_8': {
+        'label': 'B.4.8 Model Output Evaluation',
+        'desc': '''Describe model output evaluation procedures, including
+                   but not limited to: comparing measured results, datasets,
+                   and other available models, assessment of previous
+                   applications of the model, and any validation/verification
+                   activities.'''
+    },
+    # #####################################
     'b5_1': {
         'heading': 'B.5 INTERPRETATION OF MODEL RESULTS',
-        'label': 'B.5.1 Statistical SOPs',
-        'desc': 'Describe any statistical procedures that will be used ' +
-                'to summarize the model output.  '
+        'label': 'B.5.1 SOPs',
+        'desc': '''Describes any procedures that are used to summarize the
+                   model output (e.g., statistical analysis, graphical
+                   analysis, etc.)'''
     },
     'b5_2': {
         'label': 'B.5.2 Data Transformations',
-        'desc': 'Describe any data transformations that will be applied ' +
-                'to the model output (e.g., for scaling or bias adjustment)'
+        'desc': '''Describes the data transformations that are applied to
+                   the model output (e.g., to adjust for scaling, bias,
+                   location, time, etc.)'''
     },
+    # #####################################
     'b6_1': {
         'heading': 'B.6 DOCUMENTATION',
         'label': 'B.6.1 I/O Requirements',
-        'desc': 'Specify the requirements for project documentation ' +
-                '(e.g., model input/output files; results of model ' +
-                'performance assessment; scripts or source code; ' +
-                'post-processed model output).'
+        'desc': '''Provides location of relevant model files and documents
+                   (e.g., model input/output files and databases/datasets;
+                   results of model performance assessment; scripts or source
+                   code; post-processed model output, design documents,
+                   test documents, user/operational manuals, etc. ).'''
     },
     'b6_2': {
-        'label': 'B.6.2 Amendments to QAPP',
-        'desc': 'Identify QAPP elements that may need to be ' +
-                'updated as the project moves forward and describe the ' +
-                'procedures for QAPP amendment and distribution.'
+        'label': 'B.6.2 SCM',
+        'desc': '''Describes how the code repositories used to develop the
+                   model (e.g., Bitbucket, GitHub/Jira, etc.) are organized
+                   and implemented in the software development environment
+                    and the operational software (production) environment.'''
+    },
+    'b6_3': {
+        'label': 'B.6.3 Amendments to QAPP',
+        'desc': '''Identifies QAPP elements that may need to be updated,
+                   and where information will be documented, as the project
+                   evolves and new data or methods are identified. Describes
+                   the procedures for QAPP amendment and the QAPP
+                   distribution.'''
     }
 }
 
