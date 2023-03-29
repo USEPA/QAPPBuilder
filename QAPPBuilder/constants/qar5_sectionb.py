@@ -1013,7 +1013,164 @@ MODEL_APPLICATION = {
 # ########################################################################
 # ########################################################################
 
-SOC_SCI = {}
+# Social Science/Qualitative Studies
+SOC_SCI = {
+    'b1_1': {
+        'heading': 'B.1 EXPERIMENTAL DESIGN',
+        'label': 'B.1.1 Approaches and Perspectives',
+        'desc': '''Describe the approaches or perspectives used or
+                   assessed in the project including:
+                   - interviews (open, semi-structured or structured)
+                   - observer or participant observer (overt or covert)
+                   - focus groups, enabling/elicitation techniques
+                   - self-reports (diaries, surveys)'''
+    },
+    'b1_2': {
+        'label': 'B.1.2 Planned Events',
+        'desc': '''Describe any events that will be held to support data
+                   collection for the project.'''
+    },
+    'b1_3': {
+        'label': 'B.1.3 Research Objectives',
+        'desc': '''Discuss how approaches and events will address research
+                   objectives.'''
+    },
+    'b1_4': {
+        'label': 'B.1.4 Sampling Design',
+        'desc': '''Describe the sampling design that will be used (i.e.,
+                   purposive, quota, snowball etc.) and why it was chosen.'''
+    },
+    # ###############################
+    'b2_1': {
+        'heading': 'B.2 DATA COLLECTION',
+        'label': 'B.2.1 Data Collection Details',
+        'desc': '''Describe the data collection methods in detail: locations,
+                   time of year, responsibilities of participants, interview
+                   or discussion guides. Be explicit.'''
+    },
+    'b2_2': {
+        'label': 'B.2.2 Types of Observations/Data',
+        'desc': '''Describe the types of observations/data that will be
+                   collected, and the criteria used for categorical
+                   observations.'''
+    },
+    'b2_3': {
+        'label': 'B.2.3 Materials for Participants',
+        'desc': '''Describe all materials that will be distributed to
+                   participants in the course of the project.'''
+    },
+    'b2_4': {
+        'label': 'B.2.4 Materials Bias Minimization',
+        'desc': '''Describe how project materials will be presented (i.e.
+                   scripts) and distributed to participants to minimize
+                   bias.'''
+    },
+    'b2_5': {
+        'label': 'B.2.5 Data Collection Preparation',
+        'desc': '''Describe the preparation for data collection events and
+                   how termination of data collection will be decided
+                   (saturation, time limit, resources)'''
+    },
+    'b2_6': {
+        'label': 'B.2.6 Confidentiality',
+        'desc': '''Describe how confidentiality will be maintained for the
+                   chosen data collection method.'''
+    },
+    'b2_7': {
+        'label': 'B.2.7 Information Collection and Documentation',
+        'desc': '''Describe the information to be collected in field notes
+                   and the medium used for documentation (i.e. data sheets,
+                   field notebooks, iPads,).'''
+    },
+    'b2_8': {
+        'label': 'B.2.8 Standard Coding',
+        'desc': '''Describe any standard coding that will be used in
+                   thematic analysis of responses.'''
+    },
+    'b2_9': {
+        'label': 'B.2.9 Non-direct Measures',
+        'desc': '''Describe any non-direct measures (literature searches,
+                   databases, etc) that will be utilized including criteria
+                   and limitations for use.'''
+    },
+    'b2_10': {
+        'label': 'B.2.10 Functional Criteria for A/V Equipment',
+        'desc': '''Provide functional criteria and checks for any audio and/or
+                   visual recording equipment used to document activities or
+                   otherwise collect data and steps to be taken if audio
+                   equipment fails.'''
+    },
+    # ###############################
+    'b3_1': {
+        'heading': 'B.3 DATA INTEGRITY',
+        'label': 'B.3.1 Electronic Data Documentation and Preservation',
+        'desc': '''Describe procedures for documenting and preserving
+                   electronic and/or hard copy data gathered at an event.'''
+    },
+    'b3_2': {
+        'label': 'B.3.2 Recordings Integrity',
+        'desc': '''Describe steps to ensure the integrity of all recordings.'''
+    },
+    'b3_3': {
+        'label': 'B.3.3 Recording Transcript Accuracy Verification',
+        'desc': '''Describe how the accuracy of any recording transcripts
+                   will be verified.'''
+    },
+    'b3_4': {
+        'label': 'B.3.4 Traceability',
+        'desc': '''Describe steps to be taken to ensure traceability of
+                   field notes, video-audio recordings, computer files.'''
+    },
+    'b3_5': {
+        'label': 'B.3.5 Sampling Bias',
+        'desc': '''Describe steps to be taken to address the potential
+                   for bias in sampling methods.'''
+    },
+    'b3_6': {
+        'label': 'B.3.6 Incomplete Data',
+        'desc': '''Describe how incomplete data will be evaluated
+                   (i.e participant knows little about topic or incomplete
+                   interviews).'''
+    },
+    # ###############################
+    'b4_1': {
+        'heading': 'B.4 DATA MANAGEMENT AND ANALYSIS',
+        'label': 'B.4.1 Field Note Expanding/Decoding',
+        'desc': '''Describe the process and time-frame for expanding/decoding
+                   the field notes.'''
+    },
+    'b4_2': {
+        'label': 'B.4.2 Field Note Identification',
+        'desc': '''Describe the identification scheme that will be used to
+                   link the field notes with the expanded version.'''
+    },
+    'b4_3': {
+        'label': 'B.4.3 Types of Analysis',
+        'desc': '''Describe the type of analysis that will be performed
+                   (narrative analysis, interpretive phenomenological
+                   analysis, thematic analysis, etc.).'''
+    },
+    'b4_4': {
+        'label': 'B.4.4 Outliers, Goodness-of-fit, and Transformations',
+        'desc': '''Describe any procedures that will be used to identify
+                   outliers, goodness of fit, transformations, etc.'''
+    },
+    'b4_5': {
+        'label': 'B.4.5 Quantitative Treatments',
+        'desc': '''Describe any quantitative treatments of data, including
+                   the mathematical and statistical procedures.'''
+    },
+    'b4_6': {
+        'label': 'B.4.6 Statistical Software',
+        'desc': '''Provide the reference and version on any statistical
+                   software that will be used.'''
+    },
+    'b4_7': {
+        'label': 'B.4.7 Data Use Limitations',
+        'desc': '''Describe how any limitations on the use of data will be
+                   identified and reported.'''
+    }
+}
 
 # ########################################################################
 # ########################################################################
