@@ -717,6 +717,13 @@ MEASUREMENTS_AND_MONITORING = {
 # ########################################################################
 # ########################################################################
 
+# TODO: Make sure all references to this template are removed:
+# MODEL_DEVELOPMENT
+
+# ########################################################################
+# ########################################################################
+# ########################################################################
+
 MODEL_APPLICATION = {
     'b1_1': {
         'heading': 'B.1 MODEL SPECIFICATION',
@@ -999,170 +1006,6 @@ MODEL_APPLICATION = {
                    evolves and new data or methods are identified. Describes
                    the procedures for QAPP amendment and the QAPP
                    distribution.'''
-    }
-}
-
-# ########################################################################
-# ########################################################################
-# ########################################################################
-
-MODEL_DEVELOPMENT = {
-    'b1_1': {
-        'heading': 'B.1 MODEL DESIGN',
-        'label': 'B.1.1 Conceptual Model',
-        'desc': 'Describe the conceptual model, including key ' +
-                'processes, system compartments, system boundaries, ' +
-                'temporal and spatial scales, and fluxes into ' +
-                'and out of the problem domain.'
-    },
-    'b1_2': {
-        'label': 'B.1.2 Existing model(s)',
-        'desc': 'If the project builds upon a previously developed ' +
-                'model, describe the existing model and identify what ' +
-                'modifications and enhancements are needed to meet ' +
-                'project objectives.'
-    },
-    'b1_3': {
-        'label': 'B.1.3 Model Development Relationship',
-        'desc': 'Describe how the model development fits into a larger ' +
-                'project and its relationship to related efforts (e.g., ' +
-                'field or lab studies, software or application ' +
-                'development, etc) with separate QAPPs, if applicable.'
-    },
-    'b2_1': {
-        'heading': 'B.2 MODEL DERIVATION',
-        'label': 'B.2.1 Mathematical Representation',
-        'desc': 'Describe the mathematical representation of the ' +
-                'processes of interest. For mechanistic models, state ' +
-                'the governing equation and describe what each term in ' +
-                'the equation represents. For empirical/statistical models, ' +
-                'identify the attributes that will be considered for ' +
-                'inclusion in the model based on their hypothesized ' +
-                'effect on the modeled outcome.'
-    },
-    'b2_2': {
-        'label': 'B.2.2 Statistical | Numerical Approaches',
-        'desc': 'Describe the statistical and/or numerical approaches ' +
-                'that will be used to derive, implement, ' +
-                'and parameterize/calibrate the model.'
-    },
-    'b2_3': {
-        'label': 'B.2.3 Empirical | Statistical Models',
-        'desc': 'For empirical/statistical models (e.g., regression, ' +
-                'classification or clustering), describe the ' +
-                'calibration/training dataset that will be used ' +
-                'to derive fixed model parameters (e.g., ' +
-                'regression coefficients or weights).'
-    },
-    'b2_4': {
-        'label': 'B.2.4 Potential Data Sources',
-        'desc': 'Identify potential data sources of measured/observed ' +
-        'values. State the criteria that will be used to assess ' +
-        'whether or not the reported data are of sufficient ' +
-        'quality.  Describe procedures for identifying outliers ' +
-        'and handling outliers or missing data (imputation procedures).'
-    },
-    'b2_5': {
-        'label': 'B.2.5 Calibration Procedures',
-        'desc': 'Describe the calibration procedures (e.g., weighting ' +
-                'functions, optimization algorithms, etc.), and state ' +
-                'the goodness-of-fit criteria for acceptance of ' +
-                'the model parameter value.'
-    },
-    'b2_6': {
-        'label': 'B.2.6 Numerical Errors Checks',
-        'desc': 'For mechanistic models, describe any procedures that ' +
-                'will be used to check for numerical errors (e.g., ' +
-                'checks for mass balance errors or violations of ' +
-                'boundary conditions).'
-    },
-    'b3_1': {
-        'heading': 'B.3 VALIDATION, VERIFICATION, AND TESTING',
-        'label': 'B.3.1 Verification Procedures',
-        'desc': 'Describe the verification procedures that will be used ' +
-        'to assess whether model algorithms are performing as expected.'
-    },
-    'b3_2': {
-        'label': 'B.3.2 Validation Procedures',
-        'desc': 'Describe the validation procedures that will be used to ' +
-                'assess whether model results are representative ' +
-                'of measured or observed data.'
-    },
-    'b3_3': {
-        'label': 'B.3.3 Data Sources',
-        'desc': 'Identify potential data sources of measured/observed ' +
-                'values. State the criteria that will be used to assess ' +
-                'whether or not the reported data are of sufficient quality.'
-    },
-    'b3_4': {
-        'label': 'B.3.4 Outliers | Missing Data',
-        'desc': 'Describe procedures for identifying outliers and ' +
-                'handling outliers or missing data (imputation procedures).'
-    },
-    'b3_5': {
-        'label': 'B.3.5 Additional Testing',
-        'desc': 'Describe any additional testing that will be ' +
-                'conducted, e.g., comparison of model accuracy or ' +
-                'computational efficiency against existing models.'
-    },
-    'b3_6': {
-        'label': 'B.3.6 SOPs Model Parameter Sensitivity Analysis',
-        'desc': 'Describe any procedures that will be used for ' +
-                'model parameter sensitivity analysis.'
-    },
-    'b3_7': {
-        'label': 'B.3.7 SOPs Parameter Uncertainty',
-        'desc': 'Describe any procedures that will be used to evaluate ' +
-                'the impact of parameter uncertainty on model results'
-    },
-    'b3_8': {
-        'label': 'B.3.8 SOPs Tuning Parameters | ' +
-                 'Spatial/Temporal Discretization',
-        'desc': 'Describe any procedures that will be used to assess ' +
-                'the impact of tuning parameters or spatial/temporal ' +
-                'discretization on model results.'
-    },
-    'b3_9': {
-        'label': 'B.3.9 Peer Review Process',
-        'desc': 'Describe the level of internal and external peer ' +
-                'review that is needed for the model.'
-    },
-    'b4_1': {
-        'heading': 'B.4 DOCUMENTATION',
-        'label': 'B.4.1 Project Documentation',
-        'desc': 'Specify the requirements, format and location ' +
-                'for project documentation.'
-    },
-    'b4_2': {
-        'label': 'B.4.2 Calibration Datasets | SOPs',
-        'desc': 'Include model development documentation that may ' +
-                'include derivations of governing equations and ' +
-                'descriptions of calibration datasets and procedures.'
-    },
-    'b4_3': {
-        'label': 'B.4.3 I/O Data',
-        'desc': 'Include model performance assessment documentation ' +
-                'that may include model input/output files used for ' +
-                'verification, verification and testing; and quantitative ' +
-                'or qualitative analysis of model performance.'
-    },
-    'b4_4': {
-        'label': 'B.4.4 Source Code SCM',
-        'desc': 'Include a description of documentation related to ' +
-                'the development of scripts and/or source code to implement ' +
-                'the model should specify the programming environment and ' +
-                'version used, and identify any code repositories (e.g., ' +
-                'Bitbucket and GitHub) used to archive and document coding ' +
-                'issues and their resolution. If applicable, see ' +
-                '"Requirements for Software and Application Development ' +
-                'Projects" for additional QAPP requirements related the ' +
-                'development of software applications.'
-    },
-    'b4_5': {
-        'label': 'B.4.5 Disclaimers',
-        'desc': 'Describe how model assumptions, constraints and ' +
-                'applicability domain will be documented in associated ' +
-                'publications and user guidance materials.'
     }
 }
 
