@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-md-6">
+            <div class="col-md-12">
+                <h4>Project Leads</h4>
+            </div>
+        </div>
+        {% if not edit_message %}
+        <div class="col-md-6 mb-1">
+            <label class="col-sm-8 text-right">Manage Project Leads:</label>
+            <div class="col-sm-1 mr-2 float-right"><i onclick="addProjectLead({{object.id}})" class="fas fa-plus btn btn-sm btn-info"></i></div>
+            <div class="col-sm-1 mr-2 float-right"><i onclick="editProjectLead(this)" class="fas fa-edit btn btn-sm btn-warning lead" disabled></i></div>
+            <div class="col-sm-1 mr-2 float-right"><i onclick="removeProjectLead(this)" class="fas fa-minus btn btn-sm btn-danger lead" disabled></i></div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<table class="table table-bordered table-hover">
+    <caption>List of Project Leads</caption>
+    <thead class="table-secondary">
+        <tr>
+            <th scope="col">Name</th>
+        </tr>
+    </thead>
+    {% if project_leads_list %}
+    <tbody>
+        {% for lead in project_leads_list %}
+        <tr id="project_lead-{{lead.id}}" onclick="rowClick('project_lead-{{lead.id}}')">
+            <td scope="row">{{lead.name}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    {% else %}
+    <tr><td>No Project Leads have been added!</td></tr>
+    {% endif %}
+</table>

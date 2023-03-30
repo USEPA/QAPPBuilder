@@ -1,0 +1,162 @@
+﻿{% extends "main/base.html" %}
+{% block content %}
+{% load static %}
+
+    <div class="container">
+        {% include 'SectionA/header_footer_partial.html' %}
+        {% if save_success %}
+        <h3 id="save_success" class="text-success col-md-12 text-center">{{save_success}}</h3>
+        {% endif %}
+        {% if error_message%}
+        <h3 id="error_message" class="text-danger col-md-12 text-center">{{error_message}}</h3>
+        {% endif %}
+        <div class="border rounded p-3 row">
+            {% include 'EPA_QAPP_Header_Partial.html' %}
+            <div class="col-md-12">
+                <form enctype="multipart/form-data" action="/SectionA?qapp_id={{qapp_id}}" method="post" role="form" id="sectiona_form">
+                    {% csrf_token %}
+                    <div class="">
+                        <div class="form-group row hidden">{{form.qapp}}</div>
+
+                        <!------- Section A2 ------->
+                        <div class="form-group row">
+                            <label class="col-sm-3 control-label">
+                                {{form.a2.label}}
+                                <a tabindex="0" data-trigger="focus" data-container="body" class="text-info fa fa-info-circle"
+                                   role="button" data-toggle="popover" title="{{form.a2.label}}" data-placement="top"
+                                   data-content="{{SECTION_A_INFO.a2}}" onclick="delayRemoveFade()"></a>
+                            </label>
+                            <div class="col-sm-8">{{form.a2}}</div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 control-label">
+                                {{form.a2_keywords.label}}
+                            </label>
+                            <div class="col-sm-8">{{form.a2_keywords}}</div>
+                        </div>
+
+                        <!------- Section A3 ------->
+                        <div class="form-group row">
+                            <label for="" class="col-sm-3 control-label">{{form.a3.label}}</label>
+                            <div class="col-sm-8">{{form.a3}}</div>
+                        </div>
+
+                        <!------- Section A4 ------->
+                        <div class="form-group row">
+                            <label class="col-sm-3 control-label">
+                                {{form.a4.label}}
+                                <a tabindex="0" data-trigger="focus" data-container="body" class="text-info fa fa-info-circle"
+                                   role="button" data-toggle="popover" title="{{form.a4.label}}" data-placement="top"
+                                   data-content="{{SECTION_A_INFO.a4}}" onclick="delayRemoveFade()"></a>
+                            </label>
+                            <div class="col-sm-8">{{form.a4}}</div>
+                        </div>
+
+                        <!------- Section A4 Chart Upload ------->
+                        <div class="row mt-2">
+                            <div class="form-group col-sm-12">
+                                <label class="col-sm-3 control-label" for="id_a4_chart">{{form.a4_chart.label}}</label>
+                                <div class="col-sm-8">
+                                    {{form.a4_chart}}
+                                    <label class="custom-file-label" for="id_a4_chart">Select a file...</label>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!------- Section A5 ------->
+                        <div class="form-group row">
+                            <label class="col-sm-3 control-label">
+                                {{form.a5.label}}
+                                <a tabindex="0" data-trigger="focus"data-container="body" class="text-info fa fa-info-circle"
+                                   role="button" data-toggle="popover" title="{{form.a5.label}}" data-placement="top"
+                                   data-content="{{SECTION_A_INFO.a5}}" onclick="delayRemoveFade()"></a>
+                            </label>
+                            <div class="col-sm-8">{{form.a5}}</div>
+                        </div>
+
+                        <!------- Section A6 ------->
+                        <div class="form-group row">
+                            <label class="col-sm-3 control-label">
+                                {{form.a6.label}}
+                                <a tabindex="0" data-trigger="focus"data-container="body" class="text-info fa fa-info-circle"
+                                   role="button" data-toggle="popover" title="{{form.a6.label}}" data-placement="top"
+                                   data-content="{{SECTION_A_INFO.a6}}" onclick="delayRemoveFade()"></a>
+                            </label>
+                            <div class="col-sm-8">{{form.a6}}</div>
+                        </div>
+
+                        <!------- Section A7 ------->
+                        <div class="form-group row">
+                            <label class="col-sm-3 control-label">
+                                {{form.a7.label}}
+                                <a tabindex="0" data-trigger="focus"data-container="body" class="text-info fa fa-info-circle"
+                                   role="button" data-toggle="popover" title="{{form.a7.label}}" data-placement="top"
+                                   data-content="{{SECTION_A_INFO.a7}}" onclick="delayRemoveFade()"></a>
+                            </label>
+                            <div class="col-sm-8">{{form.a7}}</div>
+                        </div>
+
+                        <!------- Section A8 ------->
+                        <div class="form-group row">
+                            <label class="col-sm-3 control-label">
+                                {{form.a8.label}}
+                                <a tabindex="0" data-trigger="focus"data-container="body" class="text-info fa fa-info-circle"
+                                   role="button" data-toggle="popover" title="{{form.a8.label}}" data-placement="top"
+                                   data-content="{{SECTION_A_INFO.a8}}" onclick="delayRemoveFade()"></a>
+                            </label>
+                            <div class="col-sm-8">{{form.a8}}</div>
+                        </div>
+
+                        <!------- Section A9 ------->
+                        <div class="form-group row">
+                            <label class="col-sm-3 control-label">{{form.a9.label}}</label>
+                            <div class="col-sm-8">
+                                {{form.a9}}
+                                <button type="button" class="btn btn-sm btn-info mb-2 col-sm-12"
+                                        onclick="location.href='/existingdata'">
+                                    GO TO QAPP Builder Tool
+                                </button>
+                            </div>
+                        </div>
+
+                        <!------- Section A9 Drive Path ------->
+                        <div class="form-group row">
+                            <label class="col-sm-3 control-label">{{form.a9_drive_path.label}}</label>
+                            <div class="col-sm-8">{{form.a9_drive_path}}</div>
+                        </div>
+
+                        <!-- Section B Type Selection -->
+                        <div class="form-group row">
+                            <label class="col-sm-3 control-label">{{form.sectionb_type.label}}</label>
+                            <div class="col-sm-8">{{form.sectionb_type}}</div>
+                        </div>
+
+                        <div class="row justify-content-center">
+                            <button type="submit" class="m-2 col-md-2 btn btn-md btn-success save">Save Changes</button>
+                            <button type="reset" class="m-2 col-md-2 col-md-offset-1 btn btn-md btn-warning">Reset</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        {% include 'SectionA/header_footer_partial.html' %}
+    </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="popover"]').popover({
+            container: 'body'
+        });
+    });
+
+    $('.custom-file-input').on('change', function () {
+        var fileName = $(this).val().split('\\').pop();
+        if (fileName) $(this).next('.custom-file-label').addClass("selected").html(fileName);
+        else $(this).next('.custom-file-label').addClass("selected").html('Select a file...');
+    });
+</script>
+{% endblock %}
