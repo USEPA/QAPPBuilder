@@ -8,12 +8,14 @@
 
 SECTION_B_TYPES = (
     ('Analytical Methods', 'Analytical Methods'),
-    ('Animal Subjects', 'Animal Subjects'),
-    ('Cell Culture Models', 'Cell Culture Models'),
+    ('Animal Cell Studies', 'Animal Cell Studies'),
+    # ('Cell Culture Models', 'Cell Culture Models'),
     ('Existing Data', 'Existing Data'),
     ('Measurements', 'Measurements'),
     ('Model Application', 'Model Application'),
-    ('Model Development', 'Model Development'),
+    # ('Model Development', 'Model Development'),
+    ('Social Science/Qualitative Studies',
+     'Social Science/Qualitative Studies'),
     ('Software Development', 'Software Development')
 )
 
@@ -598,75 +600,81 @@ MEASUREMENTS_AND_MONITORING = {
                    of supplies and consumables.'''
     },
     # ############################################
-    'b5_1': {
-        'heading': 'B.5 DATA REVIEW, VERIFICATION, and VALIDATION',
-        'b5_1_1': {
-            'heading': 'B.5.1 DATA REPORT PACKAGES',
-            'label': '''B.5.1.1 Internal Data Packages''',
-            'desc': '''For Internal Data packages: Itemize the
-                       information and records which must be included and
-                       specify the reporting format for hard copy and
-                       electronic forms. See Appendix D, Table D1 for
-                       example records.'''
-        },
-        'b5_1_2': {
-            'label': 'B.5.1.2 External Data Packages',
-            'desc': '''For External Data Packages: Itemize the information
-                       and records which must be included in the external data
-                       report and specify the reporting format for hard copy
-                       and any electronic forms. See Appendix D, Table D1 for
-                       records that may be included. Researcher should consult
-                       customer (e.g., Regions, States, Tribes, Municipalities,
-                       etc.) on what to include in the external data report.'''
-        },
-        # #######################
-        'b5_2_1': {
-            'heading': 'B.5.2 DATA REVIEW PACKAGES',
-            'label': 'B.5.2.1 Data Review Personnel',
-            'desc': '''Identify who is responsible for reviewing the data.
-                       If multiple people are involved, a table can be created
-                       to show who is responsible for each analysis.'''
-        },
-        'b5_2_2': {
-            'label': 'B.5.2.2 Initial and Secondary Reviewers',
-            'desc': '''It is required that the analyst conduct an initial
-                       review of the data including QC checks. It is
-                       recommended that a secondary reviewer check a subset
-                       of the data. See Appendix E for definitions.'''
-        },
-        'b5_2_3': {
-            'label': 'B.5.2.3 Data Review Definition',
-            'desc': '''Describe what data will be reviewed and the frequency
-                       of the review(s).'''
-        },
-        'b5_2_4': {
-            'label': 'B.5.2.4 Data Review Process',
-            'desc': '''Describe the process for conducting data reviews
-                       including the percentage of data reviewed.'''
-        },
-        'b5_2_5': {
-            'label': 'B.5.2.5 Data Review Documentation',
-            'desc': '''Describe how the reviews will be documented. Provide
-                       examples of any forms or checklists to be used for
-                       the reviewing process.'''
-        },
-        'b5_2_6': {
-            'label': 'B.5.2.6 Issue Resolution Procedure',
-            'desc': '''Identify issue resolution procedure and responsible
-                       individuals.'''
-        },
-        'b5_2_7': {
-            'label': 'B.5.2.7 Data Acceptance Criteria',
-            'desc': '''State criteria for accepting, rejecting, or qualifying
-                       data. Identify how rejected or qualified data will be
-                       annotated. If qualifiers are used, provide definitions
-                       of the qualifiers.'''
-        },
-        'b5_2_8': {
-            'label': 'B.5.2.8 Calculations/Algorithms',
-            'desc': '''Include project-specific calculations or algorithms.
-                       (May be discussed in SOP).'''
-        },
+    # 'heading': 'B.5 DATA REVIEW, VERIFICATION, and VALIDATION',
+    'b5_1_1': {
+        'heading': 'B.5.1 DATA REPORT PACKAGES',
+        'label': '''B.5.1.1 Internal Data Packages''',
+        'desc': '''For Internal Data packages: Itemize the
+                    information and records which must be included and
+                    specify the reporting format for hard copy and
+                    electronic forms. See Appendix D, Table D1 for
+                    example records.'''
+    },
+    # #######################
+    'b5_1_2': {
+        'label': 'B.5.1.2 External Data Packages',
+        'desc': '''For External Data Packages: Itemize the information
+                    and records which must be included in the external data
+                    report and specify the reporting format for hard copy
+                    and any electronic forms. See Appendix D, Table D1 for
+                    records that may be included. Researcher should consult
+                    customer (e.g., Regions, States, Tribes, Municipalities,
+                    etc.) on what to include in the external data report.'''
+    },
+    # ############################################
+    # 'heading': 'B.5.2 DATA REVIEW PACKAGES',
+    'b5_2_1':{
+        'label': 'B.5.2.1 Data Review Personnel',
+        'desc': '''Identify who is responsible for reviewing the data.
+                    If multiple people are involved, a table can be created
+                    to show who is responsible for each analysis.'''
+    },
+    # #######################
+    'b5_2_2': {
+        'label': 'B.5.2.2 Initial and Secondary Reviewers',
+        'desc': '''It is required that the analyst conduct an initial
+                    review of the data including QC checks. It is
+                    recommended that a secondary reviewer check a subset
+                    of the data. See Appendix E for definitions.'''
+    },
+    # #######################
+    'b5_2_3': {
+        'label': 'B.5.2.3 Data Review Definition',
+        'desc': '''Describe what data will be reviewed and the frequency
+                    of the review(s).'''
+    },
+    # #######################
+    'b5_2_4': {
+        'label': 'B.5.2.4 Data Review Process',
+        'desc': '''Describe the process for conducting data reviews
+                    including the percentage of data reviewed.'''
+    },
+    # #######################
+    'b5_2_5': {
+        'label': 'B.5.2.5 Data Review Documentation',
+        'desc': '''Describe how the reviews will be documented. Provide
+                    examples of any forms or checklists to be used for
+                    the reviewing process.'''
+    },
+    # #######################
+    'b5_2_6': {
+        'label': 'B.5.2.6 Issue Resolution Procedure',
+        'desc': '''Identify issue resolution procedure and responsible
+                    individuals.'''
+    },
+    # #######################
+    'b5_2_7': {
+        'label': 'B.5.2.7 Data Acceptance Criteria',
+        'desc': '''State criteria for accepting, rejecting, or qualifying
+                    data. Identify how rejected or qualified data will be
+                    annotated. If qualifiers are used, provide definitions
+                    of the qualifiers.'''
+    },
+    # #######################
+    'b5_2_8': {
+        'label': 'B.5.2.8 Calculations/Algorithms',
+        'desc': '''Include project-specific calculations or algorithms.
+                    (May be discussed in SOP).'''
     },
     # ############################################
     'b6_1': {
@@ -1483,6 +1491,6 @@ SECTION_B_INFO = {
     "Measurements": MEASUREMENTS_AND_MONITORING,
     # "Model Development": MODEL_DEVELOPMENT,
     "Model Application": MODEL_APPLICATION,
-    "Soc Sci": SOC_SCI,
+    "Social Science/Qualitative Studies": SOC_SCI,
     "Software Development": SOFTWARE_DEVELOPMENT,
 }

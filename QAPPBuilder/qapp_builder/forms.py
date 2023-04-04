@@ -266,6 +266,12 @@ class SectionBForm(ModelForm):
                                          attrs={'class': 'form-control mb-2',
                                                 'readonly': 'readonly'}))
 
+    def make_field(self, val):
+        return CharField(
+            help_text=val['desc'],
+            label=_(val['label']), required=False,
+            widget=Textarea({'class': 'form-control mb-2'}))
+
     def __init__(self, *args, **kwargs):
         """
         Override method for init to receive dynamic sets of labels.
@@ -277,10 +283,7 @@ class SectionBForm(ModelForm):
         super(SectionBForm, self).__init__(*args, **kwargs)
         if section_b_info:
             for key, val in section_b_info.items():
-                self.fields[key] = CharField(
-                    help_text=val['desc'],
-                    label=_(val['label']), required=False,
-                    widget=Textarea({'class': 'form-control mb-2'}))
+                self.fields[key] = self.make_field(val)
 
     class Meta:
         """Meta data for SectionBForm Form."""

@@ -169,7 +169,7 @@ class SectionBTypeMap(models.Model):
     sectiona = models.ForeignKey(
         SectionA, blank=False, on_delete=models.CASCADE)
     sectionb_type = models.ForeignKey(
-        SectionBType, blank=False, on_delete=models.CASCADE)
+        SectionBType, null=True, on_delete=models.SET_NULL)
 
 
 class SectionB(models.Model):
@@ -201,6 +201,8 @@ class SectionB(models.Model):
     b2_6 = models.TextField(blank=True, null=True)
     b2_7 = models.TextField(blank=True, null=True)
     b2_8 = models.TextField(blank=True, null=True)
+    b2_9 = models.TextField(blank=True, null=True)
+    b2_10 = models.TextField(blank=True, null=True)
 
     b3_1 = models.TextField(blank=True, null=True)
     b3_2 = models.TextField(blank=True, null=True)
@@ -218,9 +220,29 @@ class SectionB(models.Model):
     b4_3 = models.TextField(blank=True, null=True)
     b4_4 = models.TextField(blank=True, null=True)
     b4_5 = models.TextField(blank=True, null=True)
+    b4_6 = models.TextField(blank=True, null=True)
+    b4_7 = models.TextField(blank=True, null=True)
+    b4_8 = models.TextField(blank=True, null=True)
 
+    # ######################################################################
+    # NOTE: With the March 2023 rework based on new templates,
+    # Measurements and Monitoring defaults have a non-standard format under
+    # section B.5 with extra subheadings under B.5.1 and B.5.2.
     b5_1 = models.TextField(blank=True, null=True)
+    b5_1_1 = models.TextField(blank=True, null=True)
+    b5_1_2 = models.TextField(blank=True, null=True)
+
     b5_2 = models.TextField(blank=True, null=True)
+    b5_2_1 = models.TextField(blank=True, null=True)
+    b5_2_2 = models.TextField(blank=True, null=True)
+    b5_2_3 = models.TextField(blank=True, null=True)
+    b5_2_4 = models.TextField(blank=True, null=True)
+    b5_2_5 = models.TextField(blank=True, null=True)
+    b5_2_6 = models.TextField(blank=True, null=True)
+    b5_2_7 = models.TextField(blank=True, null=True)
+    b5_2_8 = models.TextField(blank=True, null=True)
+    # ######################################################################
+
     b5_3 = models.TextField(blank=True, null=True)
     b5_4 = models.TextField(blank=True, null=True)
     b5_5 = models.TextField(blank=True, null=True)
@@ -228,6 +250,8 @@ class SectionB(models.Model):
     b6_1 = models.TextField(blank=True, null=True)
     b6_2 = models.TextField(blank=True, null=True)
     b6_3 = models.TextField(blank=True, null=True)
+    b6_4 = models.TextField(blank=True, null=True)
+    b6_5 = models.TextField(blank=True, null=True)
 
     class Meta:
         """Meta data definitions for SectionB class."""
