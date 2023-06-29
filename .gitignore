@@ -1,3 +1,6 @@
+# DO NOT ADD aad.config.json
+aad.config.json
+
 # Other custom ignores:
 .mypy_cache/
 node_modules/
