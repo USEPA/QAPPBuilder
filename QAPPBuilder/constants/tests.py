@@ -18,7 +18,7 @@ from constants.utils import split_email_list, is_epa_email, \
     non_epa_email_message, create_qt_email_message, xstr, sort_rap_numbers, \
     get_rap_fields, is_float, get_attachment_storage_path, \
     download_files, download_file
-from accounts.models import User
+from django.contrib.auth.models import User
 from qapp_builder.models import Attachment
 
 

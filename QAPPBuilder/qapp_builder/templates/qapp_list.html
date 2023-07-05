@@ -26,7 +26,7 @@
         </a>
     </p>
 
-    {% if user.is_authenticated %}
+    {% if request.identity_context_data.authenticated %}
     <div class="row mb-2">
         <button class="col-sm-12 btn btn-md btn-info" onclick="window.location.href='/create'">
             Create a new QAPP

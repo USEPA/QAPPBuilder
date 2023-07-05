@@ -17,14 +17,14 @@ Available functions:
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 from django.utils import timezone
-from accounts.serializers import UserSerializer
+# from accounts.serializers import UserSerializer
 from teams.models import Team, TeamMembership, User
 
 
 class TeamMembershipSerializer(serializers.ModelSerializer):
     """JSON serializer for reading team members."""
 
-    member = UserSerializer(many=False)
+    # member = UserSerializer(many=False)
 
     class Meta:
         """Meta data related to the Team Membership serializer."""
@@ -69,13 +69,13 @@ class TeamSerializer(serializers.ModelSerializer):
     """JSON serializer for Team list REST api."""
 
     id = serializers.IntegerField(required=False, read_only=True)
-    created_by = UserSerializer(many=False, required=False,
-                                default=serializers.CreateOnlyDefault(
-                                    serializers.CurrentUserDefault()))
+    # created_by = UserSerializer(many=False, required=False,
+    #                             default=serializers.CreateOnlyDefault(
+    #                                 serializers.CurrentUserDefault()))
     created_date = serializers.DateTimeField(
         required=False, default=serializers.CreateOnlyDefault(timezone.now))
-    last_modified_by = UserSerializer(many=False,
-                                      default=serializers.CurrentUserDefault())
+    # last_modified_by = UserSerializer(many=False,
+    #                                   default=serializers.CurrentUserDefault())
     last_modified_date = serializers.DateTimeField(required=False,
                                                    default=timezone.now)
     team_memberships = TeamMembershipSerializer(many=True, read_only=True,

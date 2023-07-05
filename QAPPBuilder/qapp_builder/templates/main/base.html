@@ -90,7 +90,7 @@
                 </li>
 
                 <!-- navbar when user is logged in -->
-                {% if user.is_authenticated %}
+                {% if request.identity_context_data.authenticated %}
                 <li class="dropdown menu-item" role="presentation">
                     <a data-toggle="dropdown" href="javascript:void(0)" class="menu-link dropdown-toggle" role="menuitem">
                         Teams
@@ -106,18 +106,8 @@
                 </li>
 
                 {% if request.user.is_staff %}
-                <li class="dropdown menu-item" role="presentation">
-                    <a data-toggle="dropdown" href="javascript:void(0)" class="menu-link dropdown-toggle" role="menuitem">
-                        Manage
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li class="menu-item">
-                            <a class="menu-link" href="/adminauth/user/">Manage accounts</a>
-                        </li>
-                        <li class="menu-item">
-                            <a class="menu-link" href="{% url 'admin:index' %}">Manage organizations</a>
-                        </li>
-                    </ul>
+                <li class="menu-item" role="presentation">
+                    <a href="{% url 'admin:index' %}" class="menu-link" role="menuitem">Manage Database</a>
                 </li>
                 {% endif %}
 
@@ -133,14 +123,14 @@
                     <a href="{{register_url}}" {% if self.path == register_url %} class="active-trail menu-link active" {% else %} class="menu-link" {% endif %} role="menuitem">Register</a>
                 </li>
 
-                {% url 'login' as login_url %}
+                {% url 'sign_in' as login_url %}
                 <li {% if self.path == login_url %} class="expanded active-trail menu-item" {% else %} class="menu-item" {% endif %} role="presentation">
                     <a href="{{login_url}}" {% if self.path == login_url %} class="active-trail menu-link active" {% else %} class="menu-link" {% endif %} role="menuitem">Log-In</a>
                 </li>
                 {% endif %}
             </ul>
 
-            {% if user.is_authenticated %}
+            {% if request.identity_context_data.authenticated %}
             <ul class="menu float-right" role="menu" id="navbar_right">
 
                 <li class="menu-item" role="presentation">
@@ -168,9 +158,9 @@
                         {% endif %}
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="menu-item">
-                            <a class="menu-link" href="{% url 'profile' %}">My profile</a>
-                        </li>
+                        <!-- <li class="menu-item">
+                            <a class="menu-link" href="{#{% url 'profile' %}#}">My profile</a>
+                        </li> -->
                         {% if request.user.is_staff %}
                         <li class="menu-item">
                             <a class="menu-link" href="{% url 'admin:index' %}">Admin Portal</a>
@@ -181,7 +171,7 @@
                         {% endif %}
                         <li role="separator" class="divider"></li>
                         <li class="menu-item">
-                            <a class="menu-link" href="{% url 'logout' %}">Logout</a>
+                            <a class="menu-link" href="{% url 'sign_out' %}">Logout</a>
                         </li>
                     </ul>
                 </li>
@@ -203,58 +193,18 @@
             <!-- main content block - override in partials/sub-templates -->
             <div>
                 {% block content %}
+                {% include '_qapp_builder_overview_partial.html' %}
+
                 <!-- If the user is logged in, we should redirect to the dashboard as the 'landing page' -->
-                {% if user.is_authenticated %}
+                {% if request.identity_context_data.authenticated %}
                 <script>
                     //window.location = 'dashboard';
                 </script>
+                {% else %}
+                    <a href="{% url 'sign_in' %}">
+                        <input id="login" name="login" type="submit" value="Log-in" />
+                    </a>
                 {% endif %}
-                <div class="splash">
-                    <div class="welcome">
-                        <div class="row vmargin10">
-                            <div class="row vmargin10">
-                                <h2 class="home-header col-sm-8">
-                                    {{ title }} - Data Search
-                                </h2>
-
-                                {% if not user.is_authenticated %}
-                                <div class="col-sm-4">
-                                    <div>
-                                        <a href="/accounts/login/" style="width: 80%;">
-                                            <input id="login" name="login" type="submit" value="Log-in" />
-                                        </a>
-                                    </div>
-                                    <div>
-                                        <a href="/accounts/register/" style="width: 80%;">
-                                            <input id="register" name="register" type="submit" value="Register" />
-                                        </a>
-                                    </div>
-                                </div>
-                                {% endif %}
-                            </div>
-
-                            <div class="row vmargin10">
-                                <div class="col-md-4">
-                                    <h3>Getting started</h3>
-                                    <p>
-                                        TODO
-                                    </p>
-                                    <p><a class="btn btn-default" href="https://intranet.ord.epa.gov/ceser">CESER | Center for Environmental Solutions & Emergency Response &raquo;</a></p>
-                                </div>
-                                <div class="col-md-4">
-                                    <h3>United States Environmental Protection Agency</h3>
-                                    <p>LRTD | Land Remediation & Technology Division.</p>
-                                    <p><a class="btn btn-default" href="https://intranet.ord.epa.gov/ceser/land-remediation-technology-division">Learn more &raquo;</a></p>
-                                </div>
-                                <div class="col-md-4">
-                                    <h3>US EPA, Office of Reseach and Development (ORD)</h3>
-                                    <p>EDAB | Environmental Decision Analytics Branch.</p>
-                                    <p><a class="btn btn-default" href="https://intranet.ord.epa.gov/ceser/environmental-decision-analytics-branch">Learn more &raquo;</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 {% endblock %}
             </div>
 

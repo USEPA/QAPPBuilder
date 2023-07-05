@@ -9,15 +9,17 @@ from io import BytesIO
 import tempfile
 from zipfile import ZipFile
 from wkhtmltopdf.views import PDFTemplateResponse
-from django.contrib.auth.decorators import login_required
+from django.conf import settings
 from django.http import HttpResponse
 from django.utils.text import slugify
 from constants.qar5_sectionb import SECTION_B_INFO
 from qapp_builder.views import get_qapp_info, get_qar5_for_team, \
     get_qar5_for_user
 
+ms_identity_web = settings.MS_IDENTITY_WEB
 
-@login_required
+
+@ms_identity_web.login_required
 def export_pdf(request, *args, **kwargs):
     """Export multiple QAPP objects as PDF documents."""
     if 'user' in request.path:

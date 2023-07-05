@@ -16,6 +16,7 @@ Available functions:
 """
 
 from django.conf import settings
+from django.urls import reverse
 
 
 def software_info(_request):
@@ -31,3 +32,21 @@ def software_info(_request):
         'APP_NAME': settings.APP_NAME,
         'APP_DISCLAIMER': settings.APP_DISCLAIMER
     }
+
+
+def context(request):
+    claims = request.identity_context_data._id_token_claims
+    exclude_claims = ['iat', 'exp', 'nbf', 'uti', 'aio', 'rh']
+    claims_to_display = {claim: value for claim, value in claims.items()
+                         if claim not in exclude_claims}
+
+    client_id = settings.AAD_CONFIG.client.client_id
+    aad_link = f'https://portal.azure.com/#blade/\
+                 Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/\
+                 Authentication/appId/{client_id}/isMSAApp/'
+
+    return dict(
+        claims_to_display=claims_to_display,
+        redirect_uri_external_link=request.build_absolute_uri(
+            reverse(settings.AAD_CONFIG.django.auth_endpoints.redirect)),
+        aad_link=aad_link)

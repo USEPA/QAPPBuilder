@@ -21,17 +21,19 @@ from rest_framework.views import APIView, status, Http404
 from rest_framework import permissions
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from django.contrib.auth.decorators import login_required
+from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
 from django.utils.decorators import method_decorator
 from django.shortcuts import render
 from django.views.generic import FormView, ListView
 from django.test.client import RequestFactory
-from accounts.models import User
 from teams.forms import TeamManagementForm, Team
 from teams.models import TeamMembership
-from teams.serializers import TeamSerializer, UserSerializer, \
-    TeamMembershipSerializer, TeamMembershipModifySerializer
+from teams.serializers import TeamSerializer, TeamMembershipSerializer, \
+    TeamMembershipModifySerializer
+
+ms_identity_web = settings.MS_IDENTITY_WEB
 
 
 def is_user_member(user, team=None):
@@ -91,13 +93,13 @@ class TeamCreateView(FormView):
     form_class = TeamManagementForm
     template = 'team_create.html'
 
-    @method_decorator(login_required)
+    @method_decorator(ms_identity_web.login_required)
     def get(self, request, *args, **kwargs):
         """Display the project create form."""
         form = TeamManagementForm()
         return render(request, self.template, {'form': form})
 
-    @method_decorator(login_required)
+    @method_decorator(ms_identity_web.login_required)
     def post(self, request, *args, **kwargs):
         """Save the changes to the user form."""
         form = self.form_class(request.POST)
@@ -136,7 +138,7 @@ class TeamEditView(FormView):
     template = 'team_edit.html'
     form_class = TeamManagementForm
 
-    @method_decorator(login_required)
+    @method_decorator(ms_identity_web.login_required)
     def get(self, request, *args, **kwargs):
         """Display the project create form."""
         ctx = {}
@@ -151,7 +153,7 @@ class TeamEditView(FormView):
                 return render(request, self.template, ctx)
         return HttpResponseRedirect('/teams/list/')
 
-    @method_decorator(login_required)
+    @method_decorator(ms_identity_web.login_required)
     def post(self, request, *args, **kwargs):
         """Save the changes to the user form."""
         ctx = {}
@@ -197,7 +199,7 @@ class TeamManagementView(FormView):
     template = 'team_manage.html'
     form_class = TeamManagementForm
 
-    @method_decorator(login_required)
+    @method_decorator(ms_identity_web.login_required)
     def get(self, request, *args, **kwargs):
         """Display the project create form."""
         ctx = {}
@@ -221,7 +223,7 @@ class TeamManagementView(FormView):
             return render(request, self.template, ctx)
         return HttpResponseRedirect('/teams/list/')
 
-    @method_decorator(login_required)
+    @method_decorator(ms_identity_web.login_required)
     def post(self, request, *args, **kwargs):
         """Save the changes to the user form."""
         ctx = {}
@@ -477,21 +479,21 @@ class APITeamMembershipListView(APIView):
         except Team.DoesNotExist as team_no_exist:
             raise Http404 from team_no_exist
 
-    def get(self, request, team_id, *args, **kwargs):
-        """Get the membership information for the specified team."""
-        # If query param "nonmember" is set, returns users not on this team.
-        nonmember = kwargs.get('nonmember', None)
-        nonmember = request.query_params.get(
-            'nonmember', None) if nonmember is None else nonmember
-        if nonmember is not None:
-            users = User.objects.exclude(
-                member_memberships__team_id=team_id).order_by(
-                    'last_name').all()
-            serializer = UserSerializer(users, many=True)
-            return Response(serializer.data)
-        team_memberships = self.get_object(team_id, request.user)
-        serializer = TeamMembershipSerializer(team_memberships, many=True)
-        return Response(serializer.data)
+    # def get(self, request, team_id, *args, **kwargs):
+    #     """Get the membership information for the specified team."""
+    #     # If query param "nonmember" is set, returns users not on this team.
+    #     nonmember = kwargs.get('nonmember', None)
+    #     nonmember = request.query_params.get(
+    #         'nonmember', None) if nonmember is None else nonmember
+    #     if nonmember is not None:
+    #         users = User.objects.exclude(
+    #             member_memberships__team_id=team_id).order_by(
+    #                 'last_name').all()
+    #         serializer = UserSerializer(users, many=True)
+    #         return Response(serializer.data)
+    #     team_memberships = self.get_object(team_id, request.user)
+    #     serializer = TeamMembershipSerializer(team_memberships, many=True)
+    #     return Response(serializer.data)
 
     def post(self, request, team_id, *args, **kwargs):
         """Add a new membership for a user."""

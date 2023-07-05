@@ -18,7 +18,6 @@ from os.path import join
 # from constants.models import *
 from constants.utils import create_qt_email_message
 from django.conf import settings
-from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.utils.decorators import method_decorator
@@ -31,6 +30,7 @@ from .forms import SupportForm, SupportAdminForm, SupportTypeForm, PriorityForm
 from .models import SupportType, Support, SupportAttachment, Priority
 
 getcontext().prec = 9
+ms_identity_web = settings.MS_IDENTITY_WEB
 
 
 class UserManualView(TemplateView):
@@ -64,7 +64,7 @@ class EventsView(TemplateView):
         return render(request, 'main/events.html', {})
 
 
-# @login_required
+# @ms_identity_web.login_required
 # def download_manual(request):
 #     """Download the user manual."""
 #     return download_file(request, MANUAL_NAME)
@@ -108,7 +108,7 @@ def download_file(request, name):
     return HttpResponse()
 
 
-@login_required
+@ms_identity_web.login_required
 def index(request):
     """User login support."""
     user = request.user
@@ -126,7 +126,7 @@ class SuggestionCreateView(FormView):
     form_class = SupportForm
     template = 'main/create_support.html'
 
-    @method_decorator(login_required)
+    @method_decorator(ms_identity_web.login_required)
     def get(self, request, support_type_name):
         """Display the project create form."""
         if 'suggestion' == support_type_name.lower():
@@ -142,7 +142,7 @@ class SuggestionCreateView(FormView):
         form = self.form_class(initial={'weblink': request.user.email})
         return render(request, self.template, locals())
 
-    @method_decorator(login_required)
+    @method_decorator(ms_identity_web.login_required)
     def post(self, request, support_type_name, *args, **kwargs):
         """Save the changes to the support form."""
         user = request.user
@@ -175,7 +175,7 @@ class SuggestionEditView(FormView):
     template = 'edit/edit_support.html'
     no_edit_template = 'main/no_edit.html'
 
-    @method_decorator(login_required)
+    @method_decorator(ms_identity_web.login_required)
     def get(self, request, support_type_name, obj_id):
         """Handle GET requests from user, return the edit form."""
         user = request.user
@@ -197,7 +197,7 @@ class SuggestionEditView(FormView):
         form = form_class(instance=support)
         return render(request, self.template, locals())
 
-    @method_decorator(login_required)
+    @method_decorator(ms_identity_web.login_required)
     def post(self, request, support_type_name, obj_id, *args, **kwargs):
         """Save changes to user form."""
         user = request.user
@@ -283,7 +283,7 @@ class SuggestionEditView(FormView):
             return render(request, self.template, locals())
 
 
-@login_required
+@ms_identity_web.login_required
 @never_cache
 def show_support(request, support_type_name, obj_id):
     """Support request view."""
@@ -307,7 +307,7 @@ def search_support(request):
     return render(request, 'list/list_support_issues.html', locals())
 
 
-@login_required
+@ms_identity_web.login_required
 def file_upload_support(request, obj_id):
     """Ensure user logged into app."""
     user = request.user
@@ -333,7 +333,7 @@ def file_upload_support(request, obj_id):
     return HttpResponseRedirect(url)
 
 
-@login_required
+@ms_identity_web.login_required
 def edit_support_admin(request, obj_id):
     """Edit ticket using Django admin."""
     user = request.user
@@ -367,7 +367,7 @@ def edit_support_admin(request, obj_id):
         return render(request, 'main/no_edit.html', locals())
 
 
-@login_required
+@ms_identity_web.login_required
 def delete_support(request, support_type_name, obj_id):
     """Delete ticket."""
     user = request.user
@@ -382,7 +382,7 @@ def delete_support(request, support_type_name, obj_id):
     return HttpResponseRedirect(url)
 
 
-@login_required
+@ms_identity_web.login_required
 def list_supports(request, support_type_name):
     """List tickets."""
     user = request.user
@@ -393,7 +393,7 @@ def list_supports(request, support_type_name):
     return render(request, 'list/list_support_issues.html', locals())
 
 
-@login_required
+@ms_identity_web.login_required
 def delete_support_attachment(request, obj_id):
     """Delete attachments for support tickets."""
     title = 'Delete Support Attachment'
@@ -424,7 +424,7 @@ def delete_support_attachment(request, obj_id):
 # Start SupportType
 
 
-@login_required
+@ms_identity_web.login_required
 def create_support_type(request):
     """Ticket support type."""
     user = request.user
@@ -453,7 +453,7 @@ def create_support_type(request):
     return render(request, 'create_office.html', locals())
 
 
-@login_required
+@ms_identity_web.login_required
 def edit_support_type(request, obj_id):
     """Edit support type."""
     user = request.user
@@ -489,7 +489,7 @@ def edit_support_type(request, obj_id):
     return render(request, 'edit_office.html', locals())
 
 
-@login_required
+@ms_identity_web.login_required
 def delete_support_type(request, obj_id):
     """Remove an available support type from the database."""
     user = request.user
@@ -502,7 +502,7 @@ def delete_support_type(request, obj_id):
     return HttpResponseRedirect(url)
 
 
-@login_required
+@ms_identity_web.login_required
 def list_support_types(request):
     """Return a view containing the list of available support types."""
     user = request.user
@@ -511,7 +511,7 @@ def list_support_types(request):
     return render(request, 'list/list_support_types.html', locals())
 
 
-@login_required
+@ms_identity_web.login_required
 @never_cache
 def show_support_type(request, obj_id):
     """Return a view showing details of a selected support type."""
@@ -527,7 +527,7 @@ def show_support_type(request, obj_id):
 # Start Priority
 
 
-@login_required
+@ms_identity_web.login_required
 def create_priority(request):
     """
     Create a new priority object in the database.
@@ -561,7 +561,7 @@ def create_priority(request):
     return render(request, 'create_office.html', locals())
 
 
-@login_required
+@ms_identity_web.login_required
 def edit_priority(request, obj_id):
     """
     Edit a priority object.
@@ -602,7 +602,7 @@ def edit_priority(request, obj_id):
     return render(request, 'edit_office.html', locals())
 
 
-@login_required
+@ms_identity_web.login_required
 def delete_priority(request, obj_id):
     """Delete priority objects from the database."""
     user = request.user
@@ -615,7 +615,7 @@ def delete_priority(request, obj_id):
     return HttpResponseRedirect(url)
 
 
-@login_required
+@ms_identity_web.login_required
 def list_priorities(request):
     """Return a view containing a list of available Priority objects."""
     user = request.user
@@ -624,7 +624,7 @@ def list_priorities(request):
     return render(request, 'list/list_priorities.html', locals())
 
 
-@login_required
+@ms_identity_web.login_required
 @never_cache
 def show_priority(request, obj_id):
     """Return a view showing the details of a selected priority."""

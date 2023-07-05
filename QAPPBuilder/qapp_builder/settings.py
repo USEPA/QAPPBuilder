@@ -17,6 +17,8 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+from ms_identity_web.configuration import AADConfig
+from ms_identity_web import IdentityWebPython
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -44,7 +46,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
-    'accounts',
     'constants',
     'qapp_builder',
     'support',
@@ -61,6 +62,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'qapp_builder.middleware.AuthenticationMiddlewareExempt',
 ]
 
 ROOT_URLCONF = 'qapp_builder.urls'
@@ -97,16 +99,16 @@ DATABASES = {
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',  # noqa:E501
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',  # noqa:E501
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',  # noqa:E501
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',  # noqa:E501
     },
 ]
 
@@ -135,7 +137,7 @@ MEDIA_URL = '/media/'
 UPLOAD_ROOT = os.path.join(MEDIA_ROOT, 'uploads')
 
 APP_NAME = 'qapp_builder'
-APP_VERSION = '1.2.0'
+APP_VERSION = '1.3.0.alpha1'
 APP_DISCLAIMER = 'The information and data presented in this product ' + \
                  'were obtained from sources that are believed to be ' + \
                  'reliable. However, in many cases the quality of the ' + \
@@ -143,8 +145,17 @@ APP_DISCLAIMER = 'The information and data presented in this product ' + \
                  'sources; therefore, no claim is made regarding ' + \
                  'their quality.'
 
+# Azure AD Auth section:
+AAD_CONFIG = AADConfig.parse_json(file_path='aad.config.json')
+MS_IDENTITY_WEB = IdentityWebPython(AAD_CONFIG)
+# for rendering 401 or other errors from msal_middleware
+ERROR_TEMPLATE = 'auth/{}.html'
+MIDDLEWARE.append('ms_identity_web.django.middleware.MsalMiddleware')
+
+# localhost vs 127.0.0.1
+SESSION_COOKIE_DOMAIN = 'localhost'
+
 try:
-    from .local_settings import *
-    # py-lint: disable=E0012
+    from .local_settings import *  # noqa:F401
 except ImportError:
     pass

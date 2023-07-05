@@ -8,15 +8,15 @@
 """Definition of views."""
 
 from datetime import datetime
+from django.conf import settings
 from django.contrib.admin.views.decorators import staff_member_required
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect, HttpRequest
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, DetailView, ListView, \
     TemplateView, UpdateView, DeleteView
-from accounts.models import User
 from constants.qar5 import SECTION_A_INFO, SECTION_D_INFO, SECTION_E_INFO, \
     SECTION_F_INFO, SECTION_C_INFO
 from constants.qar5_sectionb import SECTION_B_INFO
@@ -25,11 +25,13 @@ from qapp_builder.forms import QappForm, QappApprovalForm, QappLeadForm, \
     SectionDForm, RevisionForm, ReferencesForm, SectionCForm
 from qapp_builder.models import Qapp, QappApproval, QappLead, \
     QappApprovalSignature, SectionA, SectionB, SectionC, SectionD, \
-    QappSharingTeamMap, Revision, References
+    Revision, References, QappSharingTeamMap
 from teams.models import Team, TeamMembership
 
+ms_identity_web = settings.MS_IDENTITY_WEB
 
-@login_required
+
+@ms_identity_web.login_required
 @staff_member_required
 def web_dev_tools(request, *args, **kwargs):
     """
@@ -41,7 +43,7 @@ def web_dev_tools(request, *args, **kwargs):
     return render(request, 'web_dev.html', {})
 
 
-@login_required
+@ms_identity_web.login_required
 @staff_member_required
 def clean_qapps(request, *args, **kwargs):
     """
@@ -84,11 +86,13 @@ def get_qapp_all():
     return Qapp.objects.all()
 
 
-class QappIndex(LoginRequiredMixin, TemplateView):
+# NOTE: We don't need the entire Index behind LoginRequired
+class QappIndex(TemplateView):
     """Class to return the first page of the Existing Data flow."""
 
     template_name = 'qapp_index.html'
 
+    @method_decorator(ms_identity_web.login_required)
     def get_context_data(self, **kwargs):
         """
         Override default method to send data to the template.
@@ -228,7 +232,7 @@ class QappCreate(LoginRequiredMixin, CreateView):
     model = Qapp
     template_name = 'qapp_create.html'
 
-    @method_decorator(login_required)
+    @method_decorator(ms_identity_web.login_required)
     def get(self, request, *args, **kwargs):
         """Return a view with an empty form for creating a new QAPP."""
         return render(
@@ -236,7 +240,7 @@ class QappCreate(LoginRequiredMixin, CreateView):
             {'form': QappForm(user=request.user),
              'project_lead_class': QappLeadForm})
 
-    @method_decorator(login_required)
+    @method_decorator(ms_identity_web.login_required)
     def post(self, request, *args, **kwargs):
         """Process the post request with a new QAPP form filled out."""
         form = QappForm(request.POST, user=request.user)
@@ -294,7 +298,7 @@ class ProjectLeadCreate(LoginRequiredMixin, CreateView):
     model = QappLead
     template_name = 'SectionA/project_lead_create.html'
 
-    @method_decorator(login_required)
+    @method_decorator(ms_identity_web.login_required)
     def get(self, request, *args, **kwargs):
         """Return a view with an empty form for creating a new Project Lead."""
         qapp_id = request.GET.get('qapp_id', 0)
@@ -308,7 +312,7 @@ class ProjectLeadCreate(LoginRequiredMixin, CreateView):
         reason = 'You cannot edit this QAPP.'
         return HttpResponseRedirect('/detail/%s' % qapp_id, 401, reason)
 
-    @method_decorator(login_required)
+    @method_decorator(ms_identity_web.login_required)
     def post(self, request, *args, **kwargs):
         """Process the post request with a new Project Lead form filled out."""
         form = QappLeadForm(request.POST)
@@ -400,7 +404,7 @@ class ProjectApprovalCreate(LoginRequiredMixin, CreateView):
 
     template_name = 'SectionA/qapp_approval_create.html'
 
-    @method_decorator(login_required)
+    @method_decorator(ms_identity_web.login_required)
     def get(self, request, *args, **kwargs):
         """Return a view with an empty form for creating a new QAPP."""
         qapp_id = request.GET.get('qapp_id', 0)
@@ -414,7 +418,7 @@ class ProjectApprovalCreate(LoginRequiredMixin, CreateView):
         reason = 'You cannot edit this QAPP.'
         return HttpResponseRedirect('/detail/%s' % qapp_id, 401, reason)
 
-    @method_decorator(login_required)
+    @method_decorator(ms_identity_web.login_required)
     def post(self, request, *args, **kwargs):
         """Process the post request with a new Project Lead form filled out."""
         form = QappApprovalForm(request.POST)
@@ -459,7 +463,7 @@ class ProjectApprovalEdit(LoginRequiredMixin, UpdateView):
         reason = 'You cannot edit this QAPP.'
         return HttpResponseRedirect('/detail/%s' % pkey, 401, reason)
 
-    @method_decorator(login_required)
+    @method_decorator(ms_identity_web.login_required)
     def post(self, request, *args, **kwargs):
         """Save the changes to the form."""
         pkey = kwargs.get('pk')
@@ -482,7 +486,7 @@ class ProjectApprovalSignatureCreate(LoginRequiredMixin, CreateView):
     model = QappApprovalSignature
     template_name = 'SectionA/project_approval_signature_create.html'
 
-    @method_decorator(login_required)
+    @method_decorator(ms_identity_web.login_required)
     def get(self, request, *args, **kwargs):
         """
         GET Project Approval Signature Create page.
@@ -502,7 +506,7 @@ class ProjectApprovalSignatureCreate(LoginRequiredMixin, CreateView):
         reason = 'You cannot edit this QAPP.'
         return HttpResponseRedirect('/detail/%s' % qapp_id, 401, reason)
 
-    @method_decorator(login_required)
+    @method_decorator(ms_identity_web.login_required)
     def post(self, request, *args, **kwargs):
         """Process the post request with a new Project Lead form filled out."""
         form = QappApprovalSignatureForm(request.POST)
@@ -592,7 +596,7 @@ class SectionAView(LoginRequiredMixin, TemplateView):
 
     template_name = 'SectionA/index.html'
 
-    @method_decorator(login_required)
+    @method_decorator(ms_identity_web.login_required)
     def get(self, request, *args, **kwargs):
         """Return the index page for QAPP Section A (A.3 and later)."""
         assert isinstance(request, HttpRequest)
@@ -618,7 +622,7 @@ class SectionAView(LoginRequiredMixin, TemplateView):
                        'SECTION_A_INFO': SECTION_A_INFO, 'form': form,
                        'edit_message': edit_message})
 
-    @method_decorator(login_required)
+    @method_decorator(ms_identity_web.login_required)
     def post(self, request, *args, **kwargs):
         """Process the post request with a SectionA form filled out."""
         ctx = {'qapp_id': request.GET.get('qapp_id', None),
@@ -653,7 +657,7 @@ class SectionBView(LoginRequiredMixin, TemplateView):
 
     template_name = 'SectionB/index.html'
 
-    @method_decorator(login_required)
+    @method_decorator(ms_identity_web.login_required)
     def get(self, request, *args, **kwargs):
         """Return the index page for QAPP Section B."""
         assert isinstance(request, HttpRequest)
@@ -715,7 +719,7 @@ class SectionBView(LoginRequiredMixin, TemplateView):
                        'selected_sectionb_types': selected_sectionb_types,
                        'edit_message': edit_message})
 
-    @method_decorator(login_required)
+    @method_decorator(ms_identity_web.login_required)
     def post(self, request, *args, **kwargs):
         """Process the post request with a SectionB form filled out."""
         ctx = {'qapp_id': request.GET.get('qapp_id', None),
@@ -758,7 +762,7 @@ class SectionCView(LoginRequiredMixin, TemplateView):
 
     template_name = 'SectionC/index.html'
 
-    @method_decorator(login_required)
+    @method_decorator(ms_identity_web.login_required)
     def get(self, request, *args, **kwargs):
         """Return the index page for QAPP Section C."""
         assert isinstance(request, HttpRequest)
@@ -783,7 +787,7 @@ class SectionCView(LoginRequiredMixin, TemplateView):
                       {'title': 'QAPP Section C', 'qapp_id': qapp_id,
                        'form': form, 'edit_message': edit_message})
 
-    @method_decorator(login_required)
+    @method_decorator(ms_identity_web.login_required)
     def post(self, request, *args, **kwargs):
         """Process the post request with a SectionC form filled out."""
         ctx = {'qapp_id': request.GET.get('qapp_id', None),
@@ -816,7 +820,7 @@ class SectionDView(LoginRequiredMixin, TemplateView):
 
     template_name = 'SectionD/index.html'
 
-    @method_decorator(login_required)
+    @method_decorator(ms_identity_web.login_required)
     def get(self, request, *args, **kwargs):
         """Return the index page for QAPP Section D."""
         assert isinstance(request, HttpRequest)
@@ -838,7 +842,7 @@ class SectionDView(LoginRequiredMixin, TemplateView):
                        'SECTION_D_INFO': SECTION_D_INFO,
                        'form': form, 'edit_message': edit_message})
 
-    @method_decorator(login_required)
+    @method_decorator(ms_identity_web.login_required)
     def post(self, request, *args, **kwargs):
         """Process the post request with a SectionD form filled out."""
         ctx = {'qapp_id': request.GET.get('qapp_id', None),
@@ -871,7 +875,7 @@ class SectionEView(LoginRequiredMixin, TemplateView):
 
     template_name = 'SectionE/index.html'
 
-    @method_decorator(login_required)
+    @method_decorator(ms_identity_web.login_required)
     def get(self, request, *args, **kwargs):
         """Return the index page for QAPP Section E."""
         assert isinstance(request, HttpRequest)
@@ -893,17 +897,17 @@ class SectionEView(LoginRequiredMixin, TemplateView):
                        'SECTION_E_INFO': SECTION_E_INFO, 'form': form,
                        'edit_message': edit_message})
 
-    @method_decorator(login_required)
+    @method_decorator(ms_identity_web.login_required)
     def post(self, request, *args, **kwargs):
         """Process the post request with a SectionE form filled out."""
         ctx = {'qapp_id': request.GET.get('qapp_id', None),
                'SECTION_E_INFO': SECTION_E_INFO, 'title': 'QAPP Section E'}
 
         qapp = Qapp.objects.get(id=ctx['qapp_id'])
-        if not check_can_edit(qapp, request.user):
-            reason = 'You cannot edit this QAPP.'
-            return HttpResponseRedirect(
-                '/SectionE?qapp_id=%s' % qapp.id, 401, reason)
+        # if not check_can_edit(qapp, request.user):
+        #     reason = 'You cannot edit this QAPP.'
+        #     return HttpResponseRedirect(
+        #         '/SectionE?qapp_id=%s' % qapp.id, 401, reason)
 
         existing_references = References.objects.filter(qapp=qapp).first()
 
@@ -924,15 +928,15 @@ class SectionEView(LoginRequiredMixin, TemplateView):
 class SectionFView(LoginRequiredMixin, TemplateView):
     """Class for processing QAPP Section F information, REVISIONS."""
 
-    @method_decorator(login_required)
+    @method_decorator(ms_identity_web.login_required)
     def get(self, request, *args, **kwargs):
         """Return the index page for QAPP Section F."""
         assert isinstance(request, HttpRequest)
         qapp_id = request.GET.get('qapp_id', None)
-        qapp = Qapp.objects.get(id=qapp_id)
+        # qapp = Qapp.objects.get(id=qapp_id)
         edit_message = ''
-        if not check_can_edit(qapp, request.user):
-            edit_message = 'You cannot edit this QAPP.'
+        # if not check_can_edit(qapp, request.user):
+        #     edit_message = 'You cannot edit this QAPP.'
         revisions = Revision.objects.filter(qapp_id=qapp_id)
         return render(request, 'SectionF/index.html',
                       {'title': 'QAPP Section F', 'qapp_id': qapp_id,
@@ -945,7 +949,7 @@ class RevisionCreate(LoginRequiredMixin, CreateView):
 
     template_name = 'SectionF/revision_create.html'
 
-    @method_decorator(login_required)
+    @method_decorator(ms_identity_web.login_required)
     def get(self, request, *args, **kwargs):
         """Return a view with an empty form for creating a new QAPP."""
         qapp_id = request.GET.get('qapp_id', 0)
@@ -955,16 +959,17 @@ class RevisionCreate(LoginRequiredMixin, CreateView):
 
         return render(request, self.template_name, ctx)
 
-    @method_decorator(login_required)
+    @method_decorator(ms_identity_web.login_required)
     def post(self, request, *args, **kwargs):
         """Process the post request with a new Project Lead form filled out."""
         form = RevisionForm(request.POST)
         qapp_id = form.data.get('qapp', '')
-        qapp = Qapp.objects.filter(id=qapp_id).first()
-        if not check_can_edit(qapp, request.user):
-            reason = 'You cannot edit this QAPP.'
-            return HttpResponseRedirect(
-                '/revisions?qapp_id=%s' % qapp.id, 401, reason)
+        # qapp = Qapp.objects.filter(id=qapp_id).first()
+        # if not check_can_edit(qapp, request.user):
+        #     reason = 'You cannot edit this QAPP.'
+        #     return HttpResponseRedirect(
+        #         '/revisions?qapp_id=%s' % qapp.id, 401, reason)
+
         # datetime_str = form.data['effective_date']
         # datetime_obj = datetime.strptime(datetime_str, DATETIME_FORMAT)
         # form.data['effective_date'] = datetime_obj
@@ -979,47 +984,49 @@ class RevisionCreate(LoginRequiredMixin, CreateView):
 
 def get_qar5_for_user(user_id, qapp_id=None):
     """Get all qapps created by a User."""
-    user = User.objects.get(id=user_id)
-    if qapp_id:
-        return Qapp.objects.filter(id=qapp_id)
-    return Qapp.objects.filter(prepared_by=user)
+    return Qapp.objects.all()
+    # user = User.objects.get(id=user_id)
+    # if qapp_id:
+    #     return Qapp.objects.filter(id=qapp_id)
+    # return Qapp.objects.filter(prepared_by=user)
 
 
 def get_qar5_for_team(team_id, qapp_id=None):
     """Get all data belonging to a team."""
-    team = Team.objects.get(id=team_id)
-    include_qapps = QappSharingTeamMap.objects.filter(
-        team=team).values_list('qapp', flat=True)
+    return Qapp.objects.all()
+    # team = Team.objects.get(id=team_id)
+    # include_qapps = QappSharingTeamMap.objects.filter(
+    #     team=team).values_list('qapp', flat=True)
 
-    if qapp_id:
-        return Qapp.objects.filter(
-            id__in=include_qapps).filter(id=qapp_id).first()
+    # if qapp_id:
+    #     return Qapp.objects.filter(
+    #         id__in=include_qapps).filter(id=qapp_id).first()
 
-    return Qapp.objects.filter(id__in=include_qapps)
+    # return Qapp.objects.filter(id__in=include_qapps)
 
 
 def get_qapp_info(user, qapp_id):
     """Return all pieces of a qapp in a dictionary."""
-    ctx = {}
-    ctx['qapp'] = get_qar5_for_user(user.id, qapp_id).first()
+    # ctx = {}
+    # ctx['qapp'] = get_qar5_for_user(user.id, qapp_id).first()
 
-    # Only return this if the user has access to it via super, owner, or team:
-    # db_user = User.objects.get(id=user.id)
+    # # Only return this if the user has access to it via super, owner, or team:
+    # # db_user = User.objects.get(id=user.id)
 
-    if ctx['qapp'] or user.is_superuser or ctx['qapp'].prepared_by == user:
-        ctx['qapp_leads'] = QappLead.objects.filter(qapp_id=qapp_id)
-        ctx['qapp_approval'] = QappApproval.objects.filter(
-            qapp_id=qapp_id).first()
-        if ctx['qapp_approval']:
-            ctx['signatures'] = QappApprovalSignature.objects.filter(
-                qapp_approval_id=ctx['qapp_approval'].id)
-        ctx['section_a'] = SectionA.objects.filter(qapp_id=qapp_id).first()
-        ctx['section_b'] = SectionB.objects.filter(qapp_id=qapp_id).all()
-        ctx['section_c'] = SectionC.objects.filter(qapp_id=qapp_id).first()
-        ctx['section_d'] = SectionD.objects.filter(qapp_id=qapp_id).first()
-        ctx['references'] = References.objects.filter(qapp_id=qapp_id).first()
-        ctx['revisions'] = Revision.objects.filter(qapp_id=qapp_id)
-        ctx['title'] = str(ctx['qapp'])
-        return ctx
+    # if ctx['qapp'] or user.is_superuser or ctx['qapp'].prepared_by == user:
+    #     ctx['qapp_leads'] = QappLead.objects.filter(qapp_id=qapp_id)
+    #     ctx['qapp_approval'] = QappApproval.objects.filter(
+    #         qapp_id=qapp_id).first()
+    #     if ctx['qapp_approval']:
+    #         ctx['signatures'] = QappApprovalSignature.objects.filter(
+    #             qapp_approval_id=ctx['qapp_approval'].id)
+    #     ctx['section_a'] = SectionA.objects.filter(qapp_id=qapp_id).first()
+    #     ctx['section_b'] = SectionB.objects.filter(qapp_id=qapp_id).all()
+    #     ctx['section_c'] = SectionC.objects.filter(qapp_id=qapp_id).first()
+    #     ctx['section_d'] = SectionD.objects.filter(qapp_id=qapp_id).first()
+    #     ctx['references'] = References.objects.filter(qapp_id=qapp_id).first()
+    #     ctx['revisions'] = Revision.objects.filter(qapp_id=qapp_id)
+    #     ctx['title'] = str(ctx['qapp'])
+    #     return ctx
 
     return None
