@@ -128,7 +128,6 @@ urlpatterns = [
             name='create_revision'),
 
     # Auth section (SSO with Azure AD and MSAL)
-    path('sign_in_status', views_auth.index, name='status'),
     path('token_details', views_auth.token_details, name='token_details'),
     path('call_ms_graph', views_auth.call_ms_graph, name='call_ms_graph'),
     # our pre-configured msal URLs
