@@ -6,7 +6,7 @@
 
 """Definition of urls for qapp_builder."""
 
-from django.urls import path, re_path
+from django.urls import re_path
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include
@@ -33,78 +33,78 @@ urlpatterns = [
 
     # From the original QAR5 module:
     re_path(r'^create/?$',
-            QappCreate.as_view(),
-            name='qapp_create'),
+        QappCreate.as_view(),
+        name='qapp_create'),
 
     re_path(r'^detail/(?P<pk>\d+)/?$',
-            QappDetail.as_view(),
-            name='qapp_detail'),
+        QappDetail.as_view(),
+        name='qapp_detail'),
 
     re_path(r'^edit/(?P<pk>\d+)/?$',
-            QappEdit.as_view(),
-            name='qapp_edit'),
+        QappEdit.as_view(),
+        name='qapp_edit'),
 
     re_path(r'^list/user/(?P<pk>\d+)/?$',
-            QappList.as_view(),
-            name='qapp_list'),
+        QappList.as_view(),
+        name='qapp_list'),
     re_path(r'^list/team/(?P<pk>\d+)/?$',
-            QappList.as_view(),
-            name='qapp_list'),
+        QappList.as_view(),
+        name='qapp_list'),
 
     # Single QAPP Exports (if user has access, owner or team):
     re_path(r'^exportdoc/(?P<pk>\d+)/?$',
-            export_doc_single, name='qar5_doc'),
+        export_doc_single, name='qar5_doc'),
     re_path(r'^exportpdf/(?P<pk>\d+)/?$',
-            export_pdf_single, name='qar5_pdf'),
+        export_pdf_single, name='qar5_pdf'),
 
     # All QAPP Exports for User:
     re_path(r'^exportdoc/user/(?P<pk>\d+)/?$',
-            export_doc, name='qar5_all_doc'),
+        export_doc, name='qar5_all_doc'),
     re_path(r'^exportpdf/user/(?P<pk>\d+)/?$',
-            export_pdf, name='qar5_all_pdf'),
+        export_pdf, name='qar5_all_pdf'),
 
     # All QAPP Exports for Team:
     re_path(r'^exportdoc/team/(?P<pk>\d+)/?$',
-            export_doc, name='qar5_all_doc'),
+        export_doc, name='qar5_all_doc'),
     re_path(r'^exportpdf/team/(?P<pk>\d+)/?$',
-            export_pdf, name='qar5_all_pdf'),
+        export_pdf, name='qar5_all_pdf'),
 
     ############################################
     # Project Approval (and signatures) URLs
     re_path(r'^approval/create/?$',
-            ProjectApprovalCreate.as_view(),
-            name='qapp_approval'),
+        ProjectApprovalCreate.as_view(),
+        name='qapp_approval'),
 
     re_path(r'^approval/edit/(?P<pk>\d+)/?$',
-            ProjectApprovalEdit.as_view(),
-            name='qapp_approval_edit'),
+        ProjectApprovalEdit.as_view(),
+        name='qapp_approval_edit'),
 
     # Project Approval Signatures URLs
     re_path(r'^approval_signature/create/?$',
-            ProjectApprovalSignatureCreate.as_view(),
-            name='get_approval_signature_form'),
+        ProjectApprovalSignatureCreate.as_view(),
+        name='get_approval_signature_form'),
 
     re_path(r'^approval_signature/delete/(?P<pk>\d+)/?$',
-            ProjectApprovalSignatureDelete.as_view(),
-            name='delete_approval_signature'),
+        ProjectApprovalSignatureDelete.as_view(),
+        name='delete_approval_signature'),
 
     re_path(r'^approval_signature/edit/(?P<pk>\d+)/?$',
-            ProjectApprovalSignatureEdit.as_view(),
-            name='edit_approval_signature'),
+        ProjectApprovalSignatureEdit.as_view(),
+        name='edit_approval_signature'),
 
     ############################################
     # Project Lead URLs
     re_path(r'^project_lead/create/?$',
-            ProjectLeadCreate.as_view(),
-            name='get_project_lead_form'),
+        ProjectLeadCreate.as_view(),
+        name='get_project_lead_form'),
 
     re_path(r'^project_lead/delete/(?P<pk>\d+)/?$',
-            ProjectLeadDelete.as_view(),
-            name='delete_project_lead'),
+        ProjectLeadDelete.as_view(),
+        name='delete_project_lead'),
 
     re_path(r'^project_lead/edit/(?P<pk>\d+)/?$',
-            ProjectLeadEdit.as_view(),
-            name='edit_project_lead'),
+        ProjectLeadEdit.as_view(),
+        name='edit_project_lead'),
 
     ############################################
     # SectionB URLs
@@ -117,15 +117,14 @@ urlpatterns = [
 
     # Revision is part of Section F
     re_path(r'^revision/create/?$',
-            RevisionCreate.as_view(),
-            name='create_revision'),
+        RevisionCreate.as_view(),
+        name='create_revision'),
 
 
     # Begin other module import URLs.
     re_path(r'^accounts/', include('accounts.urls')),
     re_path(r'^support/', include('support.urls')),
     re_path(r'^teams/', include('teams.urls')),
-    path('oauth2/', include('django_auth_adfs.urls')),
 ]
 
 urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)

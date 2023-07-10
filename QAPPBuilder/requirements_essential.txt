@@ -37,7 +37,3 @@ duecredit>=0.9.2                  # Citation of scientific software and methods,
 pycodestyle>=2.10.0               # Tool to check your Python code against some of the style conventions in PEP 8.
 pydocstyle>=6.3.0                 # Static analysis tool for checking compliance with Python docstring conventions in PEP 257.
 pylint-django>=2.5.3              # pylint_django.checkers.db_performance looks for migrations which add new model fields and these fields have a default value.
-
-# #---------------------------------------------------------------------------------------#
-# Azure AD Auth
-django-auth-adfs
