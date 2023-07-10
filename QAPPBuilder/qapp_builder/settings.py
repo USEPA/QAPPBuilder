@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'django_auth_adfs',  # AAD auth
     'accounts',
     'constants',
     'qapp_builder',
@@ -61,6 +62,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_auth_adfs.middleware.LoginRequiredMiddleware',
 ]
 
 ROOT_URLCONF = 'qapp_builder.urls'
@@ -135,7 +137,7 @@ MEDIA_URL = '/media/'
 UPLOAD_ROOT = os.path.join(MEDIA_ROOT, 'uploads')
 
 APP_NAME = 'qapp_builder'
-APP_VERSION = '1.2.0'
+APP_VERSION = '1.3.0.alpha-1'
 APP_DISCLAIMER = 'The information and data presented in this product ' + \
                  'were obtained from sources that are believed to be ' + \
                  'reliable. However, in many cases the quality of the ' + \
@@ -143,8 +145,33 @@ APP_DISCLAIMER = 'The information and data presented in this product ' + \
                  'sources; therefore, no claim is made regarding ' + \
                  'their quality.'
 
+# ##########################################################################
+# django-auth-adfs section
+
+AUTHENTICATION_BACKENDS = (
+    'django_auth_adfs.backend.AdfsAuthCodeBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+AUTH_ADFS = {
+    "SERVER": "adfs.yourcompany.com",
+    "CLIENT_ID": "your-configured-client-id",
+    "RELYING_PARTY_ID": "your-adfs-RPT-name",
+    # Make sure to read the documentation about the AUDIENCE setting
+    # when you configured the identifier as a URL!
+    "AUDIENCE": "microsoft:identityserver:your-RelyingPartyTrust-identifier",
+    "CA_BUNDLE": "/path/to/ca-bundle.pem",
+    "CLAIM_MAPPING": {"first_name": "given_name",
+                      "last_name": "family_name",
+                      "email": "email"},
+}
+
+# Configure django to redirect users to the right URL for login
+LOGIN_URL = "django_auth_adfs:login"
+LOGIN_REDIRECT_URL = "/"
+
 try:
-    from .local_settings import *
+    from .local_settings import *  # noqa: F401
     # py-lint: disable=E0012
 except ImportError:
     pass
